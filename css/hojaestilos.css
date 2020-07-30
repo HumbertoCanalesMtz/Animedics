@@ -1,26 +1,14 @@
 @font-face{
     font-family: Mywebfont;
-    src: url(../font/WickedMouse-aGoK.ttf) format('truetype'); 
-}
-@font-face{
-    font-family: Cocogoose;
-    src: url(../font/Cocogoose_trial.otf);
-}
-@font-face{
-    font-family: Caviardreams;
-    src: url(../font/CaviarDreams.ttf) format('truetype');
-}
-@font-face{
-    font-family: Cocoganso;
-    src: url(../font/cocogoose-t.ttf) format('truetype');
+    src: url(../fonts/WickedMouse-aGoK.ttf) format('truetype'); 
 }
 @font-face{
     font-family: Reem;
-    src: url("../font/ReemKufi-Regular.ttf");
+    src: url("../fonts/ReemKufi-Regular.ttf");
 }
 /*Secciones*/
 body{
-    background-image: url(../imgs/bg.png);
+    background-image: url(../img/bg.png);
 }
 ::-webkit-scrollbar {
     width: 20px;
