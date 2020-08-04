@@ -93,7 +93,7 @@ body{
     color: #FF9700;
 }
 /*Componentes*/
-button.boton{
+.boton{
     background-color: #00C49E;
     color: white;
 }
@@ -156,6 +156,9 @@ img.indicador{
     height: 20px;
 }
 /*Propiedades*/
+.icono-10{
+    font-size: 10px;
+}
 .icono-20{
     font-size: 20px;
 }
@@ -173,6 +176,10 @@ icono-180deg{
 }
 .borde-sup{
     border-top: 3px solid gray;
+    background-color: white;
+}
+.borde-der{
+    border-right: 3px solid gray;
     background-color: white;
 }
 .borde-normal{
@@ -195,6 +202,9 @@ icono-180deg{
 }
 .bg-blanco{
     background-color: white;
+}
+.bg-negro{
+    background-color: black;
 }
 .bg-naranja{
     background-color: #FF9700;
