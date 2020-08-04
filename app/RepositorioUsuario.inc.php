@@ -1,4 +1,7 @@
 <?php
+//En esta clase están guardados todos los métodos que tienen que ver con los usuarios. 
+//Las primeras dos funciones son basurita con la que estaba practicando pero que podemos implementar en otro lado.
+
 class RepositorioUsuario {
 
     public static function obtener_todos($conexion){
@@ -124,7 +127,6 @@ class RepositorioUsuario {
         if(isset($conexion)){
             try{
                 $sql = "SELECT * FROM usuarios WHERE telefono = :telefono";
-
                 $sentencia = $conexion -> prepare($sql);
                 $sentencia -> bindParam(':telefono', $telefono, PDO::PARAM_STR);
                 $sentencia -> execute();
@@ -140,4 +142,27 @@ class RepositorioUsuario {
         }
         return $telefono_disp;
     }
+
+    public static function logearse($conexion, $nom_o_correo){
+        $usuario = null;
+        if(isset($conexion)){
+            try{
+                include_once 'Usuario.inc.php';
+                $sql = "SELECT * FROM usuarios WHERE correo = :nom_o_correo OR nombre_usuario = :nom_o_correo";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':nom_o_correo', $nom_o_correo, PDO::PARAM_STR);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetch();
+                $filas_afectadas = $sentencia -> rowCount();
+                if($filas_afectadas!==0){
+                    $usuario = new Usuario($resultado['id_usuario'], $resultado['nombres'], $resultado['ap_paterno'], $resultado['ap_materno'],
+                    $resultado['correo'], $resultado['clave'], $resultado['nombre_usuario'], $resultado['telefono'], $resultado['rol'],
+                    $resultado['fecha_registro']);
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $usuario;
+    }   
 }

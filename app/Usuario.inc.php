@@ -1,4 +1,5 @@
 <?php
+//Esta es la clase para los Usuarios. Como todos los atributos son privados hay muchas funciones para recuperar o cambiar los datos.
 
 class Usuario {
     private $id_usuario;

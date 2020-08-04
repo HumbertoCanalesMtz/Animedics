@@ -1,4 +1,7 @@
 <?php
+//Esta clase contiene métodos para validar todos los campos del registro antes de registrar a un nuevo usuario en la BD. 
+//La podemos simplificar y mejorar.
+
 include_once 'RepositorioUsuario.inc.php';
 
 class ValidadorRegistro{
@@ -103,8 +106,10 @@ class ValidadorRegistro{
     }
     public function validar_clave_2($clave_1, $clave_2){
         if(!$this -> variable_iniciada($clave_1)){
+            $this -> error_clave_1 = "";
             return "Debes ingresar una contraseña primero";
         }
+        //validar_clave_1($clave_1);
         if(!$this -> variable_iniciada($clave_2)){
             return "Debes repetir la contraseña ingresada";
         }
@@ -139,7 +144,7 @@ class ValidadorRegistro{
                 return "El numéro de teléfono debe contener 10 dígitos";
             }
         }
-        if(!RepositorioUsuario::telefono_disponible($conexion, $telefono)){
+        if(!RepositorioUsuario::telefono_disponible($conexion, $telefono) && $this -> telefono != ""){
             return "El telefono ingresado ya está en uso.";
         }
         return "";
@@ -164,7 +169,11 @@ class ValidadorRegistro{
         return $this -> nom_usuario;
     }
     public function obtener_telefono(){
-        return $this -> telefono;
+        if ($this -> telefono != ""){
+            return $this -> telefono;
+        } else{
+            return null;
+        }
     }
 
     public function obtener_error_nombres(){
