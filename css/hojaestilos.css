@@ -159,8 +159,14 @@ img.indicador{
 .icono-20{
     font-size: 20px;
 }
+.icono-40{
+    font-size: 40px;
+}
 .icono-90deg{
     transform: rotate(90deg);
+}
+.icono-270deg{
+    transform: rotate(270deg);
 }
 icono-180deg{
     transform: rotate(180deg);
@@ -186,6 +192,12 @@ icono-180deg{
 }
 .borde-naranja{
     border-color: #FF9700;
+}
+.bg-blanco{
+    background-color: white;
+}
+.bg-naranja{
+    background-color: #FF9700;
 }
 .centrado-vertical{
     align-items: center;
