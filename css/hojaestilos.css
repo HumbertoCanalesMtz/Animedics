@@ -1,0 +1,217 @@
+@font-face{
+    font-family: Mywebfont;
+    src: url(../fonts/WickedMouse-aGoK.ttf) format('truetype'); 
+}
+@font-face{
+    font-family: Reem;
+    src: url("../fonts/ReemKufi-Regular.ttf");
+}
+/*Secciones*/
+body{
+    background-image: url(../img/bg.png);
+}
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  ::-webkit-scrollbar-button:hover{
+      background: silver;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #00C49E;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+      background: #008f72;
+  }      
+/*Extra*/
+.gira:hover {
+    animation-duration: 1s;
+    animation-name: giro;
+  }
+  
+  @keyframes giro {
+    from {
+        -webkit-transform: rotate(0deg)
+    }
+  
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+  }
+.deslizar {
+    animation-duration: 3s;
+    animation-name: slidein;
+  }
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 20px; 
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 200px;
+    }
+  }  
+.aclarar{
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    animation-name: fadein;
+}
+@keyframes fadein{
+    from{
+        opacity: 0.1;
+    }
+    to{
+        opacity: 1.0;
+    }
+}
+/*Fuentes*/
+.fuente-WM{
+    font-family: Mywebfont;
+}
+.fuente-R{
+    font-family: Reem;
+}
+/*Colores*/
+.blanco{
+    color: white;
+}
+.verde{
+    color: #00C49E;
+}
+.negro{
+    color: black;
+}
+.naranja{
+    color: #FF9700;
+}
+/*Componentes*/
+.boton{
+    background-color: #00C49E;
+    color: white;
+}
+button.boton:hover{
+    background-color: #008f72;
+    color: white;
+}
+input.txb{
+    border: #00C49E inset 3px;
+}
+input.txb:hover{
+    border: #008f72 outset 3px;
+}
+input.txb::placeholder{
+    font-family: Reem;
+    color: gray;
+}
+.navbar-g{
+    font-family: Mywebfont;
+    color: #00C49E;
+    font-size: 20px;
+}
+.navbar-g:hover{
+    font-family: Mywebfont;
+    color: #00C49E;
+    font-size: 20px;
+}
+a.liga-WM{
+    font-family: Mywebfont;
+    color: #00C49E;
+}
+a.liga-WM:hover{
+    font-family: Mywebfont;
+    color: #00C49E;
+}
+a.liga-R{
+    font-family: Reem;
+    color: black;
+}
+a.liga-R:hover{
+    font-family: Reem;
+    color: black;
+}
+.fila{
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+div.sombreado-g{
+    background: linear-gradient(to bottom, rgb(112, 112, 112), #ffffff00); 
+    height: 20px;
+}
+div.sombreado-c{
+    background: linear-gradient(to bottom, rgb(112, 112, 112), #ffffff00); height: 12px;
+}
+.altura-390{
+    height: 390px;
+}
+img.indicador{
+    width: 20px;
+    height: 20px;
+}
+/*Propiedades*/
+.icono-10{
+    font-size: 10px;
+}
+.icono-20{
+    font-size: 20px;
+}
+.icono-40{
+    font-size: 40px;
+}
+.icono-90deg{
+    transform: rotate(90deg);
+}
+.icono-270deg{
+    transform: rotate(270deg);
+}
+icono-180deg{
+    transform: rotate(180deg);
+}
+.borde-sup{
+    border-top: 3px solid gray;
+    background-color: white;
+}
+.borde-der{
+    border-right: 3px solid gray;
+    background-color: white;
+}
+.borde-normal{
+    border: gray solid 3px;
+    background-color: white;
+}
+.borde-redondo{
+    border-radius: 25px;
+    background-color: white;
+    border: gray solid 3px;
+}
+.borde-g{
+    border-width: 9px;
+}
+.borde-verde{
+    border-color: #00C49E;
+}
+.borde-naranja{
+    border-color: #FF9700;
+}
+.bg-blanco{
+    background-color: white;
+}
+.bg-negro{
+    background-color: black;
+}
+.bg-naranja{
+    background-color: #FF9700;
+}
+.centrado-vertical{
+    align-items: center;
+}
+.separadito{
+    letter-spacing: 5px !important;
+}
