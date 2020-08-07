@@ -35,7 +35,7 @@ class ValidadorRegistro{
         $this -> error_clave_2 = $this -> validar_clave_2($clave_1, $clave_2);
         $this -> error_nom_usuario = $this -> validar_nom_usuario($nom_usuario, $conexion);
         $this -> error_telefono = $this -> validar_telefono($telefono, $conexion);
-        $this -> alerta_inicio = "<br><div class='alert alert-danger' role='alert'>";
+        $this -> alerta_inicio = "<br><br><br><div class='alert alert-danger' role='alert'>";
         $this -> alerta_cierre = "</div>";
 
         if($this -> error_clave_1 === "" && $this -> error_clave_2 === ""){
@@ -102,6 +102,12 @@ class ValidadorRegistro{
         if(!$this -> variable_iniciada($clave_1)){
             return "Debes ingresar una contraseña";
         }
+        if(strlen($clave_1) < 8){
+            return "La contraseña puede tener menos de 8 caracteres";
+        }
+        if(strlen($clave_1) > 30){
+            return "El nombre no puede tener más de 30 caracteres";
+        }
         return "";
     }
     public function validar_clave_2($clave_1, $clave_2){
@@ -109,7 +115,6 @@ class ValidadorRegistro{
             $this -> error_clave_1 = "";
             return "Debes ingresar una contraseña primero";
         }
-        //validar_clave_1($clave_1);
         if(!$this -> variable_iniciada($clave_2)){
             return "Debes repetir la contraseña ingresada";
         }
@@ -130,7 +135,7 @@ class ValidadorRegistro{
             return "El nombre no puede tener menos de 6 caracteres";
         }
         if(strlen($nom_usuario) > 30){
-            return "El nombre no puede tener más de 50 caracteres";
+            return "El nombre no puede tener más de 30 caracteres";
         }
         if(!RepositorioUsuario::nombre_usuario_disponible($conexion, $nom_usuario)){
             return "El nombre de usuario ingresado ya está en uso.";
@@ -237,7 +242,7 @@ class ValidadorRegistro{
     }
     public function mostrar_error_clave_1(){
         if($this -> error_clave_1 !== ""){
-            echo $this -> alerta_inicio . $this -> error_contraseña_1 . $this -> alerta_cierre;
+            echo $this -> alerta_inicio . $this -> error_clave_1 . $this -> alerta_cierre;
         }
     }
     public function mostrar_error_clave_2(){

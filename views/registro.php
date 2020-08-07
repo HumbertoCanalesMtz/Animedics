@@ -1,4 +1,5 @@
 <?php
+    $titulo = 'Registrarse';
     include_once 'app/config.inc.php';
     include_once 'app/Conexion.inc.php';
     include_once 'app/Usuario.inc.php';
@@ -18,20 +19,26 @@
             $usuario = new Usuario('', $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
             $validador -> obtener_correo(), password_hash($validador -> obtener_clave(),PASSWORD_DEFAULT), $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), 3, '');
             $usuario_insertado = RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+            Sesion::iniciar_sesion($usuario -> obtener_id_usuario(), $usuario -> obtener_nombre_usuario());
             Redireccion::redirigir(SERVER);
         }
         Conexion::cerrar_conexion();
     }
 
-    $titulo = 'Registrarse';
     include_once 'templates/declaracion.php';
     include_once 'templates/navbar.php';
 ?>
-      <br/>
-      <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Registrarse</h1>
+    <div class="container">
+        <div class="row fila">
+            <div class="borde-redondo">
+                <div class="row no-gutters centrado-vertical">
+                    <div class="col-md-6 no-gutters">
+                        <img src="<?php echo RUTA_IMG?>/dogoñora.png" class="card-img img-fluid d-none d-md-block">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h4 class="card-title text-center fuente-WM verde separadito">CREA UN USUARIO</h4>
+                            <br>
                 <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
                     <?php if(isset($_POST['registrar'])){
                         include_once 'templates/registro_validado.php';

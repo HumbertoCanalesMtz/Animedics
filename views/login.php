@@ -1,4 +1,5 @@
 <?php
+$titulo = 'Iniciar Sesión';
 include_once 'app/config.inc.php';
 include_once 'app/Conexion.inc.php';
 include_once 'app/RepositorioUsuario.inc.php';
@@ -19,7 +20,7 @@ if(isset($_POST['ingresar'])){
     } 
     Conexion::cerrar_conexion();
 }
-$titulo = 'Iniciar Sesión';
+
 include_once 'templates/declaracion.php';
 include_once 'templates/navbar.php';
 ?>

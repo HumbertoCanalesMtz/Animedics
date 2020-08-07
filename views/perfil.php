@@ -1,4 +1,5 @@
 <?php
+$titulo = "Mi Perfil";
 include_once "app/config.inc.php";
 include_once "templates/declaracion.php";
 include_once "templates/navbar.php"

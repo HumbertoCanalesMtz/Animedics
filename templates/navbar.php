@@ -1,44 +1,42 @@
 <?php
 include_once 'app/Sesion.inc.php';
 ?>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-info">
-        <a class="navbar-brand" href="<?php echo SERVER;?>"><h1>Animedics</h1></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Servicios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contacto</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Agendar cita</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav justify-content-right">
-          <?php if(Sesion::sesion_iniciada()){?>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo RUTA_MASCOTAS;?>">Mis Mascotas</a> 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo RUTA_PERFIL;?>">Bienvenido, <?php echo $_SESSION['nombre_usuario'];?></a> 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo RUTA_LOGOUT;?>">Cerrar sesión</a>
-            </li>
-          </ul>
-          <?php } else{ ?>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo RUTA_LOGIN;?>">Iniciar Sesión</a> 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo RUTA_REGISTRO;?>">Registrarse</a>
-            </li>
-          </ul>
-          <?php } ?>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="col-md-6 col-10">
+            <div class="row navbar-g centrado-vertical">
+                <div>
+                    <a href="<?php echo SERVER?>"><img src="<?php echo RUTA_IMG?>/icon.png" class="gira" width="50px" height="50px"></a>
+                </div>
+                <div class="d-none d-md-block"><a style="color: inherit; text-decoration: none" href="<?php echo SERVER?>"> HUELLITAS</a></div>
+            </div>
         </div>
-      </nav>
+        <div class="d-md-none justify-content-center col-2">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="material-icons">view_headline</span>
+            </button>        
+        </div>    
+        <div class="col-md-6 collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="<?php echo SERVER?>#servicios">SERVICIOS</a>
+                <a class="nav-item nav-link" href="<?php echo SERVER?>#contacto">CONTACTO</a>
+                <a class="nav-item nav-link" href="<?php echo RUTA_CITAS?>">AGENDAR CITA</a>
+                <div class="dropdown">
+                    <a type="button" class="btn" href="account/">
+                        <span class="material-icons borde-redondo borde-verde verde icono-20">person_outline</span>
+                    </a>
+                    <button type="button" class="btn dropdown-toggle dropdown-toggle-split boton blanco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+            <?php 
+            if(Sesion::sesion_iniciada()){ 
+                include_once 'nav_logged.php';
+              } else{
+                include_once 'nav_guest.php';
+              }
+            ?>
+            </div>
+        </div>        
+    </nav>
+    <div class="card border-0 rounded-0 sombreado-g"></div>
+</header>

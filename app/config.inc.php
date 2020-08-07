@@ -12,8 +12,10 @@ define("SERVER", "http://localhost/Animedics");
 define("RUTA_REGISTRO", SERVER."/registro");
 define("RUTA_LOGIN", SERVER."/login");
 define("RUTA_LOGOUT", SERVER."/logout");
-define("RUTA_PERFIL",SERVER."/perfil");
-define("RUTA_MASCOTAS",SERVER."/mascotas");
+define("RUTA_PERFIL", SERVER."/perfil");
+define("RUTA_MASCOTAS", SERVER."/mascotas");
+define("RUTA_CITAS", SERVER."/citas");
 
 define("RUTA_CSS", SERVER."/css");
 define("RUTA_JS", SERVER."/js");
+define("RUTA_IMG", SERVER."/img");

@@ -13,13 +13,16 @@ if($partes_ruta[0] == 'Animedics'){
     } else if(count($partes_ruta) == 2){
         switch($partes_ruta[1]){
             case 'login':
-                $ruta_elegida = "views/login.php";
+                $ruta_elegida = "views/home.php";
                 break;
             case 'logout':
                 $ruta_elegida = "views/logout.php";
                 break;
             case 'registro':
                 $ruta_elegida = "views/registro.php";
+                break;
+            case 'cita':
+                $ruta_elegida = "views/cita.php";
                 break;
             case 'mascotas':
                 $ruta_elegida = "views/mascotas.php";
