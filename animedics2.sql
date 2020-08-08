@@ -20,7 +20,7 @@ create table if not exists usuarios
 	id_usuario int AUTO_INCREMENT primary key,
     nombre_usuario nvarchar(30),
     correo nvarchar(50),
-    clave nvarchar(40),
+    clave nvarchar(100),
     fecha_registro date,
     rol	tinyint,
     constraint fk_rol foreign key (rol) references rol(id_rol),
@@ -37,13 +37,12 @@ create table if not exists personas
     telefono numeric(10),
     correo_contacto nvarchar(50),
     usuario	int,
-    constraint fk_usuario foreign key (usuario) references usuarios(id_usuario),
-    constraint uq_telefono unique (telefono)
+    constraint fk_usuario foreign key (usuario) references usuarios(id_usuario)
 );
 drop table if exists `Animedics`.`veterinarios`;
 create table if not exists `Animedics`.`veterinarios`
 (
-	id_veterinario char(10) primary key,
+	id_veterinario int AUTO_INCREMENT primary key,
     cedula nvarchar(10),
     persona int,
     constraint fk_usuario_veterinario foreign key (persona) references personas(id_persona),
@@ -52,16 +51,16 @@ create table if not exists `Animedics`.`veterinarios`
 drop table if exists `Animedics`.`especie`;
 create table if not exists `Animedics`.`especie`
 (
-	id_especie nchar(10) primary key,
+	id_especie int AUTO_INCREMENT primary key,
     nombre nvarchar(50),
     constraint uq_especie unique (nombre)
 );
 drop table if exists `Animedics`.`mascotas`;
 create table if not exists `Animedics`.`mascotas`
 (
-	id_animal char(10) primary key,
+	id_animal int AUTO_INCREMENT primary key,
     nombre nvarchar(50),
-    especie nchar(10),
+    especie int,
     edad int,
     sexo char(6),
     propietario int,
@@ -82,8 +81,8 @@ create table if not exists `Animedics`.`citas`
 (
 	id_cita int auto_increment primary key,
     folio char(15),
-    veterinario char(10),
-    mascota char(10),
+    veterinario int,
+    mascota int,
     fecha date,
     hora time,
     completada char(2),
@@ -181,25 +180,25 @@ INSERT INTO `personas` (`id_persona`, `nombres`, `ap_paterno`, `ap_materno`, `te
 (14, 'Daniela', 'Davies', 'Pestricke', '2703137593', 'dpestricked@nyu.edu', 14),
 (15, 'Niki', 'Rhymer', 'Springall', '7566215048', 'nspringalle@bloglovin.com', 15);
 INSERT INTO `veterinarios` (`id_veterinario`, `cedula`, `persona`) VALUES
-('V1', 'y539ka', 2),
-('V2', 'b551SN', 12),
-('V3', 'y055aG', 13),
-('V4', 'o615Wo', 14),
-('V5', 'c298qo', 15);
+('1', 'y539ka', 2),
+('2', 'b551SN', 12),
+('3', 'y055aG', 13),
+('4', 'o615Wo', 14),
+('5', 'c298qo', 15);
 INSERT INTO `especie` (`id_especie`, `nombre`) VALUES
-('E2', 'Gato'),
-('E1', 'Perro');
+('2', 'Gato'),
+('1', 'Perro');
 INSERT INTO `mascotas` (`id_animal`, `nombre`, `especie`, `edad`, `sexo`, `propietario`) VALUES
-('M1', 'Max', 'E1', 2, 'MACHO', '1'),
-('M10', 'Nina', 'E1', 4, 'HEMBRA', '6'),
-('M2', 'Pelusa', 'E2', 1, 'HEMBRA', '2'),
-('M3', 'Bola de nieve', 'E1', 2, 'HEMBRA', '3'),
-('M4', 'Jerry', 'E2', 3, 'MACHO', '4'),
-('M5', 'Tom', 'E2', 1, 'MACHO', '5'),
-('M6', 'Pi', 'E2', 1, 'MACHO', '6'),
-('M7', 'Desa', 'E1', 2, 'HEMBRA', '7'),
-('M8', 'Melek', 'E1', 2, 'HEMBRA', '8'),
-('M9', 'Molly', 'E1', 1, 'HEMBRA', '9');
+('1', 'Max', '1', 2, 'MACHO', '1'),
+('10', 'Nina', '1', 4, 'HEMBRA', '6'),
+('2', 'Pelusa', '2', 1, 'HEMBRA', '2'),
+('3', 'Bola de nieve', '1', 2, 'HEMBRA', '3'),
+('4', 'Jerry', '2', 3, 'MACHO', '4'),
+('5', 'Tom', '2', 1, 'MACHO', '5'),
+('6', 'Pi', '2', 1, 'MACHO', '6'),
+('7', 'Desa', '1', 2, 'HEMBRA', '7'),
+('8', 'Melek', '1', 2, 'HEMBRA', '8'),
+('9', 'Molly', '1', 1, 'HEMBRA', '9');
 INSERT INTO `servicio` (`id_servicio`, `nombre`) VALUES
 (5, 'Baño'),
 (3, 'Castración'),
@@ -207,16 +206,16 @@ INSERT INTO `servicio` (`id_servicio`, `nombre`) VALUES
 (4, 'Crematorio'),
 (2, 'Estetica');
 INSERT INTO `citas` (`id_cita`, `folio`, `veterinario`, `mascota`, `fecha`, `hora`,`completada`) VALUES
-(1, 'C00001', 'V1', 'M1', '2020-06-01', '15:00:00','SI'),
-(2, 'C00002', 'V1', 'M2', '2020-06-15', '14:00:00','SI'),
-(3, 'C00003', 'V2', 'M3', '2020-07-01', '16:00:00','SI'),
-(4, 'C00004', 'V2', 'M4', '2020-06-30', '12:00:00','SI'),
-(5, 'C00005', 'V3', 'M5', '2020-07-02', '10:00:00','SI'),
-(6, 'C00006', 'V3', 'M6', '2020-07-05', '18:00:00','SI'),
-(7, 'C00007', 'V4', 'M7', '2020-07-06', '15:00:00','SI'),
-(8, 'C00008', 'V4', 'M8', '2020-07-07', '13:00:00','SI'),
-(9, 'C00009', 'V5', 'M9', '2020-07-08', '14:00:00','SI'),
-(10, 'C00010', 'V5', 'M10', '2020-07-09', '17:00:00','SI');
+(1, 'C00001', '1', '1', '2020-06-01', '15:00:00','SI'),
+(2, 'C00002', '1', '2', '2020-06-15', '14:00:00','SI'),
+(3, 'C00003', '2', '3', '2020-07-01', '16:00:00','SI'),
+(4, 'C00004', '2', '4', '2020-06-30', '12:00:00','SI'),
+(5, 'C00005', '3', '5', '2020-07-02', '10:00:00','SI'),
+(6, 'C00006', '3', '6', '2020-07-05', '18:00:00','SI'),
+(7, 'C00007', '4', '7', '2020-07-06', '15:00:00','SI'),
+(8, 'C00008', '4', '8', '2020-07-07', '13:00:00','SI'),
+(9, 'C00009', '5', '9', '2020-07-08', '14:00:00','SI'),
+(10, 'C00010', '5', '10', '2020-07-09', '17:00:00','SI');
 INSERT INTO `cita_servicio` (`cita`, `servicio`) VALUES
 (1, 1),
 (2, 1),
@@ -368,6 +367,8 @@ inner join usuarios as u on u.id_usuario=p.usuario
 inner join rol as r on r.id_rol=u.rol
 where r.nombre_rol='Veterinario';
 
+/*PROCEDIMIENTOS ALMACENADOS*/
+
 /*Ver las mascotas de cada cliente*/
 use animedics 
 delimiter $$
@@ -400,7 +401,8 @@ use animedics
 delimiter $$
 create procedure buscar_citas_folio(folio char(15))
 begin
-select concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Veterinario,v.cedula as Cedula,m.nombre as Mascota,e.nombre as Especie,c.fecha as Fecha,c.hora as Hora from citas as c 
+select concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Veterinario,v.cedula as Cedula,
+m.nombre as Mascota,e.nombre as Especie,c.fecha as Fecha,c.hora as Hora from citas as c 
 inner join veterinarios as v on v.id_veterinario=c.veterinario
 inner join personas as p on p.id_persona=v.persona
 inner join mascotas as m on m.id_animal=c.mascota
@@ -413,7 +415,9 @@ use animedics
 delimiter $$
 create procedure citas_cierto_periodo (inicio date,final date)
 begin
-select concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Veterinario, m.nombre as Mascota, concat(per.nombres,' ',per.ap_paterno,' ',per.ap_materno) as Dueño,c.fecha as Fecha, c.hora as Hora from citas as c
+select concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Veterinario, m.nombre as Mascota, 
+concat(per.nombres,' ',per.ap_paterno,' ',per.ap_materno) as Dueño,c.fecha as Fecha, c.hora as Hora 
+from citas as c
 inner join veterinarios as v on v.id_veterinario=c.veterinario
 inner join personas as p on p.id_persona=v.persona
 inner join mascotas as m on m.id_animal=c.mascota
@@ -436,8 +440,103 @@ where c.veterinario=(select v.id_veterinario from veterinarios as v
                      where us.nombre_usuario=usuariovet);
 end $$
 
-/*Vista de todas las citas de los invitados*/
-use northwindma2020 
+/*Ver a los usuarios Veterinarios, admins o clientes del sistema*/
+use animedics 
 delimiter $$
-create view Citas_invitados as
-select
+create procedure buscar_usuarios_rol (rol varchar(50))
+begin
+select u.nombre_usuario as Nombre_usuario,concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Nombre, p.correo_contacto as Correo, p.telefono as Telefono
+from personas as p
+inner join usuarios as u on u.id_usuario=p.usuario
+inner join rol as r on r.id_rol=u.rol
+where r.nombre_rol=rol;
+end $$
+
+/*Ver las citas completadas o no completadas*/
+use animedics 
+delimiter $$
+create procedure citas_compl (estado char(2),usuario varchar(50))
+begin
+select c.folio as Folio, m.nombre as Mascota, e.nombre as Especie,
+concat(per.nombres,' ',per.ap_paterno,' ',per.ap_materno) as Dueño,c.fecha as Fecha, c.hora as Hora 
+from citas as c
+inner join veterinarios as v on v.id_veterinario=c.veterinario
+inner join personas as p on p.id_persona=v.persona
+inner join mascotas as m on m.id_animal=c.mascota
+inner join personas as per on per.id_persona=m.propietario
+inner join usuarios as u on u.id_usuario=p.usuario
+inner join especie as e on e.id_especie=m.especie
+where c.completada=estado and u.nombre_usuario=usuario;
+end $$
+
+ /*VISTAS*/
+/*Vista de todas las citas de los invitados*/
+use animedics;
+create view citas_invitados as
+select c.folio as Folio,m.nombre as Mascota, concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Dueño,p.telefono as Telefono, 
+c.fecha as Fecha, c.hora as Hora, concat(per.nombres,' ',per.ap_paterno,' ',per.ap_materno) as Veterinario from citas as c
+inner join mascotas as m on m.id_animal=c.mascota
+inner join personas as p on p.id_persona=m.propietario
+inner join veterinarios as v on v.id_veterinario=c.veterinario
+inner join personas as per on per.id_persona=v.persona
+where p.usuario is null;
+
+/*Ver todas las citas de usuarios registrados en el sistema*/
+use animedics;
+create view citas_registrados as
+select c.folio as Folio,m.nombre as Mascota, concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Dueño,p.telefono as Telefono, 
+c.fecha as Fecha, c.hora as Hora, concat(per.nombres,' ',per.ap_paterno,' ',per.ap_materno) as Veterinario from citas as c
+inner join mascotas as m on m.id_animal=c.mascota
+inner join personas as p on p.id_persona=m.propietario
+inner join veterinarios as v on v.id_veterinario=c.veterinario
+inner join personas as per on per.id_persona=v.persona
+where p.usuario is not null; 
+
+/*Ver todas las citas realizadas en el sistema*/
+use animedics;
+create view total_citas as
+select c.folio as Folio,m.nombre as Mascota,e.nombre as Especie, concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Dueño,p.telefono as Telefono, 
+c.fecha as Fecha, c.hora as Hora, concat(per.nombres,' ',per.ap_paterno,' ',per.ap_materno) as Veterinario from citas as c
+inner join mascotas as m on m.id_animal=c.mascota
+inner join personas as p on p.id_persona=m.propietario
+inner join veterinarios as v on v.id_veterinario=c.veterinario
+inner join personas as per on per.id_persona=v.persona
+inner join especie as e on e.id_especie=m.especie;
+
+/*Ver todas las citas completadas*/
+use animedics;
+create view citas_completadas as
+select c.folio as Folio,m.nombre as Mascota, concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Dueño,p.telefono as Telefono, 
+c.fecha as Fecha, c.hora as Hora, concat(per.nombres,' ',per.ap_paterno,' ',per.ap_materno) as Veterinario from citas as c
+inner join mascotas as m on m.id_animal=c.mascota
+inner join personas as p on p.id_persona=m.propietario
+inner join veterinarios as v on v.id_veterinario=c.veterinario
+inner join personas as per on per.id_persona=v.persona
+where c.completada='SI';
+
+/*Vista de todos los usuarios del sistema*/
+create view usuarios_sistema as
+select u.nombre_usuario as Nombre_usuario,concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Nombre,
+p.correo_contacto as Correo, p.telefono as Telefono, r.nombre_rol as Rol
+from personas as p
+inner join usuarios as u on u.id_usuario=p.usuario
+inner join rol as r on r.id_rol=u.rol
+order by Rol;
+
+/*Ver a todas las mascotas del sistema de usuarios registrados*/
+create view mascotas_sistema_registrados as 
+select m.nombre as Nombre_animal,m.edad as Edad,m.sexo as Sexo, e.nombre as Especie, 
+concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Dueño
+from mascotas as m 
+inner join personas as p on p.id_persona=m.propietario
+inner join especie as e on e.id_especie=m.especie
+where p.usuario is not null;
+
+/*Ver masctotas de los usuarios no registrados*/
+create view mascotas_sistema_noregistrados as 
+select m.nombre as Nombre_animal,m.edad as Edad,m.sexo as Sexo, e.nombre as Especie, 
+concat(p.nombres,' ',p.ap_paterno,' ',p.ap_materno) as Dueño
+from mascotas as m 
+inner join personas as p on p.id_persona=m.propietario
+inner join especie as e on e.id_especie=m.especie
+where p.usuario is null;
