@@ -549,6 +549,11 @@ BEGIN
 delete from cita_servicio where servicio=old.id_servicio;
 END $$ 
 delimiter ;
-/**/
-
+/*Eliminar todos los registros de los medicamentos eliminados en las recetas*/
+delimiter $$
+create trigger eliminar_medicamentos before delete on medicamento for each row 
+BEGIN
+delete from receta_medicamento where medicamento=old.id_medicamento;
+END $$ 
+delimiter ;
 /**/
