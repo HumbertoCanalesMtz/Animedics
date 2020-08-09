@@ -12,6 +12,9 @@ if($partes_ruta[0] == 'Animedics'){
         $ruta_elegida = "views/home.php";
     } else if(count($partes_ruta) == 2){
         switch($partes_ruta[1]){
+            case 'index':
+                $ruta_elegida = "views/home.php";
+                break;
             case 'login':
                 $ruta_elegida = "views/home.php";
                 break;

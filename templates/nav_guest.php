@@ -20,6 +20,9 @@ if(isset($_POST['ingresar'])){
     Conexion::cerrar_conexion();
 }
 ?>
+<button type="button" class="btn dropdown-toggle dropdown-toggle-split boton blanco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACCEDER </button>
+
+
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="padding: 20px;">
                     <h4 class="text-center fuente-R verde">INTRODUZCA SUS DATOS DE USUARIO</h4>
                     <form method="post" action="<?php echo htmlspecialchars(RUTA_LOGIN);?>" class="fuente-R">

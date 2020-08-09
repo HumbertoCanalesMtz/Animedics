@@ -25,20 +25,7 @@ include_once 'app/Sesion.inc.php';
                 <div class="dropdown">
                     <!--Este cambiecito lo hice para que cuando no estés logueado no te muestre el boton de inicio de sesión-->
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <?php
-                        if (Sesion::sesion_iniciada()) {
-                            include_once 'nav_profile.php';
-                        }
-                        ?>
-                        <button type="button" class="btn dropdown-toggle dropdown-toggle-split boton blanco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php
-                        if (Sesion::sesion_iniciada()) {
-                            echo '<span class="sr-only">Toggle Dropdown</span>';
-                        }else{
-                            echo 'ACCEDER';
-                        }
-                        ?>
-                        </button>
+                        
                         <?php 
                         if(Sesion::sesion_iniciada()){ 
                             include_once 'nav_logged.php';

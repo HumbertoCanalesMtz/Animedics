@@ -181,6 +181,6 @@
                 <a class="liga-R" href="#">+52 8715251340</a>
             </div>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.188785706692!2d-103.32311224966928!3d25.53208772421833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fc48455d823cb%3A0xc18fad7b464487e4!2sUniversidad%20Tecnol%C3%B3gica%20de%20Torre%C3%B3n!5e0!3m2!1ses-419!2smx!4v1595822039549!5m2!1ses-419!2smx" frameborder="0" style="border:0; width: 100%; height: 500px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>   
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d819.2744283765471!2d-103.39929423733645!3d25.551791727570073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fdb05e1f740dd%3A0xb416713ea5a71288!2sCalle%20Av%20Costa%20Rica%20294%2C%20Col%20Salvador%20Allende%2C%2027050%20Torre%C3%B3n%2C%20Coah.!5e0!3m2!1ses-419!2smx!4v1596939648248!5m2!1ses-419!2smx" frameborder="0" style="border:0; width: 100%; height: 500px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>   
 </footer>
 <?php include_once 'templates/cierre.php'?>

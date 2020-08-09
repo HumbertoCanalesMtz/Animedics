@@ -1,9 +1,0 @@
-body{
-    background-image: url("../img/fondo.png");
-    background-attachment: fixed;
-    background-size: 100%;
-}
-@font-face{
-    font-family: Cocogoose;
-    src: url("../fonts/Cocogoose\ Pro\ Italic-trial.ttf");
-}

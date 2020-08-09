@@ -36,4 +36,5 @@ include_once "templates/navbar.php";
             </tfoot>
         </table>
     </div>
+    <br><br><br><br><br><br><br><br><br>    <!--Preciso que el footer se vea así XD-->
 <?php include_once "templates/cierre.php";
