@@ -38,9 +38,9 @@ class ValidadorRegistro{
         $this -> alerta_inicio = "<br><br><br><div class='alert alert-danger' role='alert'>";
         $this -> alerta_cierre = "</div>";
 
-        if($this -> error_clave_1 === "" && $this -> error_clave_2 === ""){
-            $this -> clave == $clave_1;
-        }
+       // if($this -> error_clave_1 === "" && $this -> error_clave_2 === ""){
+         //   $this -> clave == $clave_1;
+       // }
     }
 
     public function variable_iniciada($variable){
