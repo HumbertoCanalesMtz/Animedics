@@ -36,7 +36,7 @@
                         <img src="<?php echo RUTA_IMG?>/dogoñora.png" class="card-img img-fluid d-none d-md-block">
                     </div>
                     <div class="col-md-6">
-                        <div class="card-body">
+                        <div class="card-body fuente-R">
                             <h4 class="card-title text-center fuente-WM verde separadito">CREA UN USUARIO</h4>
                             <br>
                 <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">

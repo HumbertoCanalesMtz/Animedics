@@ -191,6 +191,10 @@ icono-180deg{
     background-color: white;
     border: gray solid 3px;
 }
+.borde-boton{
+    border-radius: 25px;
+    border: gray solid 3px;
+}
 .borde-g{
     border-width: 9px;
 }
