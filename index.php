@@ -1,5 +1,5 @@
 <?php
-$componentes_url = parse_url(SERVER.$_SERVER["REQUEST_URI"]);
+$componentes_url = parse_url($_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
 $ruta = $componentes_url['path'];
 $partes_ruta = explode('/', $ruta);
 $partes_ruta = array_filter($partes_ruta);
