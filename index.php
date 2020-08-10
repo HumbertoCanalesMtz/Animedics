@@ -6,7 +6,7 @@ $partes_ruta = array_filter($partes_ruta);
 
 $ruta_elegida = "views/404.php";
 
-if($partes_ruta[0] == '34.230.52.161'){
+if($partes_ruta[0] == 'http://34.230.52.161'){
     if(count($partes_ruta) == 1){
         $ruta_elegida = "views/home.php";
     } else if(count($partes_ruta) == 2){
