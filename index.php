@@ -39,7 +39,7 @@ if($partes_ruta[0] == '34.230.52.161'){
 include_once $ruta_elegida;*/
 
 //Versión ayúdanos diosito
-
+$ruta_elegida = "views/404.php";
 switch ($partes_ruta[0]) {
         case '34.230.52.161':
             $ruta_elegida = "views/home.php";
@@ -66,3 +66,4 @@ switch ($partes_ruta[0]) {
             $ruta_elegida = "views/404.php";
             break;
 }
+include_once $ruta_elegida;
