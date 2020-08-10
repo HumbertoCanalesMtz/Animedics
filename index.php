@@ -1,5 +1,5 @@
 <?php
-$componentes_url = parse_url($_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]);
+$componentes_url = parse_url(SERVER.$_SERVER["REQUEST_URI"]);
 $ruta = $componentes_url['path'];
 $partes_ruta = explode('/', $ruta);
 $partes_ruta = array_filter($partes_ruta);
@@ -38,20 +38,29 @@ if($partes_ruta[0] == '34.230.52.161'){
 }
 
 include_once $ruta_elegida;
+
 echo $_SERVER['SERVER_NAME'];
 echo '<br>';
+
 echo $_SERVER['REQUEST_URI'];
 echo '<br>';
+
 echo $ruta;
 echo '<br>';
+
 echo $partes_ruta[0];
 echo '<br>';
+
 echo $partes_ruta[1];
 echo '<br>';
+
 echo $partes_ruta[2];
 echo '<br>';
+
 echo $partes_ruta[3];
 echo '<br>';
+
 echo $ruta_elegida;
 echo '<br>';
+
 echo count($partes_ruta);
