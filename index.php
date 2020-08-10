@@ -3,15 +3,15 @@ $componentes_url = parse_url($_SERVER["REQUEST_URI"]);
 $ruta = $componentes_url['path'];
 $partes_ruta = explode('/', $ruta);
 $partes_ruta = array_filter($partes_ruta);
-$partes_ruta = array_slice($partes_ruta, 0);
+$partes_ruta = array_slice($partes_ruta, 1);
 
 $ruta_elegida = "views/404.php";
 
-if($partes_ruta[1] == '34.230.52.161'){
-    if(count($partes_ruta) == 2){
+if($partes_ruta[0] == '34.230.52.161'){
+    if(count($partes_ruta) == 1){
         $ruta_elegida = "views/home.php";
-    } else if(count($partes_ruta) == 3){
-        switch($partes_ruta[2]){    
+    } else if(count($partes_ruta) == 2){
+        switch($partes_ruta[1]){    
             case 'index':
                 $ruta_elegida = "views/home.php";
                 break;
