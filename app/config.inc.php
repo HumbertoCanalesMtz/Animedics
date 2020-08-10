@@ -8,7 +8,7 @@ define('PASSWORD', 'admin');
 define('NOMBRE_BD', 'animedics');
 
 //Rutas web
-define("SERVER", "34.230.52.161");
+define("SERVER", "http://34.230.52.161");
 define("RUTA_REGISTRO", SERVER."/registro");
 define("RUTA_LOGIN", SERVER."/login");
 define("RUTA_LOGOUT", SERVER."/logout");
