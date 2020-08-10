@@ -7,7 +7,7 @@ $partes_ruta = array_slice($partes_ruta, 0);
 
 $ruta_elegida = "views/404.php";
 
-if($partes_ruta[0] == '34.230.52.161'){
+if($partes_ruta[0] == '34.205.215.192'){
     if(count($partes_ruta) == 1){
         $ruta_elegida = "views/home.php";
     } else if(count($partes_ruta) == 2){
@@ -36,31 +36,4 @@ if($partes_ruta[0] == '34.230.52.161'){
         }
     }
 }
-
 include_once $ruta_elegida;
-
-echo $_SERVER['SERVER_NAME'];
-echo '<br>';
-
-echo $_SERVER['REQUEST_URI'];
-echo '<br>';
-
-echo $ruta;
-echo '<br>';
-
-echo $partes_ruta[0];
-echo '<br>';
-
-echo $partes_ruta[1];
-echo '<br>';
-
-echo $partes_ruta[2];
-echo '<br>';
-
-echo $partes_ruta[3];
-echo '<br>';
-
-echo $ruta_elegida;
-echo '<br>';
-
-echo count($partes_ruta);
