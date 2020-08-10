@@ -12,25 +12,25 @@ if($partes_ruta[0] == '34.230.52.161'){
         $ruta_elegida = "views/home.php";
     } else if(count($partes_ruta) == 2){
         switch($partes_ruta[1]){    
-            case '/index':
+            case 'index':
                 $ruta_elegida = "views/home.php";
                 break;
-            case '/login':
+            case 'login':
                 $ruta_elegida = "views/home.php";
                 break;
-            case '/logout':
+            case 'logout':
                 $ruta_elegida = "views/logout.php";
                 break;
-            case '/registro':
+            case 'registro':
                 $ruta_elegida = "views/registro.php";
                 break;
-            case '/cita':
+            case 'cita':
                 $ruta_elegida = "views/cita.php";
                 break;
-            case '/mascotas':
+            case 'mascotas':
                 $ruta_elegida = "views/mascotas.php";
                 break;
-            case '/perfil':
+            case 'perfil':
                 $ruta_elegida = "views/perfil.php";
                 break;    
         }
@@ -44,7 +44,13 @@ echo $_SERVER['REQUEST_URI'];
 echo '<br>';
 echo $ruta;
 echo '<br>';
-echo $partes_ruta;
+echo $partes_ruta[0];
+echo '<br>';
+echo $partes_ruta[1];
+echo '<br>';
+echo $partes_ruta[2];
+echo '<br>';
+echo $partes_ruta[3];
 echo '<br>';
 echo $ruta_elegida;
 echo '<br>';
