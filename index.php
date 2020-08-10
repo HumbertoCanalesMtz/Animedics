@@ -11,7 +11,7 @@ if($partes_ruta[0] == '34.230.52.161'){
     if(count($partes_ruta) == 1){
         $ruta_elegida = "views/home.php";
     } else if(count($partes_ruta) == 2){
-        switch($partes_ruta[1]){
+        switch($partes_ruta[1]){    
             case 'index':
                 $ruta_elegida = "views/home.php";
                 break;
