@@ -39,3 +39,13 @@ if($partes_ruta[0] == '34.230.52.161'){
 
 include_once $ruta_elegida;
 echo $_SERVER['SERVER_NAME'];
+echo '<br>';
+echo $_SERVER['REQUEST_URI'];
+echo '<br>';
+echo $ruta;
+echo '<br>';
+echo $partes_ruta;
+echo '<br>';
+echo $ruta_elegida;
+echo '<br>';
+echo count($partes_ruta);
