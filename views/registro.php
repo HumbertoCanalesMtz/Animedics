@@ -1,5 +1,4 @@
 <?php
-	$_SERVER['REQUEST_METHOD'] = 'POST';
     $titulo = 'Registrarse';
     include_once 'app/config.inc.php';
     include_once 'app/Conexion.inc.php';

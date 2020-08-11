@@ -1,8 +1,10 @@
 <?php include_once 'declaracion.php';
+include_once 'RepositorioUsuario.inc.php';
 if(isset($_GET['xd'])){
     Conexion::abrir_conexion();
     if($_GET['correo'] == 'lmao' && $_GET['clave'] == 'lol'){
         echo 'EL BICHO';
+        echo RepositorioUsuario::obtener_usuario(Conexion::obtener_conexion(),'loconora');
     } else {
         echo 'MI MADRE';
     }
