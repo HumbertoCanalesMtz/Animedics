@@ -8,6 +8,7 @@ if(isset($_GET['xd'])){
     } else {
         echo 'MI MADRE';
     }
+    Conexion::cerrar_conexion();
 }?>
 	<form method="get" action="<?php $_SERVER['PHP_SELF']?>" class="fuente-R">
                         <div class="text-center">
