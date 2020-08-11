@@ -1,6 +1,4 @@
-<?php include_once 'declaracion.php';
-
-}?>
+<?php include_once 'declaracion.php';?>
 <form method="post" action="prueba.php" class="fuente-R">
                         <div class="text-center">
                             <label for="correo">Correo electronico o nombre de usuario</label>
