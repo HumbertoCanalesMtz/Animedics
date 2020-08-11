@@ -7,7 +7,7 @@ if(isset($_POST['xd'])){
         echo 'MI MADRE';
     }
 }?>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>>" class="fuente-R">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" class="fuente-R">
                         <div class="text-center">
                             <label for="correo">Correo electronico o nombre de usuario</label>
                             <br>
