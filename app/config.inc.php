@@ -3,8 +3,8 @@
 
 //Información de la base de datos
 define('NOMBRE_SERVIDOR', 'localhost');
-define('NOMBRE_USUARIO', 'admin');
-define('PASSWORD', 'admin');
+define('NOMBRE_USUARIO', 'admi_veterinaria');
+define('PASSWORD', '123456');
 define('NOMBRE_BD', 'animedics');
 
 //Rutas web
