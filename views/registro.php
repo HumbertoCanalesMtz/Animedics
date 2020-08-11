@@ -1,4 +1,5 @@
 <?php
+	$_SERVER['REQUEST_METHOD'] = 'POST';
     $titulo = 'Registrarse';
     include_once 'app/config.inc.php';
     include_once 'app/Conexion.inc.php';
@@ -39,7 +40,7 @@
                         <div class="card-body fuente-R">
                             <h4 class="card-title text-center fuente-WM verde separadito">CREA UN USUARIO</h4>
                             <br>
-                <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
+			    <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
                     <?php if(isset($_POST['registrar'])){
                         include_once 'templates/registro_validado.php';
                     }else{
