@@ -21,7 +21,7 @@ include_once 'app/Sesion.inc.php';
                 <a class="nav-item nav-link" href="<?php echo SERVER?>#servicios">SERVICIOS</a>
                 <a class="nav-item nav-link" href="<?php echo SERVER?>#contacto">CONTACTO</a>
                 <a class="nav-item nav-link" href="<?php echo SERVER?>/index/guestappointment.html">BUSCAR CITA</a>
-                <a class="nav-item nav-link" href="<?php echo RUTA_CITAS?>">AGENDAR CITA</a>
+                <a class="nav-item nav-link" href="../views/ayquebruto.php">AGENDAR CITA</a>
                 <div class="dropdown">
                     <!--Este cambiecito lo hice para que cuando no estés logueado no te muestre el boton de inicio de sesión-->
                     <div class="btn-group" role="group" aria-label="Basic example">
