@@ -1,13 +1,7 @@
 <?php include_once 'declaracion.php';
-if(isset($_POST['xd'])){
-    Conexion::abrir_conexion();
-    if($_POST['correo'] == 'lmao' && $_POST['clave'] == 'lol'){
-        echo 'EL BICHO';
-    } else {
-        echo 'MI MADRE';
-    }
+
 }?>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" class="fuente-R">
+<form method="post" action="prueba.php" class="fuente-R">
                         <div class="text-center">
                             <label for="correo">Correo electronico o nombre de usuario</label>
                             <br>
