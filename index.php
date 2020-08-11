@@ -36,7 +36,11 @@ if($partes_ruta[0] == '34.205.215.192'){
         }
     }
 }
+<<<<<<< HEAD
 
 include_once $ruta_elegida;
 
 echo $_SERVER['REQUEST_METHOD'];
+=======
+include_once $ruta_elegida;
+>>>>>>> bc6086a445503fe86ee4121d822dd4ec6bd2036e
