@@ -29,6 +29,7 @@
             </div>
         </div>
     </div>
+    <div class="esconde-logo"></div>
     <footer>
         <?php include_once "templates/cierre.php";?>
     </footer>

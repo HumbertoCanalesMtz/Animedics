@@ -15,6 +15,7 @@ define("RUTA_LOGOUT", SERVER."/logout");
 define("RUTA_PERFIL", SERVER."/perfil");
 define("RUTA_MASCOTAS", SERVER."/mascotas");
 define("RUTA_CITAS", SERVER."/citas");
+define("RUTA_CITASFOLIO", SERVER."/citasfolio");
 
 define("RUTA_CSS", SERVER."/css");
 define("RUTA_JS", SERVER."/js");

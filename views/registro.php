@@ -39,14 +39,18 @@
                         <div class="card-body fuente-R">
                             <h4 class="card-title text-center fuente-WM verde separadito">CREA UN USUARIO</h4>
                             <br>
-                <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
-                    <?php if(isset($_POST['registrar'])){
-                        include_once 'templates/registro_validado.php';
-                    }else{
-                        include_once 'templates/registro_vacio.php';
-                    }?>
-                </form>
+                            <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
+                                <?php if(isset($_POST['registrar'])){
+                                    include_once 'templates/registro_validado.php';
+                                }else{
+                                    include_once 'templates/registro_vacio.php';
+                                }?>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
+    </div>
+    <div class="esconde-logo"></div>
 <?php include_once 'templates/cierre.php'?>

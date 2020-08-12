@@ -20,8 +20,24 @@ include_once 'app/Sesion.inc.php';
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo SERVER?>#servicios">SERVICIOS</a>
                 <a class="nav-item nav-link" href="<?php echo SERVER?>#contacto">CONTACTO</a>
-                <a class="nav-item nav-link" href="<?php echo SERVER?>/index/guestappointment.html">BUSCAR CITA</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_CITAS?>">AGENDAR CITA</a>
+                <div class="btn-group">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    BUSCAR CITA
+                    </a>
+                    <div class="dropdown-menu borde-redondo borde-verde" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="text-center" style="padding: 20px;">
+                            <h6 class="fuente-WM verde">Introduzca su folio</h6>
+                            <div class="dropdown-divider"></div>
+                            <form action="<?php echo RUTA_CITASFOLIO?>" method="post">
+                                <input class="txb" type="text" name="folio" id="invoice" placeholder="Ej. C000001">
+                                <div class="dropdown-divider"></div>
+                                <a href=></a>
+                                <button class="btn boton fuente-WM" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div class="dropdown">
                     <!--Este cambiecito lo hice para que cuando no estés logueado no te muestre el boton de inicio de sesión-->
                     <div class="btn-group" role="group" aria-label="Basic example">

@@ -148,6 +148,9 @@ div.sombreado-g{
 div.sombreado-c{
     background: linear-gradient(to bottom, rgb(112, 112, 112), #ffffff00); height: 12px;
 }
+div.esconde-logo{
+    padding-top: 100px;
+}
 .altura-390{
     height: 390px;
 }
@@ -171,7 +174,7 @@ img.indicador{
 .icono-270deg{
     transform: rotate(270deg);
 }
-icono-180deg{
+.icono-180deg{
     transform: rotate(180deg);
 }
 .borde-sup{
