@@ -12,12 +12,11 @@ class ValidadorLogin {
             $this -> usuario = null;
             $this -> error = "Debes introducir tu email y contraseña";  
         } else{
-            $this -> usuario = RepositorioUsuario::logearse($conexion, $nom_o_correo);
+            $this -> usuario = RepositorioUsuario::obtener_usuario($conexion, $nom_o_correo);
             if(is_null($this -> usuario) || !password_verify($clave, $this -> usuario -> obtener_clave())){
                 $this -> error = "Datos incorrectos";
             }
         }
-        //return $this -> usuario;
     }
     public function variable_iniciada($variable){
         if (isset($variable) && !empty($variable)){

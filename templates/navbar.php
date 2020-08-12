@@ -20,21 +20,21 @@ include_once 'app/Sesion.inc.php';
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="<?php echo SERVER?>#servicios">SERVICIOS</a>
                 <a class="nav-item nav-link" href="<?php echo SERVER?>#contacto">CONTACTO</a>
+                <a class="nav-item nav-link" href="<?php echo SERVER?>/index/guestappointment.html">BUSCAR CITA</a>
                 <a class="nav-item nav-link" href="<?php echo RUTA_CITAS?>">AGENDAR CITA</a>
                 <div class="dropdown">
-                    <a type="button" class="btn" href="account/">
-                        <span class="material-icons borde-redondo borde-verde verde icono-20">person_outline</span>
-                    </a>
-                    <button type="button" class="btn dropdown-toggle dropdown-toggle-split boton blanco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-            <?php 
-            if(Sesion::sesion_iniciada()){ 
-                include_once 'nav_logged.php';
-              } else{
-                include_once 'nav_guest.php';
-              }
-            ?>
+                    <!--Este cambiecito lo hice para que cuando no estés logueado no te muestre el boton de inicio de sesión-->
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        
+                        <?php 
+                        if(Sesion::sesion_iniciada()){ 
+                            include_once 'nav_logged.php';
+                        } else{
+                            include_once 'nav_guest.php';
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>        
     </nav>

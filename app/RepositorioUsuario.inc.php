@@ -20,13 +20,13 @@ class RepositorioUsuario {
                 $sentencia_1 -> bindParam(':rol', $rol_temp, PDO::PARAM_INT);
                 $sentencia_1 -> execute();
 
-                $select = "SELECT id_usuario FROM usuarios WHERE nombre_usuario = :nombre_usuario";
+                $select = "SELECT * FROM usuarios WHERE nombre_usuario = :nombre_usuario";
                 $sentencia_select = $conexion -> prepare($select);
                 $sentencia_select -> bindParam(':nombre_usuario', $nombre_usuario_temp , PDO::PARAM_STR);
                 $sentencia_select -> execute();
                 $resultadito = $sentencia_select -> fetch();
                 
-                $sql_2 = "INSERT INTO personas VALUES('',:nombres, :ap_paterno, :ap_materno, :telefono, '', :id_usuario)";
+                $sql_2 = "INSERT INTO personas VALUES('',:nombres, :ap_paterno, :ap_materno, :telefono, :correo, :id_usuario)";
                 $nombres_temp = $usuario -> obtener_nombres();
                 $ap_paterno_temp = $usuario -> obtener_ap_paterno();
                 $ap_materno_temp = $usuario -> obtener_ap_materno();
@@ -36,6 +36,7 @@ class RepositorioUsuario {
                 $sentencia_2 -> bindParam(':ap_paterno', $ap_paterno_temp, PDO::PARAM_STR);
                 $sentencia_2 -> bindParam(':ap_materno', $ap_materno_temp, PDO::PARAM_STR);
                 $sentencia_2 -> bindParam(':telefono', $telefono_temp, PDO::PARAM_INT);
+                $sentencia_2 -> bindParam(':correo', $resultadito['correo'], PDO::PARAM_STR);
                 $sentencia_2 -> bindParam(':id_usuario', $resultadito['id_usuario'], PDO::PARAM_INT);
                 $sentencia_2 -> execute();
             } catch(PDOException $ex){
@@ -107,20 +108,23 @@ class RepositorioUsuario {
         return $telefono_disp;
     }
 
-    public static function logearse($conexion, $nom_o_correo){
+    public static function obtener_usuario($conexion, $nom_o_correo){
         $usuario = null;
         if(isset($conexion)){
             try{
                 include_once 'Usuario.inc.php';
-                $sql = "SELECT * FROM usuarios WHERE correo = :nom_o_correo OR nombre_usuario = :nom_o_correo";
+
+                $sql = "SELECT * FROM usuarios AS u INNER JOIN personas AS p ON p.usuario = u.id_usuario WHERE
+                u.correo = :nom_o_correo OR u.nombre_usuario = :nom_o_correo";
                 $sentencia = $conexion -> prepare($sql);
                 $sentencia -> bindParam(':nom_o_correo', $nom_o_correo, PDO::PARAM_STR);
                 $sentencia -> execute();
                 $resultado = $sentencia -> fetch();
+
                 $filas_afectadas = $sentencia -> rowCount();
                 if($filas_afectadas!==0){
                     $usuario = new Usuario($resultado['id_usuario'], $resultado['nombres'], $resultado['ap_paterno'], $resultado['ap_materno'],
-                    $resultado['correo'], $resultado['clave'], $resultado['nombre_usuario'], $resultado['telefono'], $resultado['rol'],
+                    $resultado['correo'], $resultado["clave"], $resultado['nombre_usuario'], $resultado['telefono'], $resultado['rol'],
                     $resultado['fecha_registro']);
                 }
             } catch(PDOException $ex){
@@ -128,5 +132,5 @@ class RepositorioUsuario {
             }
         }
         return $usuario;
-    }   
-}
+    }
+}   

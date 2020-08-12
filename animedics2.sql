@@ -540,3 +540,20 @@ from mascotas as m
 inner join personas as p on p.id_persona=m.propietario
 inner join especie as e on e.id_especie=m.especie
 where p.usuario is null;
+
+/*DISPARADORES*/
+/*Eliminar todos los servicios de una cita de un servicio retirado del sistema*/
+delimiter $$
+create trigger eliminar_servicios before delete on servicio for each row 
+BEGIN
+delete from cita_servicio where servicio=old.id_servicio;
+END $$ 
+delimiter ;
+/*Eliminar todos los registros de los medicamentos eliminados en las recetas*/
+delimiter $$
+create trigger eliminar_medicamentos before delete on medicamento for each row 
+BEGIN
+delete from receta_medicamento where medicamento=old.id_medicamento;
+END $$ 
+delimiter ;
+/**/

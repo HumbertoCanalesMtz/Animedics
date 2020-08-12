@@ -3,12 +3,12 @@
 
 //Información de la base de datos
 define('NOMBRE_SERVIDOR', 'localhost');
-define('NOMBRE_USUARIO', 'admin');
-define('PASSWORD', 'admin');
+define('NOMBRE_USUARIO', 'alexferloz');
+define('PASSWORD', '123456');
 define('NOMBRE_BD', 'animedics');
 
 //Rutas web
-define("SERVER", "http://localhost/Animedics");
+define("SERVER", "http://34.205.215.192");
 define("RUTA_REGISTRO", SERVER."/registro");
 define("RUTA_LOGIN", SERVER."/login");
 define("RUTA_LOGOUT", SERVER."/logout");
@@ -19,3 +19,4 @@ define("RUTA_CITAS", SERVER."/citas");
 define("RUTA_CSS", SERVER."/css");
 define("RUTA_JS", SERVER."/js");
 define("RUTA_IMG", SERVER."/img");
+

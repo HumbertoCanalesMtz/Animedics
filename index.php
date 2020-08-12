@@ -1,5 +1,5 @@
 <?php
-$componentes_url = parse_url($_SERVER["REQUEST_URI"]);
+$componentes_url = parse_url($_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
 $ruta = $componentes_url['path'];
 $partes_ruta = explode('/', $ruta);
 $partes_ruta = array_filter($partes_ruta);
@@ -7,11 +7,14 @@ $partes_ruta = array_slice($partes_ruta, 0);
 
 $ruta_elegida = "views/404.php";
 
-if($partes_ruta[0] == 'Animedics'){
+if($partes_ruta[0] == '34.205.215.192'){
     if(count($partes_ruta) == 1){
         $ruta_elegida = "views/home.php";
     } else if(count($partes_ruta) == 2){
-        switch($partes_ruta[1]){
+        switch($partes_ruta[1]){    
+            case 'index':
+                $ruta_elegida = "views/home.php";
+                break;
             case 'login':
                 $ruta_elegida = "views/home.php";
                 break;
@@ -22,7 +25,7 @@ if($partes_ruta[0] == 'Animedics'){
                 $ruta_elegida = "views/registro.php";
                 break;
             case 'cita':
-                $ruta_elegida = "views/cita.php";
+                $ruta_elegida = "views/ayquebruto.php";
                 break;
             case 'mascotas':
                 $ruta_elegida = "views/mascotas.php";
@@ -34,3 +37,5 @@ if($partes_ruta[0] == 'Animedics'){
     }
 }
 include_once $ruta_elegida;
+
+echo $_SERVER['REQUEST_METHOD'];

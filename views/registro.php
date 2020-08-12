@@ -19,7 +19,7 @@
             $usuario = new Usuario('', $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
             $validador -> obtener_correo(), password_hash($validador -> obtener_clave(),PASSWORD_DEFAULT), $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), 3, '');
             $usuario_insertado = RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
-            Sesion::iniciar_sesion($usuario -> obtener_id_usuario(), $usuario -> obtener_nombre_usuario());
+            Sesion::iniciar_sesion($usuario -> obtener_id_usuario(), $usuario -> obtener_nombre_usuario(), $usuario);
             Redireccion::redirigir(SERVER);
         }
         Conexion::cerrar_conexion();
@@ -36,10 +36,10 @@
                         <img src="<?php echo RUTA_IMG?>/dogoñora.png" class="card-img img-fluid d-none d-md-block">
                     </div>
                     <div class="col-md-6">
-                        <div class="card-body">
+                        <div class="card-body fuente-R">
                             <h4 class="card-title text-center fuente-WM verde separadito">CREA UN USUARIO</h4>
                             <br>
-                <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
+			    <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
                     <?php if(isset($_POST['registrar'])){
                         include_once 'templates/registro_validado.php';
                     }else{
