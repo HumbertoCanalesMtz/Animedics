@@ -18,9 +18,9 @@
         if($validador ->validar_registro()){
             $usuario = new Usuario('', $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
             $validador -> obtener_correo(), password_hash($validador -> obtener_clave(),PASSWORD_DEFAULT), $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), 3, '');
-            $usuario_insertado = RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+	    RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
             Sesion::iniciar_sesion($usuario -> obtener_id_usuario(), $usuario -> obtener_nombre_usuario(), $usuario);
-            Redireccion::redirigir(SERVER);
+	    Redireccion::redirigir(SERVER);
         }
         Conexion::cerrar_conexion();
     }

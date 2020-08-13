@@ -1,16 +1,21 @@
-<?php include_once 'declaracion.php';
-include_once 'RepositorioUsuario.inc.php';
-if(isset($_GET['xd'])){
-    Conexion::abrir_conexion();
-    if($_GET['correo'] == 'lmao' && $_GET['clave'] == 'lol'){
-        echo 'EL BICHO';
-        echo RepositorioUsuario::obtener_usuario(Conexion::obtener_conexion(),'loconora');
-    } else {
-        echo 'MI MADRE';
-    }
-    Conexion::cerrar_conexion();
+<?php include_once 'templates/declaracion.php';
+include_once 'app/config.inc.php';
+include_once 'app/Conexion.inc.php';
+include_once 'app/RepositorioUsuario.inc.php';
+if(isset($_POST['xd'])){
+   Conexion::abrir_conexion();
+	try{
+	$sql_1 = "INSERT INTO usuarios(nombre_usuario, correo) VALUES(:id,:user)";
+	$sentencia = Conexion::obtener_conexion() -> prepare($sql_1);
+	$sentencia -> bindParam(':id', $_POST['correo'], PDO::PARAM_INT);
+	$sentencia -> bindParam(':user',$_POST['clave'],PDO::PARAM_STR);
+	$sentencia -> execute();
+	} catch(PDOException $ex){
+		print "ERROR: ".$ex -> getMessage();
+	}
+   Conexion::cerrar_conexion();
 }?>
-	<form method="get" action="<?php $_SERVER['PHP_SELF']?>" class="fuente-R">
+	<form method="post" action="citas" class="fuente-R">
                         <div class="text-center">
                             <label for="correo">Correo electronico o nombre de usuario</label>
                             <br>

@@ -8,7 +8,7 @@ class RepositorioUsuario {
         $usuario_insertado = false;
         if (isset($conexion)){
             try{
-                $sql_1 = "INSERT INTO usuarios VALUES('',:nombre_usuario, :correo, :clave, NOW(), :rol)";
+                $sql_1 = "INSERT INTO usuarios(nombre_usuario, correo, clave, fecha_registro, rol) VALUES(:nombre_usuario, :correo, :clave, NOW(), :rol)";
                 $correo_temp = $usuario -> obtener_correo();
                 $clave_temp = $usuario -> obtener_clave();
                 $nombre_usuario_temp = $usuario -> obtener_nombre_usuario();
@@ -26,7 +26,7 @@ class RepositorioUsuario {
                 $sentencia_select -> execute();
                 $resultadito = $sentencia_select -> fetch();
                 
-                $sql_2 = "INSERT INTO personas VALUES('',:nombres, :ap_paterno, :ap_materno, :telefono, :correo, :id_usuario)";
+                $sql_2 = "INSERT INTO personas(nombres, ap_paterno, ap_materno, telefono, correo_contacto, usuario) VALUES(:nombres, :ap_paterno, :ap_materno, :telefono, :correo, :id_usuario)";
                 $nombres_temp = $usuario -> obtener_nombres();
                 $ap_paterno_temp = $usuario -> obtener_ap_paterno();
                 $ap_materno_temp = $usuario -> obtener_ap_materno();
@@ -39,8 +39,8 @@ class RepositorioUsuario {
                 $sentencia_2 -> bindParam(':correo', $resultadito['correo'], PDO::PARAM_STR);
                 $sentencia_2 -> bindParam(':id_usuario', $resultadito['id_usuario'], PDO::PARAM_INT);
                 $sentencia_2 -> execute();
-            } catch(PDOException $ex){
-                print "ERROR: ". $ex -> getMessage();
+	    } catch(PDOException $ex){
+		print "ERROR: ".$ex ->getMessage();
             }
         }
     }

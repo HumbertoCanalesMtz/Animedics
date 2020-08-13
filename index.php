@@ -24,7 +24,7 @@ if($partes_ruta[0] == '34.205.215.192'){
             case 'registro':
                 $ruta_elegida = "views/registro.php";
                 break;
-            case 'cita':
+            case 'citas':
                 $ruta_elegida = "views/ayquebruto.php";
                 break;
             case 'mascotas':
@@ -37,5 +37,3 @@ if($partes_ruta[0] == '34.205.215.192'){
     }
 }
 include_once $ruta_elegida;
-
-echo $_SERVER['REQUEST_METHOD'];
