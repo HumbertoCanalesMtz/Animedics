@@ -38,7 +38,7 @@ Conexion::cerrar_conexion();
     <div class="container justify-content-center fila borde-redondo borde-verde">
     <form method="post" action="<?php echo htmlspecialchars(RUTA_PERFIL);?>">
         <table class="table table-hover bg-blanco text-center fuente-R">
-        <?php if(isset($_POST['editar'])){
+        <?php /*if(isset($_POST['editar'])){
             if(isset($_POST['cancelar'])||$cambio_listo == true){
                 include_once 'templates/perfil_ver.php'; 
             } else {
@@ -50,7 +50,21 @@ Conexion::cerrar_conexion();
             }
         } else{
             include_once 'templates/perfil_ver.php';
-        }?>
+        }*/?>
+        <?php if(isset($_POST['editar'])){
+            include_once 'templates/perfil_editar_vacio';
+            }
+            if(isset($_POST['cancelar'])){
+                include_once 'templates/perfil_ver';
+            }
+            if(isset($_POST['guardar'])){
+                if($cambio_listo == true){
+                    include_once 'templates/perfil_ver.php'; 
+                } else {
+                    include_once 'templates/perfil_editar_validado';
+                } 
+            }
+        ?>
         </table>
     </form>
     </div>
