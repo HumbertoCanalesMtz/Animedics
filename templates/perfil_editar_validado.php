@@ -4,32 +4,32 @@
             <tbody>
                 <tr>
                     <th>Nombre(s)</th>
-                    <td><input class="txb" type="text" name="nombres" id="names" size="30" value="<?php $validador -> mostrar_nombres();?>"></td>
+                    <td><input class="txb" type="text" name="nombres" id="names" size="30" <?php $validador -> mostrar_nombres();?>></td>
                 </tr>
                 <?php $validador -> mostrar_error_nombres();?>
                 <tr>
                     <th>Apellido Paterno</th>
-                    <td><input class="txb" type="text" name="ap_paterno" id="lastname" size="30" value="<?php $validador -> mostrar_ap_paterno();?>"></td>
+                    <td><input class="txb" type="text" name="ap_paterno" id="lastname" size="30" <?php $validador -> mostrar_ap_paterno();?>></td>
                 </tr>
                 <?php $validador -> mostrar_error_ap_paterno();?>
                 <tr>
                     <th>Apellido Materno</th>
-                    <td><input class="txb" type="text" name="ap_materno" id="lastname" size="30" value="<?php $validador -> mostrar_ap_materno();?>"></td> 
+                    <td><input class="txb" type="text" name="ap_materno" id="lastname" size="30" <?php $validador -> mostrar_ap_materno();?>></td> 
                 </tr>
                 <?php $validador -> mostrar_error_ap_materno();?>
                 <tr>
                     <th>Nombre de usuario</th>
-                    <td><input class="txb" type="text" name="nombre_usuario" id="nick" size="30" value="<?php $validador -> mostrar_nombre_usuario();?>"></td>
+                    <td><input class="txb" type="text" name="nombre_usuario" id="nick" size="30" <?php $validador -> mostrar_nombre_usuario();?>></td>
                 </tr>
                 <?php $validador -> mostrar_error_nombre_usuario();?>
                 <tr>
                     <th>Correo electronico</th>
-                    <td><input class="txb" type="text" name="correo" id="email" size="30" value="<?php $validador -> mostrar_correo();?>"></td>
+                    <td><input class="txb" type="text" name="correo" id="email" size="30" <?php $validador -> mostrar_correo();?>></td>
                 </tr>
                 <?php $validador -> mostrar_error_correo();?>
                 <tr>
                     <th>Telefono</th>
-                    <td><input class="txb" type="text" name="telefono" id="phone" size="30" value="<?php $validador -> mostrar_telefono();?>"></td>
+                    <td><input class="txb" type="text" name="telefono" id="phone" size="30" <?php $validador -> mostrar_telefono();?>></td>
                 </tr>
                 <?php $validador -> mostrar_error_telefono();?>
                 <tr>
