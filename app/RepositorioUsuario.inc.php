@@ -133,4 +133,41 @@ class RepositorioUsuario {
         }
         return $usuario;
     }
+
+    public static function editar_usuario($conexion, $usuario){
+        if(isset($conexion)){
+            try{
+                $sql_1 = "UPDATE usuarios SET nombre_usuario = :nombre_usuario, correo = :correo WHERE id_usuario = :id_usuario";
+                $correo_temp = $usuario -> obtener_correo();
+                $clave_temp = $usuario -> obtener_clave();
+                $nombre_usuario_temp = $usuario -> obtener_nombre_usuario();
+                $id_temp = $usuario -> obtener_id_usuario();
+                $sentencia_1 = $conexion -> prepare($sql_1);
+                $sentencia_1 -> bindParam(':correo', $correo_temp, PDO::PARAM_STR);
+                $sentencia_1 -> bindParam(':clave', $clave_temp, PDO::PARAM_STR);
+                $sentencia_1 -> bindParam(':nombre_usuario', $nombre_usuario_temp , PDO::PARAM_STR);
+                $sentencia_1 -> bindParam(':id_usuario', $id_temp , PDO::PARAM_INT);
+                $sentencia_1 -> execute();
+
+                $sql_2 = "UPDATE personas SET nombres = :nombres, ap_paterno = :ap_paterno, ap_materno = :ap_materno, telefono = :telefono,
+                correo_contacto = :correo_contacto WHERE usuario = :id_usuario";
+                $nombres_temp = $usuario -> obtener_nombres();
+                $app_temp = $usuario -> obtener_ap_paterno();
+                $apm_temp = $usuario -> obtener_ap_materno();
+                $tel_temp = $usuario -> obtener_telefono();
+                $sentencia_2 = $conexion -> prepare($sql_2);
+                $sentencia_2 -> bindParam(':nombres', $nombres_temp, PDO::PARAM_STR);
+                $sentencia_2 -> bindParam(':ap_paterno', $app_temp, PDO::PARAM_STR);
+                $sentencia_2 -> bindParam(':ap_materno', $apm_temp , PDO::PARAM_STR);
+                $sentencia_2 -> bindParam(':telefono', $tel_temp , PDO::PARAM_INT);
+                $sentencia_2 -> bindParam(':correo_contacto', $correo_temp, PDO::PARAM_STR);
+                $sentencia_2 -> bindParam(':usuario', $id_temp, PDO::PARAM_INT);
+                $sentencia_2 -> execute();
+
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $usuario;
+    }
 }   
