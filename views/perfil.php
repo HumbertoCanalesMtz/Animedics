@@ -23,9 +23,12 @@ if(isset($_POST['guardar'])){
     $_POST['correo'], $_POST['nom_usuario'], $_POST['telefono'], $usuario -> obtener_nombre_usuario(), $usuario -> obtener_correo(),
     $usuario -> obtener_telefono());
     if($validador -> validar_edicion()){
+        $id = $_SESSION['id_usuario'];
         $usuario_c = new Usuario($_SESSION['id_usuario'], $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
         $validador -> obtener_correo(),'', $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), '', '');
         RepositorioUsuario::editar_usuario(Conexion::obtener_conexion(), $usuario_c);
+        Sesion::cerrar_sesion();
+        Sesion::iniciar_sesion($usuario_c -> obtener_id_usuario(), $usuario_c -> obtener_nombre_usuario());
         $cambio_listo == true; 
     }
 }
@@ -36,7 +39,7 @@ Conexion::cerrar_conexion();
     <form method="post" action="<?php echo htmlspecialchars(RUTA_PERFIL);?>">
         <table class="table table-hover bg-blanco text-center fuente-R">
         <?php if(isset($_POST['editar'])){
-            if(isset($_POST['cancelar'])||isset($_POST['guardar'])&&$cambio_listo == true){
+            if(isset($_POST['cancelar'])||$cambio_listo == true){
                 include_once 'templates/perfil_ver.php'; 
             } else {
                 if(isset($_POST['guardar'])){
