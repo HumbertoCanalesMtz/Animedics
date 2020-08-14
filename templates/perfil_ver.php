@@ -15,7 +15,7 @@
                     <td><?php echo $usuario -> obtener_telefono()?></td>
                 </tr>
                 <tr>
-                    <td><button class="btn boton"><span class="material-icons">edit</span> Cambiar contraseña</button></td>
+                    <td><button class="btn boton" name="cambiar"><span class="material-icons">edit</span> Cambiar contraseña</button></td>
                     <td><button class="btn boton" name="editar"><span class="material-icons">edit</span> Editar datos</button></td>
                 </tr>
             </tbody>
