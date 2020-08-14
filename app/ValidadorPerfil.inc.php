@@ -91,7 +91,7 @@ class ValidadorPerfil{
     }
     public function validar_nom_usuario($nom_usuario, $nom_us_ant, $conexion){
         if(!$this -> variable_iniciada($nom_usuario)){
-            return "Debes ingresar tu(s) nombre(s)";
+            return "Debes ingresar un nombre de usuario";
         } else {
             $this -> nom_usuario = $nom_usuario;
         }
@@ -115,7 +115,7 @@ class ValidadorPerfil{
                 return "El numéro de teléfono debe contener 10 dígitos";
             }
         }
-        if($tel_ant!=$tel){
+        if($tel_ant!=$telefono){
             if(!RepositorioUsuario::telefono_disponible($conexion, $telefono) && $this -> telefono != ""){
                 return "El telefono ingresado ya está en uso.";
             }
