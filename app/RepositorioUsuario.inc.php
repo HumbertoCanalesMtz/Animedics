@@ -139,7 +139,6 @@ class RepositorioUsuario {
             try{
                 $sql_1 = "UPDATE usuarios SET nombre_usuario = :nombre_usuario, correo = :correo WHERE id_usuario = :id_usuario";
                 $correo_temp = $usuario -> obtener_correo();
-                $clave_temp = $usuario -> obtener_clave();
                 $nombre_usuario_temp = $usuario -> obtener_nombre_usuario();
                 $id_temp = $usuario -> obtener_id_usuario();
                 $sentencia_1 = $conexion -> prepare($sql_1);

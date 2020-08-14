@@ -24,7 +24,7 @@ if(isset($_POST['guardar'])){
     $usuario -> obtener_telefono());
     if($validador -> validar_edicion()){
         $id = $_SESSION['id_usuario'];
-        $usuario_c = new Usuario($_SESSION['id_usuario'], $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
+        $usuario_c = new Usuario($id, $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
         $validador -> obtener_correo(),'', $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), '', '');
         RepositorioUsuario::editar_usuario(Conexion::obtener_conexion(), $usuario_c);
         Sesion::cerrar_sesion();

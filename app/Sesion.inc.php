@@ -1,7 +1,7 @@
 <?php
 
 class Sesion{
-    public static function iniciar_sesion($id_usuario, $nombre_usuario, $usuario){
+    public static function iniciar_sesion($id_usuario, $nombre_usuario){
         if(session_id() == ''){
             session_start();
         }
