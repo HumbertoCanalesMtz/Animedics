@@ -147,8 +147,8 @@ class RepositorioUsuario {
                 $sentencia_1 -> bindParam(':id_usuario', $id_temp , PDO::PARAM_INT);
                 $sentencia_1 -> execute();
 
-                $sql_2 = "UPDATE personas SET nombres = :nombres, ap_paterno = :ap_paterno, ap_materno = :ap_materno, telefono = :telefono,
-                correo_contacto = :correo_contacto WHERE usuario = :id_usuario";
+                $sql_2 = "UPDATE personas SET nombres = :nombres, ap_paterno = :ap_paterno, ap_materno = :ap_materno, 
+                telefono = :telefono, correo_contacto = :correo_contacto WHERE usuario = :usuario";
                 $nombres_temp = $usuario -> obtener_nombres();
                 $app_temp = $usuario -> obtener_ap_paterno();
                 $apm_temp = $usuario -> obtener_ap_materno();

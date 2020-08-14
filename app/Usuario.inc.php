@@ -54,30 +54,5 @@ class Usuario {
     }
     public function obtener_fecha_registro() {
         return $this -> fecha_registro;
-    }
-
-    public function cambiar_nombres($nombres){
-        $this -> nombres = $nombres;
-    }
-    public function cambiar_ap_paterno($ap_paterno){
-        $this -> ap_paterno = $ap_paterno;
-    }
-    public function cambiar_ap_materno($ap_materno){
-        $this -> ap_materno = $ap_materno;
-    }           
-    public function cambiar_correo($correo){
-        $this -> correo = $correo;
-    }   
-    public function cambiar_clave($clave){
-        $this -> clave = $clave;
-    }
-    public function cambiar_nombre_usuario($nombre_usuario){
-        $this -> nombre_usuario = $nombre_usuario;
-    }
-    public function cambiar_telefono($telefono){
-        $this -> telefono = $telefono;
-    }    
-    public function cambiar_rol($rol){
-        $this -> rol = $rol;
-    }    
+    } 
 }
