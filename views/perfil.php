@@ -18,7 +18,7 @@ Conexion::abrir_conexion();
 $usuario = RepositorioUsuario::obtener_usuario(Conexion::obtener_conexion(), $_SESSION['nombre_usuario']); 
 
 if(isset($_POST['guardar'])){
-    $cambio_listo == false;
+    $cambio_listo = false;
     $validador = new ValidadorPerfil(Conexion::obtener_conexion(), $_POST['nombres'], $_POST['ap_paterno'], $_POST['ap_materno'], 
     $_POST['correo'], $_POST['nombre_usuario'], $_POST['telefono'], $usuario -> obtener_nombre_usuario(), $usuario -> obtener_correo(),
     $usuario -> obtener_telefono());
@@ -29,7 +29,8 @@ if(isset($_POST['guardar'])){
         RepositorioUsuario::editar_usuario(Conexion::obtener_conexion(), $usuario_c);
         Sesion::cerrar_sesion();
         Sesion::iniciar_sesion($usuario_c -> obtener_id_usuario(), $usuario_c -> obtener_nombre_usuario());
-        $cambio_listo == true; 
+	$cambio_listo = true;
+        $usuario = RepositorioUsuario::obtener_usuario(Conexion::obtener_conexion(), $usuario_c -> obtener_nombre_usuario());	
     }
 }
 Conexion::cerrar_conexion();

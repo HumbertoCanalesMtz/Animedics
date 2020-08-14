@@ -4,15 +4,15 @@
             <tbody>
                 <tr>
                     <th>Nombre(s)</th>
-                    <td><input class="txb" type="text" name="nombres" id="names" size="30" value="<?php echo $usuario -> obtener_nombre_usuario()?>"></td>
+                    <td><input class="txb" type="text" name="nombres" id="names" size="30" value="<?php echo $usuario -> obtener_nombres()?>"></td>
                 </tr>
                 <tr>
                     <th>Apellido Paterno</th>
-                    <td><input class="txb" type="text" name="ap_paterno" id="lastname" size="30" value="<?php echo $usuario -> obtener_nombre_usuario()?>"></td>
+                    <td><input class="txb" type="text" name="ap_paterno" id="lastname" size="30" value="<?php echo $usuario -> obtener_ap_paterno()?>"></td>
                 </tr>
                 <tr>
                     <th>Apellido Materno</th>
-                    <td><input class="txb" type="text" name="ap_materno" id="lastname" size="30" value="<?php echo $usuario -> obtener_nombre_usuario()?>"></td>
+                    <td><input class="txb" type="text" name="ap_materno" id="lastname" size="30" value="<?php echo $usuario -> obtener_ap_materno()?>"></td>
                 </tr>
                 <tr>
                     <th>Nombre de usuario</th>
