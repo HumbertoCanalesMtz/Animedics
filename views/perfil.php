@@ -51,17 +51,21 @@ Conexion::cerrar_conexion();
         } else{
             include_once 'templates/perfil_ver.php';
         }*/?>
-        <?php if(isset($_POST['editar'])){
-            include_once 'templates/perfil_editar_vacio';
+        <?php 
+            if(!isset($_POST['editar'])&&!isset($_POST['guardar'])){
+                include_once 'templates/perfil_ver.php';
+            }
+            if(isset($_POST['editar'])){
+                include_once 'templates/perfil_editar_vacio.php';
             }
             if(isset($_POST['cancelar'])){
-                include_once 'templates/perfil_ver';
+                include_once 'templates/perfil_ver.php';
             }
             if(isset($_POST['guardar'])){
                 if($cambio_listo == true){
                     include_once 'templates/perfil_ver.php'; 
                 } else {
-                    include_once 'templates/perfil_editar_validado';
+                    include_once 'templates/perfil_editar_validado.php';
                 } 
             }
         ?>
