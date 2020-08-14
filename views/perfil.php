@@ -20,7 +20,7 @@ $usuario = RepositorioUsuario::obtener_usuario(Conexion::obtener_conexion(), $_S
 if(isset($_POST['guardar'])){
     $cambio_listo == false;
     $validador = new ValidadorPerfil(Conexion::obtener_conexion(), $_POST['nombres'], $_POST['ap_paterno'], $_POST['ap_materno'], 
-    $_POST['correo'], $_POST['nom_usuario'], $_POST['telefono'], $usuario -> obtener_nombre_usuario(), $usuario -> obtener_correo(),
+    $_POST['correo'], $_POST['nombre_usuario'], $_POST['telefono'], $usuario -> obtener_nombre_usuario(), $usuario -> obtener_correo(),
     $usuario -> obtener_telefono());
     if($validador -> validar_edicion()){
         $id = $_SESSION['id_usuario'];
