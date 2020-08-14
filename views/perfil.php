@@ -2,10 +2,16 @@
 //Así no va a ser esto, mañana lo edito, es sólo para ejemplificar.
 $titulo = "Mi Perfil";
 include_once "app/config.inc.php";
+include_once "app/Conexion.inc.php";
+include_once "app/Usuario.inc.php";
+include_once "app/RepositorioUsuario.inc.php";
+include_once "app/ValidadorPerfil.inc.php";
+include_once "app/Redireccion.inc.php";
+include_once "app/Sesion.inc.php";
 include_once "templates/declaracion.php";
 include_once "templates/navbar.php";
 
-if(Sesion::sesion_iniciada()){
+if(!Sesion::sesion_iniciada()){
     Redireccion::redirigir(SERVER);
 }
 Conexion::abrir_conexion();
@@ -31,16 +37,16 @@ Conexion::cerrar_conexion();
         <table class="table table-hover bg-blanco text-center fuente-R">
         <?php if(isset($_POST['editar'])){
             if(isset($_POST['cancelar'])||isset($_POST['guardar'])&&$cambio_listo == true){
-                include_once 'templates/perfil_ver'; 
+                include_once 'templates/perfil_ver.php'; 
             } else {
                 if(isset($_POST['guardar'])){
-                    include_once 'templates/perfil_editar_validado';
+                    include_once 'templates/perfil_editar_validado.php';
                 } else{
-                    include_once 'templates/perfil_editar_vacio';
+                    include_once 'templates/perfil_editar_vacio.php';
                 }
             }
         } else{
-            include_once 'templates/perfil_ver';
+            include_once 'templates/perfil_ver.php';
         }?>
         </table>
     </form>

@@ -1,18 +1,18 @@
 <thead class="verde separadito">
-                <tr><th colspan="2"><?php $usuario -> obtener_nombres()." ".$usuario -> obtener_ap_paterno()." ".$usuario -> obtener_ap_materno()?></th></tr>
+                <tr><th colspan="2"><?php echo $usuario -> obtener_nombres()." ".$usuario -> obtener_ap_paterno()." ".$usuario -> obtener_ap_materno()?></th></tr>
             </thead>
             <tbody>
                 <tr>
                     <th>Nombre de usuario</th>
-                    <td><?php $usuario -> obtener_nombre_usuario()?></td>
+                    <td><?php echo $usuario -> obtener_nombre_usuario()?></td>
                 </tr>
                 <tr>
                     <th>Correo electronico</th>
-                    <td><?php $usuario -> obtener_correo()?></td>
+                    <td><?php echo $usuario -> obtener_correo()?></td>
                 </tr>
                 <tr>
                     <th>Telefono</th>
-                    <td><?php $usuario -> obtener_telefono()?></td>
+                    <td><?php echo $usuario -> obtener_telefono()?></td>
                 </tr>
                 <tr>
                     <td><button class="btn boton"><span class="material-icons">edit</span> Cambiar contraseña</button></td>
