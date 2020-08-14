@@ -5,32 +5,32 @@
                 <tr>
                     <th>Nombre(s)</th>
                     <td><input class="txb" type="text" name="nombres" id="names" size="30" value="<?php echo $usuario -> obtener_nombre_usuario()?>"></td>
-                    <td><?php $validador -> mostrar_error_nombres();?><td>
+                    <td><?php $validador -> mostrar_error_nombres();?></td>
                 </tr>
                 <tr>
                     <th>Apellido Paterno</th>
                     <td><input class="txb" type="text" name="ap_paterno" id="lastname" size="30" value="<?php echo $usuario -> obtener_nombre_usuario()?>"></td>
-                    <td><?php $validador -> mostrar_error_ap_paterno();?><td>
+                    <td><?php $validador -> mostrar_error_ap_paterno();?></td>
                 </tr>
                 <tr>
                     <th>Apellido Materno</th>
                     <td><input class="txb" type="text" name="ap_materno" id="lastname" size="30" value="<?php echo $usuario -> obtener_nombre_usuario()?>"></td>
-                    <td><?php $validador -> mostrar_error_ap_materno();?><td>
+                    <td><?php $validador -> mostrar_error_ap_materno();?></td>
                 </tr>
                 <tr>
                     <th>Nombre de usuario</th>
                     <td><input class="txb" type="text" name="nombre_usuario" id="nick" size="30" value="<?php echo $usuario -> obtener_nombre_usuario()?>"></td>
-                    <td><?php $validador -> mostrar_error_nombre_usuario();?><td>
+                    <td><?php $validador -> mostrar_error_nombre_usuario();?></td>
                 </tr>
                 <tr>
                     <th>Correo electronico</th>
                     <td><input class="txb" type="text" name="correo" id="email" size="30" value="<?php echo $usuario -> obtener_correo()?>"></td>
-                    <td><?php $validador -> mostrar_error_correo();?><td>
+                    <td><?php $validador -> mostrar_error_correo();?></td>
                 </tr>
                 <tr>
                     <th>Telefono</th>
                     <td><input class="txb" type="text" name="telefono" id="phone" size="30" value="<?php echo $usuario -> obtener_telefono()?>"></td>
-                    <td><?php $validador -> mostrar_error_telefono();?><td>
+                    <td><?php $validador -> mostrar_error_telefono();?></td>
                 </tr>
                 <tr>
                     <td><button class="btn boton" name="cancelar"><span class="material-icons">edit</span>Cancelar</button></td>
