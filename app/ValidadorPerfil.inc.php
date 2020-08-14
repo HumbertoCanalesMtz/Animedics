@@ -28,8 +28,8 @@ class ValidadorPerfil{
         $this -> error_correo = $this -> validar_correo($correo, $correo_ant, $conexion);
         $this -> error_nom_usuario = $this -> validar_nom_usuario($nom_usuario, $nom_us_ant, $conexion);
         $this -> error_telefono = $this -> validar_telefono($telefono, $tel_ant, $conexion);
-        $this -> alerta_inicio = "<br><br><br><div class='alert alert-danger' role='alert'>";
-        $this -> alerta_cierre = "</div>";
+        $this -> alerta_inicio = "<tr><div class='alert alert-danger' role='alert'>";
+        $this -> alerta_cierre = "</div></tr>";
     }
 
     public function variable_iniciada($variable){
