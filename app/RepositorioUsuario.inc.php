@@ -168,4 +168,20 @@ class RepositorioUsuario {
         }
         return $usuario;
     }
+
+    public static function cambiar_clave($conexion, $id_usuario, $clave){
+        if(isset($conexion)){
+            try{
+                $sql = "UPDATE usuarios SET clave = :clave WHERE id_usuario = :id_usuario";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':clave', $clave, PDO::PARAM_STR);
+                $sentencia -> bindParam(':id_usuario', $id_usuario , PDO::PARAM_INT);
+                $sentencia -> execute();
+
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $usuario;
+    }
 }   

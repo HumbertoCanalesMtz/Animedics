@@ -4,7 +4,7 @@
 
 include_once 'RepositorioUsuario.inc.php';
 
-class ValidadorPass{
+class ValidadorClave{
     private $clave;
 
     private $error_contraseña_1;
@@ -13,12 +13,13 @@ class ValidadorPass{
     private $alerta_inicio;
     private $alerta_cierre;
 
-    public function __construct($clave_1, $clave_2){
+    public function __construct($clave_ing, $clave_bd, $clave_1, $clave_2){
         $this -> clave = "";
+        $this -> error_clave_ing = $this -> validar_clave_ing($clave_ing, $clave_bd);
         $this -> error_clave_1 = $this -> validar_clave_1($clave_1);
         $this -> error_clave_2 = $this -> validar_clave_2($clave_1, $clave_2);
-        $this -> alerta_inicio = "<br><br><br><div class='alert alert-danger' role='alert'>";
-        $this -> alerta_cierre = "</div>";
+        $this -> alerta_inicio = "<tr colspan=2><td><div class='alert alert-danger' role='alert'>";
+        $this -> alerta_cierre = "</div></td></tr>";
     }
 
     public function variable_iniciada($variable){
@@ -29,25 +30,34 @@ class ValidadorPass{
         }
     }
 
+    public function validar_clave_ing($clave_ing, $clave_bd){
+        if(!$this -> variable_iniciada($clave_ing)){
+            return "Debes ingresar tu contraseña anterior";
+        }
+        if(!password_verify($clave_ing, $clave_bd)){
+            return "La contraseña es incorrecta";
+        }
+        return "";
+    }
     public function validar_clave_1($clave_1){
         if(!$this -> variable_iniciada($clave_1)){
-            return "Debes ingresar una contraseña";
+            return "Debes ingresar una nueva contraseña";
         }
         if(strlen($clave_1) < 8){
             return "La contraseña puede tener menos de 8 caracteres";
         }
         if(strlen($clave_1) > 30){
-            return "El nombre no puede tener más de 30 caracteres";
+            return "La contraseña no puede tener más de 30 caracteres";
         }
         return "";
     }
     public function validar_clave_2($clave_1, $clave_2){
         if(!$this -> variable_iniciada($clave_1)){
             $this -> error_clave_1 = "";
-            return "Debes ingresar una contraseña primero";
+            return "Debes ingresar una nueva contraseña primero";
         }
         if(!$this -> variable_iniciada($clave_2)){
-            return "Debes repetir la contraseña ingresada";
+            return "Debes repetir la nueva contraseña";
         }
         if($clave_1 !== $clave_2){
             return "Las contraseñas no coinciden";
@@ -61,6 +71,11 @@ class ValidadorPass{
         return $this -> clave;
     }
     
+    public function mostrar_error_clave_ing(){
+        if($this -> error_clave_ing !== ""){
+            echo $this -> alerta_inicio . $this -> error_clave_ing . $this -> alerta_cierre;
+        }
+    }
     public function mostrar_error_clave_1(){
         if($this -> error_clave_1 !== ""){
             echo $this -> alerta_inicio . $this -> error_clave_1 . $this -> alerta_cierre;
@@ -72,9 +87,8 @@ class ValidadorPass{
         }
     }
 
-    public function validar_registro(){
-        if($this -> error_nombres === "" && $this -> error_ap_paterno === "" && $this -> error_ap_materno === "" && $this -> error_correo === "" &&
-        $this -> error_clave_1 === "" && $this -> error_clave_2 === "" && $this -> error_nom_usuario === "" && $this -> error_telefono === ""){
+    public function validar_clave(){
+        if($this -> error_clave_ing === "" & $this -> error_clave_1 === "" && $this -> error_clave_2 === ""){
             return true;
         } else{ 
             return false;

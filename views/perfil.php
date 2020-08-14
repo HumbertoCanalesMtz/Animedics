@@ -29,8 +29,17 @@ if(isset($_POST['guardar'])){
         RepositorioUsuario::editar_usuario(Conexion::obtener_conexion(), $usuario_c);
         Sesion::cerrar_sesion();
         Sesion::iniciar_sesion($usuario_c -> obtener_id_usuario(), $usuario_c -> obtener_nombre_usuario());
-	$cambio_listo = true;
+	    $cambio_listo = true;
         $usuario = RepositorioUsuario::obtener_usuario(Conexion::obtener_conexion(), $usuario_c -> obtener_nombre_usuario());	
+    }
+}
+if(isset($_POST['guardar_clave'])){
+    $clave_lista = false;
+    $validador_clave = new ValidadorClave($_POST['clave_ing'], $usuario -> obtener_clave(), $_POST['clave_1'], $_POST['clave_2']);
+    if($validador_clave -> validar_clave()){
+        $id = $_SESSION['id_usuario'];
+        RepositorioUsuario::cambiar_clave(Conexion::obtener_conexion(), $id, $validador_clave -> obtener_clave());
+	    $cambio_listo = true;	
     }
 }
 Conexion::cerrar_conexion();
@@ -39,25 +48,15 @@ Conexion::cerrar_conexion();
     <div class="container justify-content-center fila borde-redondo borde-verde">
     <form method="post" action="<?php echo htmlspecialchars(RUTA_PERFIL);?>">
         <table class="table table-hover bg-blanco text-center fuente-R">
-        <?php /*if(isset($_POST['editar'])){
-            if(isset($_POST['cancelar'])||$cambio_listo == true){
-                include_once 'templates/perfil_ver.php'; 
-            } else {
-                if(isset($_POST['guardar'])){
-                    include_once 'templates/perfil_editar_validado.php';
-                } else{
-                    include_once 'templates/perfil_editar_vacio.php';
-                }
-            }
-        } else{
-            include_once 'templates/perfil_ver.php';
-        }*/?>
         <?php 
-            if(!isset($_POST['editar'])&&!isset($_POST['guardar'])){
+            if(!isset($_POST['editar'])&&!isset($_POST['guardar'])&&!isset($_POST['cambiar'])){
                 include_once 'templates/perfil_ver.php';
             }
             if(isset($_POST['editar'])){
                 include_once 'templates/perfil_editar_vacio.php';
+            }
+            if(isset($_POST['cambiar'])){
+                include_once 'templates/perfil_clave.php';
             }
             if(isset($_POST['cancelar'])){
                 include_once 'templates/perfil_ver.php';
@@ -68,6 +67,13 @@ Conexion::cerrar_conexion();
                 } else {
                     include_once 'templates/perfil_editar_validado.php';
                 } 
+            }
+            if(isset($_POST['guardar_clave'])){
+                if($clave_lista == true){
+                    include_once 'templates/perfil_ver.php';
+                } else {
+                    include_once 'templates/perfil_clave.php';
+                }
             }
         ?>
         </table>

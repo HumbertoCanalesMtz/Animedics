@@ -102,7 +102,7 @@ class ValidadorRegistro{
             return "La contraseña puede tener menos de 8 caracteres";
         }
         if(strlen($clave_1) > 30){
-            return "El nombre no puede tener más de 30 caracteres";
+            return "La contraseña no puede tener más de 30 caracteres";
         }
         return "";
     }
