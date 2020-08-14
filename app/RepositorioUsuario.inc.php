@@ -144,7 +144,6 @@ class RepositorioUsuario {
                 $id_temp = $usuario -> obtener_id_usuario();
                 $sentencia_1 = $conexion -> prepare($sql_1);
                 $sentencia_1 -> bindParam(':correo', $correo_temp, PDO::PARAM_STR);
-                $sentencia_1 -> bindParam(':clave', $clave_temp, PDO::PARAM_STR);
                 $sentencia_1 -> bindParam(':nombre_usuario', $nombre_usuario_temp , PDO::PARAM_STR);
                 $sentencia_1 -> bindParam(':id_usuario', $id_temp , PDO::PARAM_INT);
                 $sentencia_1 -> execute();
