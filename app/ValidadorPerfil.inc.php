@@ -28,7 +28,7 @@ class ValidadorPerfil{
         $this -> error_correo = $this -> validar_correo($correo, $correo_ant, $conexion);
         $this -> error_nom_usuario = $this -> validar_nom_usuario($nom_usuario, $nom_us_ant, $conexion);
         $this -> error_telefono = $this -> validar_telefono($telefono, $tel_ant, $conexion);
-        $this -> alerta_inicio = "<tr><td><div class='alert alert-danger' role='alert'>";
+        $this -> alerta_inicio = "<tr colspan=2><td><div class='alert alert-danger' role='alert'>";
         $this -> alerta_cierre = "</div></td></tr>";
     }
 
