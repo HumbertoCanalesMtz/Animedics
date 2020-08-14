@@ -19,9 +19,9 @@
                 <?php $validador -> mostrar_error_ap_materno();?>
                 <tr>
                     <th>Nombre de usuario</th>
-                    <td><input class="txb" type="text" name="nombre_usuario" id="nick" size="30" <?php $validador -> mostrar_nombre_usuario();?>></td>
+                    <td><input class="txb" type="text" name="nombre_usuario" id="nick" size="30" <?php $validador -> mostrar_nom_usuario();?>></td>
                 </tr>
-                <?php $validador -> mostrar_error_nombre_usuario();?>
+                <?php $validador -> mostrar_error_nom_usuario();?>
                 <tr>
                     <th>Correo electronico</th>
                     <td><input class="txb" type="text" name="correo" id="email" size="30" <?php $validador -> mostrar_correo();?>></td>
