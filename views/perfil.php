@@ -6,6 +6,7 @@ include_once "app/Conexion.inc.php";
 include_once "app/Usuario.inc.php";
 include_once "app/RepositorioUsuario.inc.php";
 include_once "app/ValidadorPerfil.inc.php";
+include_once "app/ValidadorClave.inc.php";
 include_once "app/Redireccion.inc.php";
 include_once "app/Sesion.inc.php";
 include_once "templates/declaracion.php";
