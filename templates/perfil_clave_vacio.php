@@ -4,15 +4,15 @@
             <tbody>
                 <tr>
                     <th>Contraseña anterior</th>
-                    <td><input class="txb" type="text" name="clave_ing" id="password" size="30"></td>
+                    <td><input class="txb" type="password" name="clave_ing" id="password" size="30"></td>
                 </tr>
                 <tr>
                     <th>Nueva contraseña</th>
-                    <td><input class="txb" type="text" name="clave_1" id="password" size="30"></td>
+                    <td><input class="txb" type="password" name="clave_1" id="password" size="30"></td>
                 </tr>
                 <tr>
                     <th>Confirmar contraseña</th>
-                    <td><input class="txb" type="text" name="clave_2" id="password" size="30"></td> 
+                    <td><input class="txb" type="password" name="clave_2" id="password" size="30"></td> 
                 </tr>
                 <tr>
                     <td><button class="btn boton" name="cancelar"><span class="material-icons">edit</span>Cancelar</button></td>
