@@ -182,6 +182,5 @@ class RepositorioUsuario {
                 print "ERROR: ". $ex -> getMessage();
             }
         }
-        return $usuario;
     }
 }   
