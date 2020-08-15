@@ -33,7 +33,7 @@
                 </tr>
                 <?php $validador -> mostrar_error_telefono();?>
                 <tr>
-                    <td><button class="btn boton" name="cancelar" type="reset"><span class="material-icons">edit</span>Cancelar</button></td>
+                    <td><button class="btn boton" name="cancelar"><span class="material-icons">edit</span>Cancelar</button></td>
                     <td><button class="btn boton" name="guardar"><span class="material-icons">edit</span>Guardar cambios</button></td>
                 </tr>
             </tbody>
