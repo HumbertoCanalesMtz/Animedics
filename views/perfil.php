@@ -61,7 +61,7 @@ Conexion::cerrar_conexion();
             }
             if(isset($_POST['cancelar'])){
                 include_once 'templates/perfil_ver.php';
-                $_POST = array();
+                Redireccion::control_cache();
             }
             if(isset($_POST['guardar'])){
                 if($cambio_listo == true){
