@@ -56,7 +56,7 @@ Conexion::cerrar_conexion();
                 include_once 'templates/perfil_editar_vacio.php';
             }
             if(isset($_POST['cambiar'])){
-                include_once 'templates/perfil_clave.php';
+                include_once 'templates/perfil_clave_vacio.php';
             }
             if(isset($_POST['cancelar'])){
                 include_once 'templates/perfil_ver.php';
@@ -72,7 +72,7 @@ Conexion::cerrar_conexion();
                 if($clave_lista == true){
                     include_once 'templates/perfil_ver.php';
                 } else {
-                    include_once 'templates/perfil_clave.php';
+                    include_once 'templates/perfil_clave_validado.php';
                 }
             }
         ?>
