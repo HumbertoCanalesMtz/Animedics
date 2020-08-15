@@ -50,7 +50,7 @@ Conexion::cerrar_conexion();
     <form method="post" action="<?php echo htmlspecialchars(RUTA_PERFIL);?>">
         <table class="table table-hover bg-blanco text-center fuente-R">
         <?php 
-            if(!isset($_POST['editar'])&&!isset($_POST['guardar'])&&!isset($_POST['cambiar'])){
+            if(!isset($_POST['editar'])&&!isset($_POST['guardar'])&&!isset($_POST['cambiar'])&&!isset($_POST['guardar_clave'])){
                 include_once 'templates/perfil_ver.php';
             }
             if(isset($_POST['editar'])){
