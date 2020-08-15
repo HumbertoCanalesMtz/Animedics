@@ -39,7 +39,7 @@ if(isset($_POST['guardar_clave'])){
     if($validador_clave -> validar_clave()){
         $id = $_SESSION['id_usuario'];
         RepositorioUsuario::cambiar_clave(Conexion::obtener_conexion(), $id, $validador_clave -> obtener_clave());
-	    $cambio_listo = true;	
+	    $clave_lista = true;	
     }
 }
 Conexion::cerrar_conexion();
