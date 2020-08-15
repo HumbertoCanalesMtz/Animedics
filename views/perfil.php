@@ -60,7 +60,7 @@ Conexion::cerrar_conexion();
                 include_once 'templates/perfil_clave_vacio.php';
             }
             if(isset($_POST['cancelar'])){
-                Redireccion::redirigir(RUTA_PERFIL);
+                include_once 'templates/perfil_ver.php';
             }
             if(isset($_POST['guardar'])){
                 if($cambio_listo == true){

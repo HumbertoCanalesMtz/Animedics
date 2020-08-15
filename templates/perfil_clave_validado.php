@@ -19,7 +19,7 @@
                 <?php $validador_clave -> mostrar_error_clave_2();?>
                 <tr>
                     <td><button class="btn boton" name="cancelar"><span class="material-icons">edit</span>Cancelar</button></td>
-                    <td><button class="btn boton" name="guardar_clave"><span class="material-icons">edit</span>Guardar cambios</button></td>
+                    <td><button class="btn boton" name="guardar_clave" type="reset"><span class="material-icons">edit</span>Guardar cambios</button></td>
                 </tr>
             </tbody>
             <tfoot>
