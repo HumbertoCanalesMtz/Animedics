@@ -18,7 +18,7 @@ include_once "templates/navbar.php"
             <div class="col-md-8">
                 <?php 
                 Conexion::abrir_conexion();
-                Escritor::escribir_mascotas(Conexion::obtener_conexion(),$_SESSION['id_usuario']);
+                Escritor::escribir_mascotas(Conexion::obtener_conexion(), $_SESSION['id_usuario']);
                 Conexion::cerrar_conexion();
                 ?>
             </div>

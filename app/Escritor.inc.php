@@ -1,6 +1,7 @@
 <?php
 include_once 'app/RepositorioMascota.inc.php';
 include_once 'app/Mascota.inc.php';
+include_once 'app/Especie.inc.php';
 
 class Escritor{
     public static function escribir_mascotas($conexion, $id_usuario){

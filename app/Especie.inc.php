@@ -3,7 +3,7 @@ include_once 'app/Mascota.inc.php';
 
 class Especie{
     public static function seleccionar_imagen($mascota){
-        switch($mascota -> obtener_especie){
+        switch($mascota -> obtener_especie()){
             case 1:
                 $imagen = RUTA_IMG.'dogo.gif';
             break;
