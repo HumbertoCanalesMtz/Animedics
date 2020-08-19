@@ -1,6 +1,5 @@
 <?php
-//En esta clase están guardados todos los métodos que tienen que ver con los usuarios. 
-//Las primeras dos funciones son basurita con la que estaba practicando pero que podemos implementar en otro lado.
+//Esta clase contiene los métodos que permiten trabajar con la tabla Usuarios de la base de datos.
 
 class RepositorioUsuario {
 

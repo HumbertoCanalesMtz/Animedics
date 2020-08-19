@@ -1,6 +1,5 @@
 <?php
-//Esta clase contiene métodos para validar todos los campos del registro antes de registrar a un nuevo usuario en la BD. 
-//La podemos simplificar y mejorar.
+//Esta clase contiene métodos para validar que todos los campos insertados sean correctos antes de registrar a un nuevo usuario en la BD. 
 
 include_once 'RepositorioUsuario.inc.php';
 
@@ -39,6 +38,7 @@ class ValidadorRegistro{
         $this -> alerta_cierre = "</div>";
     }
 
+    //Método que comprueba si se insertó algo en el campo.
     public function variable_iniciada($variable){
         if (isset($variable) && !empty($variable)){
             return true;
@@ -177,25 +177,6 @@ class ValidadorRegistro{
         }
     }
 
-    public function obtener_error_nombres(){
-        return $this -> error_nombres;
-    }
-    public function obtener_error_ap_paterno(){
-        return $this -> error_ap_paterno;
-    }
-    public function obtener_error_ap_materno(){
-        return $this -> error_ap_materno;
-    }
-    public function obtener_error_correo(){
-        return $this -> error_correo;
-    }
-    public function obtener_error_nom_usuario(){
-        return $this -> error_nom_usuario;
-    }
-    public function obtener_error_telefono(){
-        return $this -> error_telefono;
-    }
-
     public function mostrar_nombres(){
         if($this -> nombres !== ""){
             echo 'value="' . $this -> nombres . '"';
@@ -267,6 +248,7 @@ class ValidadorRegistro{
         }
     }
 
+    //Método que combrueba que no exista ningún error en ninguno de los campos para validar por completo el registro.
     public function validar_registro(){
         if($this -> error_nombres === "" && $this -> error_ap_paterno === "" && $this -> error_ap_materno === "" && $this -> error_correo === "" &&
         $this -> error_clave_1 === "" && $this -> error_clave_2 === "" && $this -> error_nom_usuario === "" && $this -> error_telefono === ""){

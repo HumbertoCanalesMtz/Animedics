@@ -1,5 +1,5 @@
 <?php
-//Esta es la clase para los Usuarios. Como todos los atributos son privados hay muchas funciones para recuperar o cambiar los datos.
+//Esta clase sirve para crear objetos del tipo Mascota y trabajar de manera más cómoda con las mascotas, de manera similar a los usuarios.
 
 class Mascota {
     private $id_animal;

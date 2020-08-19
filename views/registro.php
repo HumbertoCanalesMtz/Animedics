@@ -13,13 +13,18 @@
     }
     if(isset($_POST['registrar'])){
         Conexion::abrir_conexion();
+        //Se validan los datos insertados en el registro.
         $validador = new ValidadorRegistro(Conexion::obtener_conexion(), $_POST['nombres'], $_POST['ap_paterno'], $_POST['ap_materno'], 
         $_POST['correo'], $_POST['clave_1'], $_POST['clave_2'], $_POST['nom_usuario'], $_POST['telefono']);
+        //Si todos los datos son correctos, se crea un nuevo usuario con los datos validados.
         if($validador -> validar_registro()){
             $usuario = new Usuario('', $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
             $validador -> obtener_correo(), password_hash($validador -> obtener_clave(),PASSWORD_DEFAULT), $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), 3, '');
-	    RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+        //Se crea un nuevo registro en la tabla usuarios de la BD con los datos del usuario creado.
+        RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+        //Se inicia sesión con los valores del usuario creado.
         Sesion::iniciar_sesion($usuario -> obtener_id_usuario(), $usuario -> obtener_nombre_usuario(), $usuario);
+        //Se redirige al usuario al index.
 	    Redireccion::redirigir(SERVER);
         }
         Conexion::cerrar_conexion();

@@ -1,6 +1,5 @@
 <?php
-//Esta clase contiene métodos para validar todos los campos del registro antes de registrar a un nuevo usuario en la BD. 
-//La podemos simplificar y mejorar.
+//Clase que contiene métodos para validar el cambio de contraseña del usuario.
 
 include_once 'RepositorioUsuario.inc.php';
 

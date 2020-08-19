@@ -1,5 +1,6 @@
 <?php
-//Esta es la clase para los Usuarios. Como todos los atributos son privados hay muchas funciones para recuperar o cambiar los datos.
+//Esta clase sirve para crear objetos del tipo Usuario. Contiene únicamente métodos para recuperar los datos del usuario creado.
+//Facilita el trabajo con los repositorios y los validadores.
 
 class Usuario {
     private $id_usuario;

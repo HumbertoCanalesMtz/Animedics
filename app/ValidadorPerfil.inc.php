@@ -1,5 +1,5 @@
 <?php
-
+//Clase que contiene métodos para validar los cambios al perfil del usuario.
 include_once 'RepositorioUsuario.inc.php';
 
 class ValidadorPerfil{
@@ -144,25 +144,6 @@ class ValidadorPerfil{
         } else{
             return null;
         }
-    }
-
-    public function obtener_error_nombres(){
-        return $this -> error_nombres;
-    }
-    public function obtener_error_ap_paterno(){
-        return $this -> error_ap_paterno;
-    }
-    public function obtener_error_ap_materno(){
-        return $this -> error_ap_materno;
-    }
-    public function obtener_error_correo(){
-        return $this -> error_correo;
-    }
-    public function obtener_error_nom_usuario(){
-        return $this -> error_nom_usuario;
-    }
-    public function obtener_error_telefono(){
-        return $this -> error_telefono;
     }
 
     public function mostrar_nombres(){

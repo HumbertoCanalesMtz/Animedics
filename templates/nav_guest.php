@@ -13,6 +13,7 @@ if(Sesion::sesion_iniciada()){
 if(isset($_POST['ingresar'])){
     Conexion::abrir_conexion();
     $validador = new ValidadorLogin($_POST['correo'], $_POST['clave'], Conexion::obtener_conexion());
+    //Si la validación es correcta, se inicia sesión y se redirige al usuario al index.
     if($validador -> obtener_error() === '' && !is_null($validador -> obtener_usuario())){
         Sesion::iniciar_sesion($validador -> obtener_usuario() -> obtener_id_usuario(), $validador -> obtener_usuario() -> obtener_nombre_usuario(), $validador -> obtener_usuario());
         Redireccion::redirigir(SERVER);

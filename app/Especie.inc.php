@@ -1,4 +1,5 @@
 <?php
+//Esta clase sólo fue una solución rápida a las imagenes de cada especie.
 include_once 'app/config.inc.php';
 include_once 'app/Mascota.inc.php';
 
