@@ -1,11 +1,10 @@
 <?php
 include_once 'app/RepositorioMascota.inc.php';
 include_once 'app/Mascota.inc.php';
-include_once 'app/Conexion.inc.php';
 
 class Escritor{
-    public static function escribir_mascotas($id_usuario){
-        $mascotas = RepositorioMascota::obtener_mascotas(Conexion::obtener_conexion(), $id_usuario);
+    public static function escribir_mascotas($conexion, $id_usuario){
+        $mascotas = RepositorioMascota::obtener_mascotas($conexion, $id_usuario);
         if(count($mascotas)){
             foreach ($mascotas as $mascota) {
                 self::escribir_mascota($mascota);
