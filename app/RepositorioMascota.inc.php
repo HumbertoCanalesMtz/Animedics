@@ -1,0 +1,77 @@
+<?php
+//En esta clase están guardados todos los métodos que tienen que ver con los usuarios. 
+//Las primeras dos funciones son basurita con la que estaba practicando pero que podemos implementar en otro lado.
+
+class RepositorioMascota {
+
+    public static function insertar_mascota($conexion, $mascota){
+        if (isset($conexion)){
+            try{
+                $sql = "INSERT INTO mascotas(nombre, especie, edad, sexo, propietario) 
+                VALUES(:nombre, :especie, :edad, :sexo, :propietario)";
+                $nombre_temp = $mascota -> obtener_correo();
+                $especie_temp = $mascota -> obtener_clave();
+                $edad_temp = $mascota -> obtener_nombre_usuario();
+                $sexo_temp = $mascota -> obtener_rol();
+                $propietario_temp = $mascota -> obtener_propietario();
+                $sentencia = $conexion -> prepare($sql_1);
+                $sentencia -> bindParam(':nombre', $nombre_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':especie', $especie_temp, PDO::PARAM_INT);
+                $sentencia -> bindParam(':edad', $edad_temp , PDO::PARAM_INT);
+                $sentencia -> bindParam(':sexo', $sexo_temp, PDO::PARAM_INT);
+                $sentencia -> bindParam(':propietario', $propietario_temp, PDO::PARAM_INT);
+                $sentencia -> execute();
+	    } catch(PDOException $ex){
+		print "ERROR: ".$ex ->getMessage();
+            }
+        }
+    }
+
+    public static function obtener_mascotas($conexion, $id_usuario){
+        $mascotas = [];
+        if(isset($conexion)){
+            try{
+                include_once 'Mascota.inc.php';
+
+                $sql = "SELECT * FROM mascotas WHERE propietario = :propietario";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':propietario', $id_usuario, PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+
+                $filas_afectadas = $sentencia -> rowCount();
+                if($filas_afectadas!==0){
+                    foreach ($resultado as $fila){
+                        $mascotas[] = new Mascota($fila['id_mascota'], $fila['nombre'], $fila['especie'], 
+                        $fila['edad'], $fila['sexo'], $fila['propietario']);
+                    }
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $mascotas;
+    }
+
+    public static function editar_mascota($conexion, $mascota){
+        if(isset($conexion)){
+            try{
+                $sql_1 = "UPDATE mascotas SET nombre = :nombre, edad = :edad WHERE id_mascota = :id_mascota";
+                $nombre_temp = $mascota -> obtener_correo();
+                $especie_temp = $mascota -> obtener_clave();
+                $edad_temp = $mascota -> obtener_nombre_usuario();
+                $sexo_temp = $mascota -> obtener_rol();
+                $id_temp = $mascota -> obtener_id_mascota();
+                $sentencia = $conexion -> prepare($sql_1);
+                $sentencia -> bindParam(':nombre', $nombre_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':edad', $edad_temp , PDO::PARAM_INT);
+                $sentencia -> bindParam(':id_mascota', $id_temp, PDO::PARAM_INT);
+                $sentencia -> execute();
+
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $mascota;
+    }
+}   
