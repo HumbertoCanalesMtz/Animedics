@@ -33,9 +33,11 @@ class RepositorioMascota {
             try{
                 include_once 'app/Mascota.inc.php';
 
-                $sql = "SELECT * FROM mascotas WHERE propietario = :propietario";
+                $sql = "SELECT m.id_animal, m.nombre, m.especie, m.edad, m.sexo, m.propietario
+                FROM mascotas AS m INNER JOIN personas AS p ON m.propietario = p.id_persona
+                INNER JOIN usuarios AS u ON p.usuario = u.id_usuario WHERE u.id_usuario = :id_usuario";
                 $sentencia = $conexion -> prepare($sql);
-                $sentencia -> bindParam(':propietario', $id_usuario, PDO::PARAM_INT);
+                $sentencia -> bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
                 $sentencia -> execute();
                 $resultado = $sentencia -> fetchAll();
 
