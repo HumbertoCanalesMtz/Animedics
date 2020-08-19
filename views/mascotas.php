@@ -2,6 +2,7 @@
 $titulo = "Mis Mascotas";
 include_once "app/config.inc.php";
 include_once "app/Conexion.inc.php";
+include_once "app/Escritor.inc.php";
 include_once "templates/declaracion.php";
 include_once "templates/navbar.php"
 ?>
