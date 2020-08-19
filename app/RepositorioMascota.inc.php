@@ -31,7 +31,7 @@ class RepositorioMascota {
         $mascotas = [];
         if(isset($conexion)){
             try{
-                include_once 'Mascota.inc.php';
+                include_once 'app/Mascota.inc.php';
 
                 $sql = "SELECT * FROM mascotas WHERE propietario = :propietario";
                 $sentencia = $conexion -> prepare($sql);
