@@ -14,7 +14,7 @@ class RepositorioMascota {
                 $edad_temp = $mascota -> obtener_nombre_usuario();
                 $sexo_temp = $mascota -> obtener_rol();
                 $propietario_temp = $mascota -> obtener_propietario();
-                $sentencia = $conexion -> prepare($sql_1);
+                $sentencia = $conexion -> prepare($sql);
                 $sentencia -> bindParam(':nombre', $nombre_temp, PDO::PARAM_STR);
                 $sentencia -> bindParam(':especie', $especie_temp, PDO::PARAM_INT);
                 $sentencia -> bindParam(':edad', $edad_temp , PDO::PARAM_INT);
