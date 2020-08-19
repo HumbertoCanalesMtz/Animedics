@@ -42,7 +42,7 @@ class RepositorioMascota {
                 $filas_afectadas = $sentencia -> rowCount();
                 if($filas_afectadas!==0){
                     foreach ($resultado as $fila){
-                        $mascotas[] = new Mascota($fila['id_mascota'], $fila['nombre'], $fila['especie'], 
+                        $mascotas[] = new Mascota($fila['id_animal'], $fila['nombre'], $fila['especie'], 
                         $fila['edad'], $fila['sexo'], $fila['propietario']);
                     }
                 }
