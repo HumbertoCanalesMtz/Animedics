@@ -10,12 +10,12 @@ class Mascota {
     private $propietario;
 
     public function __construct($id_animal, $nombre, $especie, $edad, $sexo, $propietario){
-        $this -> id_usuario = $id_animal;
-        $this -> nombres = $nombre;
-        $this -> ap_paterno = $especie;
-        $this -> ap_materno = $edad;
-        $this -> correo = $sexo;
-        $this -> clave = $propietario;
+        $this -> id_animal = $id_animal;
+        $this -> nombre = $nombre;
+        $this -> especie = $especie;
+        $this -> edad = $edad;
+        $this -> sexo = $sexo;
+        $this -> propietario = $propietario;
     }
     public function obtener_id_animal() {
         return $this -> id_animal;
