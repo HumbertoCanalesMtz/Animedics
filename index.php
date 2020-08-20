@@ -30,9 +30,6 @@ if($partes_ruta[0] == 'Animedics'){
                 case 'citas':
                     $ruta_elegida = "views/citas.php";
                     break;
-                case 'citasfolio':
-                    $ruta_elegida = "views/citasfolio.php";
-                    break;
                 case 'mascotas':
                     $ruta_elegida = "views/mascotas.php";
                     break;
@@ -90,6 +87,12 @@ if($partes_ruta[0] == 'Animedics'){
                     break;
                 case 'citas':
                     $ruta_elegida = "views/citas.php";
+                    break;
+                case 'agendarcita':
+                    $ruta_elegida = "views/agendarcita.php";
+                    break;    
+                case 'citasfolio':
+                    $ruta_elegida = "views/citasfolio.php";
                     break;
                 case 'mascotas':
                     $ruta_elegida = "views/mascotas.php";

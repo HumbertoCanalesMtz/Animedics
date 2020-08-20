@@ -1,43 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../../img/icon.png">
-    <link rel="stylesheet" href="../../css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../../css/hojaestilos.css" type="text/css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>Citas</title>
-</head>
-<body>
-    <header>
-        <div class="bg-blanco">
-            <div class="container">
-                <div class="row fila">
-                    <div class="col-4">
-                        <div class="row navbar-g centrado-vertical">
-                            <div>
-                                <a href="http://localhost/Animedics/index/"><img src="../../img/icon.png" alt="HUELLITAS" class="gira" width="50px" height="50px"></a>
-                            </div>
-                            <div class="d-none d-md-block">
-                                HUELLITAS
-                            </div>
-                        </div>
-                    </div>    
-                    <div class="container col-8 text-right">
-                        <h1 class="fuente-WM verde separadito">Citas</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="sombreado-g"></div>
-    </header>    
-    <div class="container-fluid">
+<?php 
+include_once "app/config.inc.php";
+include_once "templates/declaracion.php";
+include_once "templates/navbar.php";
+?>
+<div class="container-fluid columna">
         <div class="row fila">
             <div class="container col-md-12 borde-redondo fila">
                 <form action="" method="post">
-                    <table class="table table-hover table-striped text-center fuente-R">
-                        <thead>
+                    <table class="table table-hover table-striped text-center fuente-R icono-20">
+                        <thead class="fuente-WM verde">
                             <tr>
                                 <th colspan="2">Introduzca los datos solicitados</th>
                             </tr>
@@ -86,7 +57,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2"><button type="sum" class="btn boton">Agendar Cita</button></td>
+                                <td colspan="2"><button type="submit" class="btn boton">Agendar Cita</button></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -94,11 +65,6 @@
             </div>
         </div>    
     </div>
-    <script src="../../js/jquery-3.5.1.min.js"></script>
-    <script src="../../js/bootstrap.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>        
-    <footer>
-
-    </footer>
-</body>
-
+</div>
+    <div class="esconde-logo"></div>
+<?php include_once "templates/cierre.php";?>
