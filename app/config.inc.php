@@ -3,12 +3,12 @@
 
 //Información de la base de datos
 define('NOMBRE_SERVIDOR', 'localhost');
-define('NOMBRE_USUARIO', 'admi_veterinaria');
-define('PASSWORD', '123456');
+define('NOMBRE_USUARIO', 'root');
+define('PASSWORD', '');
 define('NOMBRE_BD', 'animedics');
 
 //Rutas generales
-define("SERVER", "http://34.205.215.192");
+define("SERVER", "http://localhost/Animedics");
 define("RUTA_REGISTRO", SERVER."/registro");
 define("RUTA_LOGIN", SERVER."/login");
 define("RUTA_LOGOUT", SERVER."/logout");
