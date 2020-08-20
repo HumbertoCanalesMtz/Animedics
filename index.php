@@ -96,6 +96,8 @@ if($partes_ruta[0] == '34.205.215.192'){
             }
         } else if(count($partes_ruta) == 3){
             if($partes_ruta[1] == 'citas'){
+                include_once 'app/Conexion.inc.php';
+                include_once 'app/RepositorioMascota.inc.php';
                 $nombre = str_replace('-',' ', $partes_ruta[2]);
                 Conexion::abrir_conexion();
                 $mascota = RepositorioMascota::obtener_mascota_individual(Conexion::obtener_conexion(), $nombre, $_SESSION['id_usuario']);

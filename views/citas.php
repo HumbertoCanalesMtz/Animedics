@@ -1,6 +1,10 @@
 <?php
 $titulo = "Agendar una cita";
 include_once "app/config.inc.php";
+include_once "app/Especie.inc.php";
+include_once "app/Conexion.inc.php";
+include_once "app/Escritor.inc.php";
+include_once "app/Mascota.inc.php";
 include_once "templates/declaracion.php";
 include_once "templates/navbar.php"
 ?>

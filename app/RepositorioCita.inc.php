@@ -64,7 +64,7 @@ class RepositorioCita {
                 $sentencia = $conexion -> prepare($sql);
                 $sentencia -> bindParam(':mascota', $id_mascota, PDO::PARAM_INT);
                 $sentencia -> execute();
-                $resultado = $sentencia -> fetchAll();|
+                $resultado = $sentencia -> fetchAll();
 
                 $filas_afectadas = $sentencia -> rowCount();
                 if($filas_afectadas!==0){
