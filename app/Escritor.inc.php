@@ -62,7 +62,7 @@ class Escritor{
         $citas = RepositorioCita::obtener_citas_pendientes(Conexion::obtener_conexion(),$id_mascota);
         if(count($citas)){
             foreach ($citas as $cita) {
-                self::escribir_mascota($cita);
+                self::escribir_cita_pendiente($cita);
             }
         } else{
             ?>

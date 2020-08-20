@@ -59,8 +59,7 @@ class RepositorioCita {
             try{
                 include_once 'app/Cita.inc.php';
 
-                $sql = "SELECT * FROM citas AS c INNER JOIN datos_medicos AS dm ON dm.cita = c.id_cita 
-                WHERE mascota = :mascota AND completada = 'SI'";
+                $sql = "SELECT * FROM citas WHERE mascota = :mascota AND completada = 'SI'";
                 $sentencia = $conexion -> prepare($sql);
                 $sentencia -> bindParam(':mascota', $id_mascota, PDO::PARAM_INT);
                 $sentencia -> execute();

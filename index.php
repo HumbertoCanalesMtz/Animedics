@@ -1,5 +1,6 @@
 <?php
-$componentes_url = parse_url($_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
+include_once 'app/Sesion.inc.php';
+$componentes_url = parse_url($_SERVER["REQUEST_URI"]);
 $ruta = $componentes_url['path'];
 $partes_ruta = explode('/', $ruta);
 $partes_ruta = array_filter($partes_ruta);
@@ -7,9 +8,9 @@ $partes_ruta = array_slice($partes_ruta, 0);
 
 $ruta_elegida = "views/404.php";
 
-if($partes_ruta[0] == '34.205.215.192'){
+if($partes_ruta[0] == 'Animedics'){
     //Rutas de los administradores
-    if($_SESSION['rol'] == 1){
+    if(Sesion::sesion_iniciada() && $_SESSION['rol'] == 1){
         if(count($partes_ruta) == 1){
             $ruta_elegida = "views/home.php";
         } else if(count($partes_ruta) == 2){
@@ -38,7 +39,7 @@ if($partes_ruta[0] == '34.205.215.192'){
             }
         }
     //Rutas de los veterinarios
-    } else if ($_SESSION['rol'] == 2){
+    } else if (Sesion::sesion_iniciada() && $_SESSION['rol'] == 2){
         if(count($partes_ruta) == 1){
             $ruta_elegida = "views/home.php";
         } else if(count($partes_ruta) == 2){

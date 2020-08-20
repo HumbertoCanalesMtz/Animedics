@@ -43,7 +43,7 @@ include_once "templates/navbar.php"
                 <div class="d-flex flex-wrap align-items-center justify-content-center">
                     <?php
                     Conexion::abrir_conexion();
-                    Escritor::escribir_citas_pendientes(Conexion::obtener_conexion(), $mascota -> obtener_id_mascota());
+                    Escritor::escribir_citas_pendientes(Conexion::obtener_conexion(), $mascota -> obtener_id_animal());
                     ?>
                 </div>
             </div>
@@ -54,7 +54,7 @@ include_once "templates/navbar.php"
                 <h4>Citas pasadas</h4>
                 <div class="d-flex flex-wrap align-items-center justify-content-center">
                     <?php
-                    Escritor::escribir_citas_completadas(Conexion::obtener_conexion(), $mascota -> obtener_id_mascota());
+                    Escritor::escribir_citas_completadas(Conexion::obtener_conexion(), $mascota -> obtener_id_animal());
                     Conexion::cerrar_conexion();
                     ?>
                 </div>
