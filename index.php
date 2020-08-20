@@ -29,6 +29,9 @@ if($partes_ruta[0] == '34.205.215.192'){
                 case 'citas':
                     $ruta_elegida = "views/citas.php";
                     break;
+                case 'citasfolio':
+                    $ruta_elegida = "views/citasfolio.php";
+                    break;
                 case 'mascotas':
                     $ruta_elegida = "views/mascotas.php";
                     break;
