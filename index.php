@@ -94,6 +94,18 @@ if($partes_ruta[0] == '34.205.215.192'){
                     $ruta_elegida = "views/perfil.php";
                     break;    
             }
+        } else if(count($partes_ruta) == 3){
+            if($partes_ruta[1] == 'citas'){
+                $nombre = str_replace('-',' ', $partes_ruta[2]);
+                Conexion::abrir_conexion();
+                $mascota = RepositorioMascota::obtener_mascota_individual(Conexion::obtener_conexion(), $nombre, $_SESSION['id_usuario']);
+                Conexion::cerrar_conexion();
+                if(isset($mascota) && $mascota !== null){
+                    $ruta_elegida = "views/citas.php";
+                } else{
+                    $ruta_elegida = "views/404.php";
+                }
+            }
         }
     }
 }

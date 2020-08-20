@@ -54,6 +54,33 @@ class RepositorioMascota {
         return $mascotas;
     }
 
+    public static function obtener_mascota_individual($conexion, $nombre, $id_usuario){
+        $mascota = null;
+        if(isset($conexion)){
+            try{
+                include_once 'app/Mascota.inc.php';
+
+                $sql = "SELECT m.id_animal, m.nombre, m.especie, m.edad, m.sexo, m.propietario
+                FROM mascotas AS m INNER JOIN personas AS p ON m.propietario = p.id_persona
+                INNER JOIN usuarios AS u ON p.usuario = u.id_usuario WHERE u.id_usuario = :id_usuario AND m.nombre = :nombre";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+                $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetch();
+
+                $filas_afectadas = $sentencia -> rowCount();
+                if($filas_afectadas!==0){
+                        $mascota = new Mascota($resultado['id_animal'], $resultado['nombre'], $resultado['especie'], 
+                        $resultado['edad'], $resultado['sexo'], $resultado['propietario']);
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $mascota;
+    }
+
     public static function editar_mascota($conexion, $mascota){
         if(isset($conexion)){
             try{
