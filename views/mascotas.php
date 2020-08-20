@@ -24,7 +24,7 @@ include_once "templates/navbar.php"
                 <div class="modal-dialog modal-dialog-centered borde-redondo">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h5 class="Fuente-WM verde">REGISTRA TU MASCOTA</h5>
+                            <h5 class="fuente-WM verde">REGISTRA TU MASCOTA</h5>
                         </div>
                         <div class="sombreado-c"></div>
                         <div class="modal-body">
