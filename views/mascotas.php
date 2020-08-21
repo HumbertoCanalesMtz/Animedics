@@ -25,7 +25,7 @@ include_once "templates/navbar.php"
 <div class="container">
     <div class="row fila borde-redondo">
         <div class="col-md-12 text-center fuente-R">
-        <h1 class="fuente-WM verde separadito">MIS MASCOTAS</h1>
+        <h1 class="fuente-WM verde separadito text-center">MIS MASCOTAS</h1><br>
             <button type="button" class="btn boton" data-toggle="modal" data-target="#modalmascotas">
                 Registrar a una nueva mascota
             </button>
@@ -92,7 +92,7 @@ include_once "templates/navbar.php"
                 </div>
             </div>
         </div>
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center"><br>
             <?php if(isset($validador)){if(!$validador -> validar_mascota()){?>
             <div class='alert alert-danger' role='alert'>¡Ocurrió un problema al registrar a tu mascota!</div>
                 <?php }}?>

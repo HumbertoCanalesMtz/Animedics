@@ -1,5 +1,5 @@
 <?php
-$titulo = "Agendar una cita";
+$titulo = "Citas - ".$mascota -> obtener_nombre();
 include_once "app/config.inc.php";
 include_once "app/Especie.inc.php";
 include_once "app/Conexion.inc.php";

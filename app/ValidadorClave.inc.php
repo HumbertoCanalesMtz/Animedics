@@ -17,7 +17,7 @@ class ValidadorClave{
         $this -> error_clave_ing = $this -> validar_clave_ing($clave_ing, $clave_bd);
         $this -> error_clave_1 = $this -> validar_clave_1($clave_1);
         $this -> error_clave_2 = $this -> validar_clave_2($clave_1, $clave_2);
-        $this -> alerta_inicio = "<tr colspan=2><td><div class='alert alert-danger' role='alert'>";
+        $this -> alerta_inicio = "<tr><td colspan=2><div class='alert alert-danger' role='alert'>";
         $this -> alerta_cierre = "</div></td></tr>";
     }
 

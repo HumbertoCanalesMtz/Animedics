@@ -21,8 +21,8 @@ define("RUTA_LOGOUT", SERVER."/logout");
 define("RUTA_PERFIL", SERVER."/perfil");
 define("RUTA_MASCOTAS", SERVER."/mascotas");
 define("RUTA_CITAS", SERVER."/citas");
-define("RUTA_CITASFOLIO", SERVER."/citasfolio");
-define("RUTA_AGENDARCITA", SERVER."/agendarcita");
+define("RUTA_BUSCAR_CITA", SERVER."/buscar-cita");
+define("RUTA_AGENDAR_CITA", SERVER."/agendar-cita");
 
 //Rutas de archivos
 define("RUTA_CSS", SERVER."/css");

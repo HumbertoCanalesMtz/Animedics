@@ -125,4 +125,29 @@ class RepositorioMascota {
         }
         return $nombre_disp;
     }
+
+    public static function obtener_mascota_por_cita($conexion, $id_cita){
+        $mascota = null;
+        if(isset($conexion)){
+            try{
+                include_once 'app/Mascota.inc.php';
+
+                $sql = "SELECT m.id_animal, m.nombre, m.especie, m.edad, m.sexo, m.propietario
+                FROM citas AS c INNER JOIN mascotas AS m ON c.mascota = m.id_animal WHERE c.id_cita = :cita";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':cita', $id_cita, PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetch();
+
+                $filas_afectadas = $sentencia -> rowCount();
+                if($filas_afectadas!==0){
+                        $mascota = new Mascota($resultado['id_animal'], $resultado['nombre'], $resultado['especie'], 
+                        $resultado['edad'], $resultado['sexo'], $resultado['propietario']);
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $mascota;
+    }
 }   

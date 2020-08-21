@@ -14,7 +14,7 @@ class ValidadorMascota{
         $this -> nombre = $this -> edad = "" ;
         $this -> error_nombre = $this -> validar_nombre($conexion, $nombre);
         $this -> error_edad = $this -> validar_edad($edad);
-        $this -> alerta_inicio = "<tr colspan=2><td><div class='alert alert-danger' role='alert'>";
+        $this -> alerta_inicio = "<tr><td colspan=2><div class='alert alert-danger' role='alert'>";
         $this -> alerta_cierre = "</div></td></tr>";
     }
 

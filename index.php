@@ -79,16 +79,16 @@ if($partes_ruta[0] == 'Animedics'){
                     break;
                 case 'agendarcita':
                     $ruta_elegida = "views/agendarcita.php";
-                    break;    
-                case 'citasfolio':
-                    $ruta_elegida = "views/citasfolio.php";
                     break;
                 case 'mascotas':
                     $ruta_elegida = "views/mascotas.php";
                     break;
                 case 'perfil':
                     $ruta_elegida = "views/perfil.php";
-                    break;    
+                    break;
+                case 'buscar-cita':
+                    $ruta_elegida = "views/buscar_cita.php";
+                    break;
             }
         } else if(count($partes_ruta) == 3){
             if($partes_ruta[1] == 'citas'){
@@ -129,8 +129,8 @@ if($partes_ruta[0] == 'Animedics'){
             case 'agendarcita':
                 $ruta_elegida = "views/agendarcita.php";
                 break;    
-            case 'citasfolio':
-                $ruta_elegida = "views/citasfolio.php";
+            case 'buscar-cita':
+                $ruta_elegida = "views/buscar_cita.php";
                 break;
             case 'mascotas':
                 $ruta_elegida = "views/mascotas.php";

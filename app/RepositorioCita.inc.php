@@ -79,30 +79,98 @@ class RepositorioCita {
         return $citas;
     }
 
-    public static function obtener_cita_individual($conexion, $nombre, $id_usuario){
-        $mascota = null;
+    public static function obtener_cita_por_folio($conexion, $folio){
+        $cita = null;
         if(isset($conexion)){
             try{
                 include_once 'app/Mascota.inc.php';
 
-                $sql = "SELECT m.id_animal, m.nombre, m.especie, m.edad, m.sexo, m.propietario
-                FROM mascotas AS m INNER JOIN personas AS p ON m.propietario = p.id_persona
-                INNER JOIN usuarios AS u ON p.usuario = u.id_usuario WHERE u.id_usuario = :id_usuario AND m.nombre = :nombre";
+                $sql = "SELECT * FROM citas AS c INNER JOIN datos_medicos AS dm WHERE c.folio = :folio";
                 $sentencia = $conexion -> prepare($sql);
-                $sentencia -> bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
-                $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia -> bindParam(':folio', $folio, PDO::PARAM_STR);
                 $sentencia -> execute();
                 $resultado = $sentencia -> fetch();
 
                 $filas_afectadas = $sentencia -> rowCount();
                 if($filas_afectadas!==0){
-                        $mascota = new Mascota($resultado['id_animal'], $resultado['nombre'], $resultado['especie'], 
-                        $resultado['edad'], $resultado['sexo'], $resultado['propietario']);
+                        $cita = new Cita($resultado['id_cita'], $resultado['folio'], $resultado['veterinario'], 
+                        $resultado['mascota'], $resultado['fecha'], $resultado['hora'], $resultado['completada']);
                 }
             } catch(PDOException $ex){
                 print "ERROR: ". $ex -> getMessage();
             }
         }
-        return $mascota;
+        return $cita;
+    }
+    public static function obtener_datos_medicos($conexion, $id_cita){
+        $datos = null;
+        if(isset($conexion)){
+            try{
+                include_once 'app/Datos.inc.php';
+
+                $sql = "SELECT * FROM datos_medicos WHERE cita = :cita";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':cita', $id_cita, PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetch();
+
+                $filas_afectadas = $sentencia -> rowCount();
+                if($filas_afectadas!==0){
+                        $datos = new Datos($resultado['id_datos'], $resultado['sintomas'], $resultado['temperatura_c'], 
+                        $resultado['peso_kg'], $resultado['diagnostico'], $resultado['examen_abdomen'], $resultado['estado_org_int'],
+                        $resultado['estado_org_ext'], $resultado['operado'], $resultado['grado_deshidratacion']);
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $datos;
+    }
+    public static function obtener_nombre_veterinario($conexion, $id_cita){
+        $veterinario = [];
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT concat(p.nombres,' ', p.ap_paterno,' ', p.ap_materno) AS nombre, v.cedula FROM citas AS c
+                INNER JOIN veterinarios AS v ON c.veterinario = v.id_veterinario INNER JOIN personas AS p ON v.persona = p.id_persona
+                WHERE c.id_cita = :cita";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':cita', $id_cita, PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetch();
+                
+                $filas_afectadas = $sentencia -> rowCount();
+                if($filas_afectadas!==0){
+                        $veterinario['nombre'] = $resultado['nombre'];
+                        $veterinario['cedula'] = $resultado['cedula'];
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $veterinario;
+    }
+    public static function obtener_persona($conexion, $id_cita){
+        $persona = null;
+        if(isset($conexion)){
+            try{
+                include_once 'app/Mascota.inc.php';
+
+                $sql = "SELECT concat(p.nombres,' ', p.ap_paterno,' ', p.ap_materno) AS nombre
+                FROM citas AS c INNER JOIN mascotas AS m ON c.mascota = m.id_animal INNER JOIN personas AS p
+                ON m.propietario = p.id_persona WHERE c.id_cita = :cita";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':cita', $id_cita, PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetch();
+
+                $filas_afectadas = $sentencia -> rowCount();
+                if($filas_afectadas!==0){
+                    $persona = $resultado['nombre'];
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $persona;
     }
 }   
