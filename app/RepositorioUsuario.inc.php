@@ -182,4 +182,22 @@ class RepositorioUsuario {
             }
         }
     }
+     public static function obtener_id_persona($conexion, $id_usuario){
+        $id_persona = null;
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT p.id_persona from personas AS p INNER JOIN usuarios AS u ON p.usuario = u.id_usuario
+                WHERE u.id_usuario = :id_usuario";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':id_usuario', $id_usuario , PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetch();
+                $id_persona = $resultado['id_persona'];
+
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $id_persona;
+     }
 }   

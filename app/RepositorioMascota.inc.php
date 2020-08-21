@@ -8,16 +8,16 @@ class RepositorioMascota {
             try{
                 $sql = "INSERT INTO mascotas(nombre, especie, edad, sexo, propietario) 
                 VALUES(:nombre, :especie, :edad, :sexo, :propietario)";
-                $nombre_temp = $mascota -> obtener_correo();
-                $especie_temp = $mascota -> obtener_clave();
-                $edad_temp = $mascota -> obtener_nombre_usuario();
-                $sexo_temp = $mascota -> obtener_rol();
+                $nombre_temp = $mascota -> obtener_nombre();
+                $especie_temp = $mascota -> obtener_especie();
+                $edad_temp = $mascota -> obtener_edad();
+                $sexo_temp = $mascota -> obtener_sexo();
                 $propietario_temp = $mascota -> obtener_propietario();
                 $sentencia = $conexion -> prepare($sql);
                 $sentencia -> bindParam(':nombre', $nombre_temp, PDO::PARAM_STR);
                 $sentencia -> bindParam(':especie', $especie_temp, PDO::PARAM_INT);
                 $sentencia -> bindParam(':edad', $edad_temp , PDO::PARAM_INT);
-                $sentencia -> bindParam(':sexo', $sexo_temp, PDO::PARAM_INT);
+                $sentencia -> bindParam(':sexo', $sexo_temp, PDO::PARAM_STR);
                 $sentencia -> bindParam(':propietario', $propietario_temp, PDO::PARAM_INT);
                 $sentencia -> execute();
 	    } catch(PDOException $ex){
@@ -101,5 +101,28 @@ class RepositorioMascota {
             }
         }
         return $mascota;
+    }
+
+    public static function mascota_duplicada($conexion, $nombre, $id_persona){
+        $nombre_disp = false;
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * from mascotas WHERE nombre = :nombre AND propietario = :id_persona";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia -> bindParam(':id_persona', $id_persona, PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+                if(count($resultado)){
+                    $nombre_disp = false;
+                } else{
+                    $nombre_disp = true;
+                }
+
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $nombre_disp;
     }
 }   

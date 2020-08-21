@@ -20,12 +20,12 @@
         if($validador -> validar_registro()){
             $usuario = new Usuario('', $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
             $validador -> obtener_correo(), password_hash($validador -> obtener_clave(),PASSWORD_DEFAULT), $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), 3, '');
-        //Se crea un nuevo registro en la tabla usuarios de la BD con los datos del usuario creado.
-        RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
-        //Se inicia sesión con los valores del usuario creado.
-        Sesion::iniciar_sesion($usuario -> obtener_id_usuario(), $usuario -> obtener_nombre_usuario(), $usuario);
-        //Se redirige al usuario al index.
-	    Redireccion::redirigir(SERVER);
+            //Se crea un nuevo registro en la tabla usuarios de la BD con los datos del usuario creado.
+            RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
+            //Se inicia sesión con los valores del usuario creado.
+            Sesion::iniciar_sesion($usuario -> obtener_id_usuario(), $usuario -> obtener_nombre_usuario(), $usuario);
+            //Se redirige al usuario al index.
+	        Redireccion::redirigir(SERVER);
         }
         Conexion::cerrar_conexion();
     }
