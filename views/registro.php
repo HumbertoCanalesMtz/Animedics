@@ -33,25 +33,29 @@
     include_once 'templates/declaracion.php';
     include_once 'templates/navbar.php';
 ?>
-    <div class="container">
-        <div class="row fila">
-            <div class="borde-redondo">
-                <div class="row no-gutters centrado-vertical">
-                    <div class="col-md-6 no-gutters">
-                        <img src="<?php echo RUTA_IMG?>/dogoñora.png" class="card-img img-fluid d-none d-md-block">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-body fuente-R">
-                            <h4 class="card-title text-center fuente-WM verde separadito">CREA UN USUARIO</h4>
-                            <br>
-			    <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
-                    <?php if(isset($_POST['registrar'])){
+<div class="container">
+    <div class="row fila">
+        <div class="borde-redondo">
+            <div class="row no-gutters centrado-vertical">
+                <div class="col-md-6 no-gutters">
+                    <img src="<?php echo RUTA_IMG?>/dogoñora.png" class="card-img img-fluid d-none d-md-block">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body fuente-R">
+                        <h4 class="card-title text-center fuente-WM verde separadito">CREA UN USUARIO</h4>
+                        <br>
+                        <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
+                            <?php if(isset($_POST['registrar'])){
                         include_once 'templates/registro_validado.php';
                     }else{
                         include_once 'templates/registro_vacio.php';
                     }?>
-                </form>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
+    </div>
+</div>
+<div class="esconde-logo"></div>
 <?php include_once 'templates/cierre.php'?>

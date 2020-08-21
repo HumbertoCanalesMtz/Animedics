@@ -91,4 +91,5 @@ include_once "templates/navbar.php"
     <div class="esconde-logo"></div>
     <div class="esconde-logo"></div>
 </div>
+<div class="esconde-logo"></div>
 <?php include_once "templates/cierre.php";

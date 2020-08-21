@@ -89,5 +89,5 @@ Conexion::cerrar_conexion();
         </table>
     </form>
     </div>
-    <br><br><br><br><br><br><br><br><br>    <!--Preciso que el footer se vea así XD-->
+<div class="esconde-logo"></div>
 <?php include_once "templates/cierre.php";?>
