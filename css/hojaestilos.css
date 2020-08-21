@@ -158,7 +158,7 @@ div.esconde-logo{
     padding-bottom: 50px;
 }
 .altura-390{
-    height: 390px;
+    max-height: 390px;
 }
 img.indicador{
     width: 20px;
@@ -167,6 +167,9 @@ img.indicador{
 /*Propiedades*/
 .icono-10{
     font-size: 10px;
+}
+.icono-15{
+    font-size: 15px;
 }
 .icono-20{
     font-size: 20px;

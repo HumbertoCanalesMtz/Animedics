@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <h4 class="card-title text-center fuente-WM verde">VETERINARIA HUELLITAS</h4>
                         <br>
-                        <p class="card-text fuente-R" style="font-size: 20px;">
+                        <p class="card-text fuente-R icono-20">
                             Veterinaria “Huellitas” es una clínica 100% mexicana; Sus
                             inicios se remontan al año 2014, cuando los alumnos más prestigiosos y dedicados de la
                             carrera de Médico veterinario del Instituto de Investigación de Ciencias Veterinarias
@@ -42,51 +42,43 @@
     <div class="row">
         <div class="col-md-6 fila">
             <div class="card mb-3 borde-redondo">
-                <div class="row no-gutters centrado-vertical">
-                    <div>
-                        <div class="card-body">
-                            <h4 class="card-title text-center fuente-WM verde">MISION</h4>
-                            <div class="row sombreado-c"></div>
-                            <div style="height: 130px;">
-                                <p class="card-text text-center fuente-R" style="font-size: 18px;">
-                                    Que cada uno de nuestros servicios sea realizado con respeto y eficacia,
-                                    brindando a los dueños de las mascotas que ingresan seguridad y bienestar,
-                                    siempre teniendo en consideración a cada uno de los animales y ofreciéndoles
-                                    el mejor de los tratos, ajustándonos siempre a sus necesidades para una atención más
-                                    personalizada y adecuada.
-                                </p>
-                            </div>
+                <div class="container-fluid no-gutters centrado-vertical" style="min-height:20rem;">
+                    <div class="card-body">
+                        <h4 class="card-title text-center fuente-WM verde">MISION</h4>
+                        <div class="row sombreado-c"></div>
+                        <div>
+                            <p class="card-text text-center fuente-R icono-20">
+                                Que cada uno de nuestros servicios sea realizado con respeto y eficacia,
+                                brindando a los dueños de las mascotas que ingresan seguridad y bienestar,
+                                siempre teniendo en consideración a cada uno de los animales y ofreciéndoles
+                                el mejor de los tratos, ajustándonos siempre a sus necesidades para una atención más
+                                personalizada y adecuada.
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="row no-gutters justify-content-center">
-                    <div>
-                        <img src="<?php echo RUTA_IMG?>/dogcat.png" class="card-img img-fluid altura-390">
-                    </div>
+                <div class="container-fluid text-center no-gutters d-none d-md-block">
+                    <img src="<?php echo RUTA_IMG?>/dogcat.png" class="card-img img-fluid w-auto h-75">
                 </div>
             </div>
         </div>
         <div class="col-md-6 fila">
             <div class="card mb-3 borde-redondo">
-                <div class="row no-gutters centrado-vertical">
-                    <div>
-                        <div class="card-body">
-                            <h4 class="card-title text-center fuente-WM verde">VISION</h4>
-                            <div class="row sombreado-c"></div>
-                            <div style="height: 130px;">
-                                <p class="card-text text-center fuente-R" style="font-size: 18px;">
-                                    Ser líderes en el sector veterinario de la región,
-                                    y así poco a poco, manteniendo siempre la calidad característica,
-                                    poder ofrecer su trabajo y conocimiento a cada rincón de la república Mexicana.
-                                </p>
-                            </div>
+                <div class="container-fluid no-gutters centrado-vertical">
+                    <div class="card-body" style="min-height:20rem;">
+                        <h4 class="card-title text-center fuente-WM verde">VISION</h4>
+                        <div class="row sombreado-c"></div>
+                        <div>
+                            <p class="card-text text-center fuente-R icono-20">
+                                Ser líderes en el sector veterinario de la región,
+                                y así poco a poco, manteniendo siempre la calidad característica,
+                                poder ofrecer su trabajo y conocimiento a cada rincón de la república Mexicana.
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="row no-gutters justify-content-center">
-                    <div>
-                        <img src="<?php echo RUTA_IMG?>/catdog.png" class="card-img altura-390">
-                    </div>
+                <div class="container-fluid text-center no-gutters d-none d-md-block">
+                    <img src="<?php echo RUTA_IMG?>/catdog.png" class="card-img img-fluid w-auto h-75">
                 </div>
             </div>
         </div>
@@ -137,7 +129,6 @@
                                     <dt>
                                         <span class="material-icons naranja icono-90deg">pets</span> Vacunación
                                     </dt>
-
                                 </dl>
                             </p>
                         </div>
@@ -169,9 +160,9 @@
         </div>
     </div>
 </div>
-<div class="container-fluid columna fila d-sm-none d-md-block">
-    <div class="text-center">
-        <img src="<?php echo RUTA_IMG?>/squadog.png">
+<div class="container-fluid columna">
+    <div class="d-none d-md-block text-center">
+        <img class="img-fluid" src="<?php echo RUTA_IMG?>/squadog.png">
     </div>
 </div>
 <div class="borde-sup borde-g borde-naranja">
@@ -197,4 +188,5 @@
             frameborder="0" style="border:0; width: 100%; height: 500px;" allowfullscreen="" aria-hidden="false"
             tabindex="0"></iframe>
     </div>
-    <?php include_once 'templates/cierre.php'?>
+</div>
+<?php include_once 'templates/cierre.php'?>
