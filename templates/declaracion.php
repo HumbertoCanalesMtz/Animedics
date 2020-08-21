@@ -12,4 +12,4 @@
         $titulo = 'Veterinaria Huellitas';}
     echo "<title>$titulo</title>";?>
   </head>
-  <body>
+  <body class="<?php if (!isset($clase)||empty($clase)){$clase='cliente';}echo $clase?>">

@@ -12,8 +12,10 @@ include_once 'app/Cita.inc.php';
                     <a href="<?php echo SERVER?>"><img src="<?php echo RUTA_IMG?>/icon.png" class="gira" width="50px"
                             height="50px"></a>
                 </div>
-                <div class="d-none d-md-block"><a style="color: inherit; text-decoration: none"
-                        href="<?php echo SERVER?>"> HUELLITAS</a></div>
+                <div class="d-none d-md-block">
+                    <a style="color: inherit; text-decoration: none" href="<?php echo SERVER?>"> HUELLITAS
+                    </a>
+                </div>
             </div>
         </div>
         <div class="d-md-none justify-content-center col-2">
@@ -31,7 +33,8 @@ include_once 'app/Cita.inc.php';
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         BUSCAR CITA
                     </a>
-                    <div class="dropdown-menu borde-redondo borde-verde fuente-WM" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="dropdown-menu borde-redondo borde-verde fuente-WM"
+                        aria-labelledby="navbarDropdownMenuLink">
                         <div class="dropdown-header verde">INTRODUZCA SU FOLIO</div>
                         <div class="dropdown-divider"></div>
                         <div class="text-center columna">
