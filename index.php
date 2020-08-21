@@ -13,7 +13,7 @@ if($partes_ruta[0] == 'Animedics'){
     if(Sesion::sesion_iniciada()){
     if($_SESSION['rol'] == 1){
         if(count($partes_ruta) == 1){
-            $ruta_elegida = "views/home.php";
+            $ruta_elegida = "views_admin/home.php";
         } else if(count($partes_ruta) == 2){
             switch($partes_ruta[1]){    
                 case 'index':
@@ -22,8 +22,8 @@ if($partes_ruta[0] == 'Animedics'){
                 case 'logout':
                     $ruta_elegida = "views/logout.php";
                     break;
-                case 'citas':
-                    $ruta_elegida = "views_admin/citas.php";
+                case 'vercitas':
+                    $ruta_elegida = "views_admin/vercitas.php";
                     break;
                 case 'mascotas':
                     $ruta_elegida = "views_admin/mascotas.php";

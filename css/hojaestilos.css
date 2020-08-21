@@ -7,8 +7,11 @@
     src: url("../fonts/ReemKufi-Regular.ttf");
 }
 /*Secciones*/
-body{
+body.cliente{
     background-image: url(../img/bg.png);
+}
+body.admin{
+    background-image: url(../img/bgadmin.png);
 }
 ::-webkit-scrollbar {
     width: 20px;
@@ -99,6 +102,22 @@ body{
 }
 button.boton:hover{
     background-color: #008f72;
+    color: white;
+}
+.boton-naranja{
+    background-color: #FF9700;
+    color: white;
+}
+button.boton-naranja:hover{
+    background-color: #c37500;
+    color: white;
+}
+.boton-gris{
+    background-color: #ffffff00;
+    color: white;
+}
+button.boton-gris:hover{
+    background-color: #ffffff00;
     color: white;
 }
 input.txb{
@@ -218,6 +237,9 @@ img.indicador{
 }
 .bg-blanco{
     background-color: white;
+}
+.bg-gris{
+    background-color: gray;
 }
 .bg-negro{
     background-color: black;

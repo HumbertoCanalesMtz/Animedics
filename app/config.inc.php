@@ -14,6 +14,7 @@ define("RUTA_LOGIN", SERVER."/login");
 define("RUTA_LOGOUT", SERVER."/logout");
 
 //Rutas para administradores
+define("RUTA_VERCITAS", SERVER."/vercitas");
 
 //Rutas para veterinarios
 

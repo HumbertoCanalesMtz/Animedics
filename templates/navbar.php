@@ -9,8 +9,10 @@ include_once 'app/Sesion.inc.php';
                     <a href="<?php echo SERVER?>"><img src="<?php echo RUTA_IMG?>/icon.png" class="gira" width="50px"
                             height="50px"></a>
                 </div>
-                <div class="d-none d-md-block"><a style="color: inherit; text-decoration: none"
-                        href="<?php echo SERVER?>"> HUELLITAS</a></div>
+                <div class="d-none d-md-block">
+                    <a style="color: inherit; text-decoration: none" href="<?php echo SERVER?>"> HUELLITAS
+                    </a>
+                </div>
             </div>
         </div>
         <div class="d-md-none justify-content-center col-2">
@@ -28,12 +30,14 @@ include_once 'app/Sesion.inc.php';
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         BUSCAR CITA
                     </a>
-                    <div class="dropdown-menu borde-redondo borde-verde fuente-WM" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="dropdown-menu borde-redondo borde-verde fuente-WM"
+                        aria-labelledby="navbarDropdownMenuLink">
                         <div class="dropdown-header verde">INTRODUZCA SU FOLIO</div>
                         <div class="dropdown-divider"></div>
                         <div class="text-center columna">
                             <form action="" method="get">
-                                <input class="txb" type="text" name="folio" id="invoice" placeholder="Ej. C000001" size="10">
+                                <input class="txb" type="text" name="folio" id="invoice" placeholder="Ej. C000001"
+                                    size="10">
                                 <div class="dropdown-divider"></div>
                                 <button class="btn boton" type="submit">buscar</button>
                             </form>
