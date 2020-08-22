@@ -1,6 +1,7 @@
 <?php
     $titulo = 'Administrador Huellitas';
     $clase = 'admin';
+    $icono = 'iconadmin';
     include_once 'app/config.inc.php';
     include_once 'app/Conexion.inc.php';
     include_once 'app/RepositorioUsuario.inc.php';
