@@ -40,4 +40,16 @@ class Conexion{
             echo $e->getMessage();
         }
     }
+    public function ejecutarSQL($query)
+    {
+        try
+        {
+            include_once 'config.inc.php';
+            $this->PDOLocal=new PDO('mysql:host='.NOMBRE_SERVIDOR.'; dbname='.NOMBRE_BD.'', NOMBRE_USUARIO, PASSWORD);
+            $this->PDOLocal->query($query);
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }
