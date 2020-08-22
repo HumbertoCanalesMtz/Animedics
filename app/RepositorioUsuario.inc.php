@@ -4,7 +4,6 @@
 class RepositorioUsuario {
 
     public static function insertar_usuario($conexion, $usuario){
-        $usuario_insertado = false;
         if (isset($conexion)){
             try{
                 $sql_1 = "INSERT INTO usuarios(nombre_usuario, correo, clave, fecha_registro, rol) VALUES(:nombre_usuario, :correo, :clave, NOW(), :rol)";
@@ -41,7 +40,7 @@ class RepositorioUsuario {
 	    } catch(PDOException $ex){
 		print "ERROR: ".$ex ->getMessage();
             }
-        }
+        }   
     }
 
     public static function correo_disponible($conexion, $correo){

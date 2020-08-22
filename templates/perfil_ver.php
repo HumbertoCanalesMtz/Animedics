@@ -1,5 +1,5 @@
 <thead class="verde separadito">
-                <tr><th colspan="2"><?php echo $usuario -> obtener_nombres()." ".$usuario -> obtener_ap_paterno()." ".$usuario -> obtener_ap_materno()?></th></tr>
+                <tr><th colspan="2"><h4><?php echo $usuario -> obtener_nombres()." ".$usuario -> obtener_ap_paterno()." ".$usuario -> obtener_ap_materno()?></h4></th></tr>
             </thead>
             <tbody>
                 <tr>

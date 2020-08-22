@@ -56,6 +56,7 @@ Conexion::cerrar_conexion();
 ?>
 <body>
     <div class="container justify-content-center fila borde-redondo borde-verde">
+    <h1 class="fuente-WM verde separadito text-center">MI PERFIL</h1>
     <form method="post" action="<?php echo htmlspecialchars(RUTA_PERFIL);?>">
         <table class="table table-hover bg-blanco text-center fuente-R">
         <?php 

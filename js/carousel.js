@@ -49,3 +49,34 @@ function carruselder(e1,e2,e3,d){
     e2.src=direccioncentral(d);
     e3.src=direccionder(d);
 }
+
+
+
+$.datepicker.regional['es'] = {
+    closeText: 'Cerrar',
+    prevText: '<Anterior',
+    nextText: 'Siguiente>',
+    currentText: 'Hoy',
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+    dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+    weekHeader: 'Sm',
+    dateFormat: 'dd/mm/yy',
+    firstDay: 1,
+    isRTL: false,
+    showMonthAfterYear: false,
+    yearSuffix: ''
+  };
+
+  $.datepicker.setDefaults($.datepicker.regional['es']);
+
+  $(function(){
+    $("#datepicker").datepicker({
+        minDate: 0,
+        maxDate: "+3m",
+        stepMonths: 3,
+        changeMonth: true
+    });
+});

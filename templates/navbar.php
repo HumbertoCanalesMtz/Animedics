@@ -1,5 +1,8 @@
 <?php
 include_once 'app/Sesion.inc.php';
+include_once 'app/Redireccion.inc.php';
+include_once 'app/Cita.inc.php';
+
 ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,16 +38,15 @@ include_once 'app/Sesion.inc.php';
                         <div class="dropdown-header verde">INTRODUZCA SU FOLIO</div>
                         <div class="dropdown-divider"></div>
                         <div class="text-center columna">
-                            <form action="" method="get">
-                                <input class="txb" type="text" name="folio" id="invoice" placeholder="Ej. C000001"
-                                    size="10">
+                            <form action="<?php echo RUTA_BUSCAR_CITA?>" method="post">
+                                <input class="txb" type="text" name="folio" id="invoice" placeholder="Ej. C000001" size="10">
                                 <div class="dropdown-divider"></div>
-                                <button class="btn boton" type="submit">buscar</button>
+                                <button class="btn boton" type="submit" name="buscar">buscar</button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <a class="nav-item nav-link" href="<?php echo RUTA_AGENDARCITA?>">AGENDAR CITA</a>
+                <a class="nav-item nav-link" href="<?php echo RUTA_AGENDAR_CITA?>">AGENDAR CITA</a>
                 <div class="dropdown">
                     <!--Este cambiecito lo hice para que cuando no estés logueado no te muestre el boton de inicio de sesión-->
                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -60,6 +62,11 @@ include_once 'app/Sesion.inc.php';
                 </div>
             </div>
         </div>
+        
     </nav>
+    
     <div class="card border-0 rounded-0 sombreado-g"></div>
+    <?php if(isset($_POST['ingresar'])){if($validador -> obtener_error() !== ''){?>
+    <div class='alert alert-danger text-center' role='alert'>¡Ocurrió un error al iniciar sesión!</div>
+    <?php }} ?>
 </header>

@@ -1,12 +1,17 @@
 <?php
-$titulo = "Agendar una cita";
 include_once "app/config.inc.php";
 include_once "app/Especie.inc.php";
 include_once "app/Conexion.inc.php";
+include_once "app/Sesion.inc.php";
 include_once "app/Escritor.inc.php";
 include_once "app/Mascota.inc.php";
 include_once "templates/declaracion.php";
-include_once "templates/navbar.php"
+include_once "templates/navbar.php";
+
+if(!Sesion::sesion_iniciada()){
+    //Redireccion::redirigir(SERVER);
+}
+$titulo = "Citas - ".$mascota -> obtener_nombre();
 ?>
 <body class="fuente-R">
     <div class="container fila borde-redondo">

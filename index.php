@@ -79,16 +79,16 @@ if($partes_ruta[0] == 'Animedics'){
                     break;
                 case 'agendarcita':
                     $ruta_elegida = "views/agendarcita.php";
-                    break;    
-                case 'citasfolio':
-                    $ruta_elegida = "views/citasfolio.php";
                     break;
                 case 'mascotas':
                     $ruta_elegida = "views/mascotas.php";
                     break;
                 case 'perfil':
                     $ruta_elegida = "views/perfil.php";
-                    break;    
+                    break;
+                case 'buscar-cita':
+                    $ruta_elegida = "views/buscar_cita.php";
+                    break;
             }
         } else if(count($partes_ruta) == 3){
             if($partes_ruta[1] == 'citas'){
@@ -106,6 +106,7 @@ if($partes_ruta[0] == 'Animedics'){
             }
         }
     }
+    //Rutas de los invitados
 } else{
     if(count($partes_ruta) == 1){
         $ruta_elegida = "views/home.php";
@@ -124,36 +125,22 @@ if($partes_ruta[0] == 'Animedics'){
                 $ruta_elegida = "views/registro.php";
                 break;
             case 'citas':
-                $ruta_elegida = "views/citas.php";
+                $ruta_elegida = "views/home.php";
                 break;
-            case 'agendarcita':
-                $ruta_elegida = "views/agendarcita.php";
+            case 'agendar-cita':
+                $ruta_elegida = "views/agendar_cita.php";
                 break;    
-            case 'citasfolio':
-                $ruta_elegida = "views/citasfolio.php";
+            case 'buscar-cita':
+                $ruta_elegida = "views/buscar_cita.php";
                 break;
             case 'mascotas':
-                $ruta_elegida = "views/mascotas.php";
+                $ruta_elegida = "views/home.php";
                 break;
             case 'perfil':
-                $ruta_elegida = "views/perfil.php";
+                $ruta_elegida = "views/home.php";
                 break;    
         }
-    } else if(count($partes_ruta) == 3){
-        if($partes_ruta[1] == 'citas'){
-            include_once 'app/Conexion.inc.php';
-            include_once 'app/RepositorioMascota.inc.php';
-            $nombre = str_replace('-',' ', $partes_ruta[2]);
-            Conexion::abrir_conexion();
-            $mascota = RepositorioMascota::obtener_mascota_individual(Conexion::obtener_conexion(), $nombre, $_SESSION['id_usuario']);
-            Conexion::cerrar_conexion();
-            if(isset($mascota) && $mascota !== null){
-                $ruta_elegida = "views/citas.php";
-            } else{
-                $ruta_elegida = "views/404.php";
-            }
-        }
-    }
+    } 
 }
 }
 include_once $ruta_elegida;
