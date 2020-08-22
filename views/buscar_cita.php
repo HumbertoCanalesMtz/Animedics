@@ -55,11 +55,11 @@ include_once "templates/navbar.php";
                                     
                                     <tr>
                                         <th>Sexo:</th>
-                                        <td><?php echo $cita -> obtener_folio();?></td>
+                                        <td><?php echo $mascota -> obtener_sexo();?></td>
                                     </tr>
                                     <tr>
                                         <th>Edad:</th>
-                                        <td><?php echo $cita -> obtener_folio();?></td>
+                                        <td><?php echo $mascota -> obtener_edad();?> años</td>
                                     </tr>
                                     <tr><th colspan=2 class="text-center">DATOS DEL VETERINARIO</th></tr>
                                     <tr>

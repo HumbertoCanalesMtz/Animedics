@@ -4,10 +4,15 @@ include_once "app/config.inc.php";
 include_once "app/Conexion.inc.php";
 include_once "app/Escritor.inc.php";
 include_once "app/Mascota.inc.php";
+include_once "app/Sesion.inc.php";
 include_once "app/RepositorioUsuario.inc.php";
 include_once "app/RepositorioMascota.inc.php";
 include_once "app/ValidadorMascota.inc.php";
 include_once "app/Redireccion.inc.php";
+
+if(!Sesion::sesion_iniciada()){
+    Redireccion::redirigir(SERVER);
+}
 
 if(isset($_POST['registrar'])){
     Conexion::abrir_conexion();

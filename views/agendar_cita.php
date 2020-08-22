@@ -17,7 +17,7 @@ include_once "templates/navbar.php";
                             <tr>
                                 <td>Mascota</td>
                                 <td>
-                                    <select name="id_mascota" id="id_pet">
+                                    <select name="mascota" id="id_pet">
                                         <option value="XD">Sasuke</option>
                                     </select>
                                 </td>
@@ -25,24 +25,26 @@ include_once "templates/navbar.php";
                             <tr>
                                 <td>Día</td>
                                 <td>
-                                    <select name="diafecha" id="day">
-                                        <option value="XD">Sasuke</option>
-                                    </select>
+                                    <input type="text" id="datepicker" name="fecha" readonly placeholder="Selecciona una fecha">
                                 </td>
                             </tr>
                             <tr>
-                                <td>Mes</td>
+                                <td>Hora</td>
                                 <td>
-                                    <select name="mesfecha" id="month">
-                                        <option value="XD">Sasuke</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Año</td>
-                                <td>
-                                    <select name="aniofecha" id="year">
-                                        <option value="XD">Sasuke</option>
+                                    <select name="hora" id="id_pet">
+                                        <option value="09:00:00">9:00 a.m.</option>
+                                        <option value="09:00:00">10:00 a.m.</option>
+                                        <option value="09:00:00">11:00 a.m.</option>
+                                        <option value="09:00:00">12:00 p.m.</option>
+                                        <option value="09:00:00">1:00 p.m.</option>
+                                        <option value="09:00:00">2:00 p.m.</option>
+                                        <option value="09:00:00">3:00 p.m.</option>
+                                        <option value="09:00:00">4:00 p.m.</option>
+                                        <option value="09:00:00">5:00 p.m.</option>
+                                        <option value="09:00:00">6:00 p.m.</option>
+                                        <option value="09:00:00">7:00 p.m.</option>
+                                        <option value="09:00:00">8:00 p.m.</option>
+
                                     </select>
                                 </td>
                             </tr>
