@@ -2,7 +2,6 @@
 include_once 'app/Sesion.inc.php';
 include_once 'app/Redireccion.inc.php';
 include_once 'app/Cita.inc.php';
-
 ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -64,7 +63,6 @@ include_once 'app/Cita.inc.php';
         </div>
         
     </nav>
-    
     <div class="card border-0 rounded-0 sombreado-g"></div>
     <?php if(isset($_POST['ingresar'])){if($validador -> obtener_error() !== ''){?>
     <div class='alert alert-danger text-center' role='alert'>¡Ocurrió un error al iniciar sesión!</div>

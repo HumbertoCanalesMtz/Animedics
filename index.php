@@ -22,11 +22,11 @@ if($partes_ruta[0] == 'Animedics'){
                 case 'logout':
                     $ruta_elegida = "views/logout.php";
                     break;
-                case 'vercitas':
-                    $ruta_elegida = "views_admin/vercitas.php";
+                case 'administracion':
+                    $ruta_elegida = "views_admin/administracion.php";
                     break;
                 case 'mascotas':
-                    $ruta_elegida = "views_admin/mascotas.php";
+                    $ruta_elegida = "views_admin/vermascotas.php";
                     break;
                 case 'perfil':
                     $ruta_elegida = "views_admin/perfil.php";
