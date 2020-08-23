@@ -1,10 +1,11 @@
 <?php
 include_once "app/config.inc.php";
-include_once "app/Especie.inc.php";
+include_once "app/Extras.inc.php";
 include_once "app/Conexion.inc.php";
 include_once "app/Sesion.inc.php";
 include_once "app/Escritor.inc.php";
 include_once "app/Mascota.inc.php";
+include_once "app/Datos.inc.php";
 include_once "templates/declaracion.php";
 include_once "templates/navbar.php";
 
@@ -19,7 +20,7 @@ $titulo = "Citas - ".$mascota -> obtener_nombre();
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center">PACIENTE</div>
-                    <img src="<?php Especie::seleccionar_imagen($mascota);?>" class="card-img-top" alt="Especie">
+                    <img src="<?php Extras::seleccionar_imagen($mascota);?>" class="card-img-top" alt="Especie">
                     <div class="card-body d-flex justify-content-center centrado-vertical">
                         <table class="table-sm table-striped table-hover">
                             <tbody>

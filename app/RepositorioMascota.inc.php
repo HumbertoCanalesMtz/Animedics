@@ -150,4 +150,65 @@ class RepositorioMascota {
         }
         return $mascota;
     }
+    public static function insertar_mascota_invitada($conexion, $mascota){
+        if (isset($conexion)){
+            try{
+                $sql = "INSERT INTO mascotas(nombre, especie, edad, sexo, propietario) 
+                VALUES(:nombre, :especie, :edad, :sexo, :propietario)";
+                $nombre_temp = $mascota -> obtener_nombre();
+                $especie_temp = $mascota -> obtener_especie();
+                $edad_temp = $mascota -> obtener_edad();
+                $sexo_temp = $mascota -> obtener_sexo();
+                $propietario_temp = $mascota -> obtener_propietario();
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':nombre', $nombre_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':especie', $especie_temp, PDO::PARAM_INT);
+                $sentencia -> bindParam(':edad', $edad_temp , PDO::PARAM_INT);
+                $sentencia -> bindParam(':sexo', $sexo_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':propietario', $propietario_temp, PDO::PARAM_INT);
+                $sentencia -> execute();
+
+                $id_mascota = $conexion -> lastInsertId();
+
+	    } catch(PDOException $ex){
+		print "ERROR: ".$ex ->getMessage();
+            }
+        }
+        return $id_mascota;
+    }
+    public static function recuperar_mascotas($conexion, $id_persona){
+        $mascotas = [];
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT nombre FROM mascotas WHERE propietario = :id_persona";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':id_persona', $id_persona, PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+                foreach ($resultado as $mascota) {
+                    $mascotas[] = $mascota;
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $mascotas;
+    }
+    public static function recuperar_id_mascota($conexion, $nombre, $id_persona){
+        $id_mascota = null;
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT id_animal FROM mascotas WHERE nombre = :nombre AND propietario = :id_persona";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia -> bindParam(':id_persona', $id_persona, PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetch();
+                $id_mascota = $resultado['id_animal'];
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $id_mascota;
+    }
 }   

@@ -61,7 +61,7 @@
                                         </div>                                        
                                         <div class="col-md-6">
                                             <label for="telefono">Telefono</label><br>
-                                            <input class="txb" type="text" name="telefono" id="phone" size="30" <?php $validador -> mostrar_telefono();?>>
+                                            <input class="txb" type="number" name="telefono" id="phone" size="30" <?php $validador -> mostrar_telefono();?>>
                                         </div>
 
                                         <div class="col-md-12 text-center">
