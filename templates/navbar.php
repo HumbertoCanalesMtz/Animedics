@@ -38,7 +38,8 @@ include_once 'app/Cita.inc.php';
                         <div class="dropdown-divider"></div>
                         <div class="text-center columna">
                             <form action="<?php echo RUTA_BUSCAR_CITA?>" method="post">
-                                <input class="txb" type="text" name="folio" id="invoice" placeholder="Ej. C000001" size="10">
+                                <input class="txb" type="text" name="folio" id="invoice" placeholder="Ej. C000001"
+                                    size="10">
                                 <div class="dropdown-divider"></div>
                                 <button class="btn boton" type="submit" name="buscar">buscar</button>
                             </form>
@@ -61,7 +62,7 @@ include_once 'app/Cita.inc.php';
                 </div>
             </div>
         </div>
-        
+
     </nav>
     <div class="card border-0 rounded-0 sombreado-g"></div>
     <?php if(isset($_POST['ingresar'])){if($validador -> obtener_error() !== ''){?>

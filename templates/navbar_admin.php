@@ -50,7 +50,8 @@ include_once 'app/config.inc.php';
                             </ul>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" role="button" data-toggle="modal" href="#ModalUsuario">Registrar usuario</a>
+                        <a class="dropdown-item" role="button" data-toggle="modal" href="#ModalUsuario">Registrar
+                            usuario</a>
                     </div>
                     <?php include_once 'views_admin/modals/modal_usuario.php'?>
                 </li>
