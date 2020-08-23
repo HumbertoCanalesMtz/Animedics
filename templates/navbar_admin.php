@@ -25,10 +25,6 @@ include_once 'app/config.inc.php';
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Clientes</a>
                         <a class="dropdown-item" href="#">Veterinarios</a>
-                        <a class="dropdown-item" href="<?php echo RUTA_VERCITAS?>">Citas</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Llenar recetas</a>
-                        <a class="dropdown-item" href="#">Llenar consulta</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -54,8 +50,9 @@ include_once 'app/config.inc.php';
                             </ul>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Registrar usuario</a>
+                        <a class="dropdown-item" role="button" data-toggle="modal" href="#ModalUsuario">Registrar usuario</a>
                     </div>
+                    <?php include_once 'views_admin/modals/modal_usuario.php'?>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
