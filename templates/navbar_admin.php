@@ -24,8 +24,7 @@ include_once 'app/Conexion.inc.php';
                         Veterinaria
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Clientes</a>
-                        <a class="dropdown-item" href="#">Veterinarios</a>
+                        <a class="dropdown-item" href="<?php echo RUTA_VERUSUARIOS?>">Usuarios</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -77,11 +76,7 @@ include_once 'app/Conexion.inc.php';
                             ?>
                             </ul>
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" role="button" data-toggle="modal" href="#ModalUsuario">Registrar
-                            usuario</a>
                     </div>
-                    <?php include_once 'views_admin/modals/modal_usuario.php'?>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
