@@ -36,7 +36,7 @@ if($partes_ruta[0] == 'Animedics'){
     //Rutas de los veterinarios
     } else if ($_SESSION['rol'] == '2'){
         if(count($partes_ruta) == 1){
-            $ruta_elegida = "views/home.php";
+            $ruta_elegida = "views_vet/home.php";
         } else if(count($partes_ruta) == 2){
             switch($partes_ruta[1]){    
                 case 'index':
@@ -45,11 +45,8 @@ if($partes_ruta[0] == 'Animedics'){
                 case 'logout':
                     $ruta_elegida = "views/logout.php";
                     break;
-                case 'citas':
-                    $ruta_elegida = "views_vet/citas.php";
-                    break;
-                case 'mascotas':
-                    $ruta_elegida = "views/mascotas.php";
+                case 'consultas':
+                    $ruta_elegida = "views_vet/consultas.php";
                     break;
                 case 'perfil':
                     $ruta_elegida = "views_vet/perfil.php";

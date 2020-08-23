@@ -13,6 +13,9 @@ body.cliente{
 body.admin{
     background-image: url(../img/bgadmin.png);
 }
+body.vet{
+    background-image: url(../img/bgvet.png);
+}
 /*SCROLLBARS*/
 /*cliente*/
 .cliente::-webkit-scrollbar {
@@ -49,6 +52,24 @@ body.admin{
   }
 .admin::-webkit-scrollbar-thumb:hover {
       background: #585858;
+  }     
+  /*Veterinario*/ 
+  .vet::-webkit-scrollbar {
+    width: 20px;
+  }
+.vet::-webkit-scrollbar-button:hover{
+      background: silver;
+  }
+.vet::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 0px;
+  }
+.vet::-webkit-scrollbar-thumb {
+    background: #FF9700;
+    border-radius: 5px;
+  }
+.vet::-webkit-scrollbar-thumb:hover {
+      background: #c37500;
   }      
 /*Extra*/
 .gira:hover {
@@ -120,7 +141,7 @@ body.admin{
     background-color: #00C49E;
     color: white;
 }
-button.boton:hover{
+.boton:hover{
     background-color: #008f72;
     color: white;
 }
@@ -128,7 +149,7 @@ button.boton:hover{
     background-color: #FF9700;
     color: white;
 }
-button.boton-naranja:hover{
+.boton-naranja:hover{
     background-color: #c37500;
     color: white;
 }
@@ -136,7 +157,7 @@ button.boton-naranja:hover{
     background-color: #808080;
     color: white;
 }
-button.boton-gris:hover{
+.boton-gris:hover{
     background-color: #585858;
     color: white;
 }
@@ -187,6 +208,18 @@ a.liga-WM{
 a.liga-WM:hover{
     font-family: Mywebfont;
     color: #00C49E;
+}
+a.liga-gris{
+    color: #808080;
+}
+a.liga-gris:hover{
+    color: #585858;
+}
+a.liga-naranja{
+    color: #FF9700;
+}
+a.liga-naranja:hover{
+    color: #c37500;
 }
 a.liga-R{
     font-family: Reem;

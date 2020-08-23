@@ -15,10 +15,12 @@ define("RUTA_LOGOUT", SERVER."/logout");
 
 //Rutas para administradores
 define("RUTA_ADMINISTRACION", SERVER."/administracion");
-define("RUTA_VERCLIENTES", SERVER."/administracion");
-define("RUTA_VERVETERINARIOS", SERVER."/administracion");
+define("RUTA_PERFILADMIN", SERVER."/perfil");
+define("RUTA_VERUSUARIOS", SERVER."/verusuarios");
 
 //Rutas para veterinarios
+define("RUTA_PERFILVET", SERVER."/perfil");
+define("RUTA_CONSULTAS", SERVER."/consultas");
 
 //Rutas para clientes
 define("RUTA_PERFIL", SERVER."/perfil");

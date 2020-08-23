@@ -8,8 +8,10 @@ include_once 'app/Cita.inc.php';
         <div class="col-md-6 col-10">
             <div class="row navbar-g centrado-vertical">
                 <div>
-                    <a href="<?php echo SERVER?>"><img src="<?php echo RUTA_IMG?>/icon.png" class="gira" width="50px"
-                            height="50px"></a>
+                    <a href="<?php echo SERVER?>">
+                        <img src="<?php if (!isset($icono)||empty($icono)) {$icono = 'icon';} echo RUTA_IMG.'/'.$icono.'.png'?>"
+                            class="gira" width="50px" height="50px">
+                    </a>
                 </div>
                 <div class="d-none d-md-block">
                     <a style="color: inherit; text-decoration: none" href="<?php echo SERVER?>"> HUELLITAS
