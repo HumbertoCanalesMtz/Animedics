@@ -12,9 +12,6 @@ include_once "app/ValidadorClave.inc.php";
 include_once "app/Redireccion.inc.php";
 include_once "app/Sesion.inc.php";
 
-include_once "templates/declaracion.php";
-include_once "templates/navbar_admin.php";
-
 if(!Sesion::sesion_iniciada()){
     Redireccion::redirigir(SERVER);
 }
@@ -31,6 +28,7 @@ if(isset($_POST['guardar'])){
     //Si todos los datos son válidos, se crea un usuario (usuario_c) con los datos ingresados.
     if($validador -> validar_edicion()){
         $id = $_SESSION['id_usuario'];
+        $rol = $_SESSION['rol'];
         $usuario_c = new Usuario($id, $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
         $validador -> obtener_correo(),'', $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), '', '');
         //Se llama al método para editar a un usuario y se realizaron los cambios.
@@ -55,6 +53,8 @@ if(isset($_POST['guardar_clave'])){
     }
 }
 Conexion::cerrar_conexion();
+include_once "templates/declaracion.php";
+include_once "templates/navbar_admin.php";
 ?>
 <body>
     <div class="container justify-content-center fila borde-redondo borde-verde">
