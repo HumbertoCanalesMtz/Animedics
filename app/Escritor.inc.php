@@ -170,6 +170,7 @@ class Escritor{
                                         <td><?php echo $cita -> obtener_folio();?></td>
                                     </tr>
                                     <?php if(isset($datos) && $datos != null){
+                                    $receta = RepositorioCita::obtener_receta(Conexion::obtener_conexion(), $datos -> obtener_id_datos());
                                     ?>
                                     <tr><th colspan=2 class="text-center">DATOS DE LA CONSULTA MÉDICA</th></tr>
                                     <tr>
@@ -208,7 +209,23 @@ class Escritor{
                                         <th>Grado de deshidratación:</th>
                                         <td><?php echo $datos -> obtener_deshidratacion();?></td>
                                     </tr>
-                                    <?php } ?>
+                                    <?php } if(isset($receta) && $receta != null){?>
+                                    <tr><th colspan=2 class="text-center">RECETA MÉDICA</th></tr>
+                                    <tr>
+                                        <th>Medicamento</th>
+                                        <th>Dosis</th>
+                                        <th>Durante</th>
+                                        <th>Cada</th>
+                                    </tr>
+                                    <?php foreach ($receta as $medicamento) {?>
+                                            <tr>
+                                            <td><?php echo $medicamento -> obtener_nombre();?></td>
+                                            <td><?php echo $medicamento -> obtener_dosis();?></td>
+                                            <td><?php echo $medicamento -> obtener_dias();?> días</td>
+                                            <td><?php echo $medicamento -> obtener_horas();?> horas</td>
+                                            </tr>
+                                        <?php }}
+                                        ?>
                                 </tbody>
                             </table>    
                         </div>

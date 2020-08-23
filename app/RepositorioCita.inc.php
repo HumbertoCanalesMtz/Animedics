@@ -177,4 +177,30 @@ class RepositorioCita {
         }
         return $persona;
     }
+    public static function obtener_receta($conexion, $id_datos){
+        $receta = [];
+        if(isset($conexion)){
+            try{
+                include_once 'app/Medicamento.inc.php';
+
+                $sql = "SELECT m.nom_comercial AS nombre, rm.dosis, rm.dias, rm.horas 
+                FROM receta_medicamento AS rm INNER JOIN medicamento AS m ON rm.medicamento = m.id_medicamento
+                INNER JOIN recetas AS r ON rm.receta = r.id_receta WHERE r.datos = :id_datos";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':id_datos', $id_datos, PDO::PARAM_INT);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+
+                $filas_afectadas = $sentencia -> rowCount();
+                if($filas_afectadas!==0){
+                    foreach ($resultado as $fila){
+                        $receta[] = new Medicamento($fila['nombre'], $fila['dosis'], $fila['dias'], $fila['horas']);
+                    }
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $receta;
+    }
 }   

@@ -40,9 +40,3 @@
         </td>
     </tr>
 </tbody>
-<tfoot>
-    <tr>
-        <th colspan="2"><a href="<?php echo RUTA_MASCOTAS?>" class="btn boton"><span
-                    class="material-icons icono-20">pets</span> Mis mascotas</a></th>
-    </tr>
-</tfoot>
