@@ -27,8 +27,8 @@ if(isset($_POST['ingresar'])){
 
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="padding: 20px;">
     <h4 class="text-center fuente-R verde">INTRODUZCA SUS DATOS DE USUARIO</h4>
-    <form method="post" action="<?php echo htmlspecialchars(SERVER);?>" class="fuente-R">
-        <div class="text-center">
+    <form method="post" action="<?php echo htmlspecialchars(RUTA_LOGIN);?>" class="fuente-R">
+            <div class="text-center">
             <label for="correo">Correo electronico o nombre de usuario</label>
             <br>
             <input class="txb" type="text" name="correo" id="email" size="40" placeholder="Ej. Gustavo Hernandez" <?php if(isset($_POST['ingresar'])&&isset($_POST['correo'])&&!empty($_POST['correo'])){
