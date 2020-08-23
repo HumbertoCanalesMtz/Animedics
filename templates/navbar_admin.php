@@ -36,18 +36,45 @@ include_once 'app/Conexion.inc.php';
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="<?php echo RUTA_ADMINISTRACION?>">
                             <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Servicios
-                                    <span class="badge badge-primary badge-pill">14</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Especies
-                                    <span class="badge badge-primary badge-pill">2</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Medicamentos
-                                    <span class="badge badge-primary badge-pill">1</span>
-                                </li>
+                            <?php
+                             $conectado=new Conexion();
+                             Conexion::abrir_conexion();
+                             $contar="SELECT count(nombre) as n from servicio";
+                             $contado=$conectado->query(Conexion::obtener_conexion(),$contar);
+                               echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
+                                    Servicios";
+                                foreach ($contado as $xd)
+                                {
+                                    echo "<span class='badge badge-primary badge-pill'>$xd->n</span>";
+                                }
+                                    echo "</li>";
+                            ?>
+                            <?php
+                             $conectado=new Conexion();
+                             Conexion::abrir_conexion();
+                             $contar="SELECT count(nombre) as n from especie";
+                             $contado=$conectado->query(Conexion::obtener_conexion(),$contar);
+                               echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
+                                    Especies";
+                                foreach ($contado as $xd)
+                                {
+                                    echo "<span class='badge badge-primary badge-pill'>$xd->n</span>";
+                                }
+                                    echo "</li>";
+                            ?>
+                            <?php
+                             $conectado=new Conexion();
+                             Conexion::abrir_conexion();
+                             $contar="SELECT count(nom_comercial) as n from medicamento";
+                             $contado=$conectado->query(Conexion::obtener_conexion(),$contar);
+                               echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
+                                    Medicamentos";
+                                foreach ($contado as $xd)
+                                {
+                                    echo "<span class='badge badge-primary badge-pill'>$xd->n</span>";
+                                }
+                                    echo "</li>";
+                            ?>
                             </ul>
                         </a>
                         <div class="dropdown-divider"></div>
