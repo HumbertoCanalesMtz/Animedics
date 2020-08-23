@@ -30,7 +30,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="telefono">Telefono</label><br>
-                                            <input class="txb" type="number" name="telefono" id="phone" size="30" placeholder="10 dígitos">
+                                            <input class="txb" type="number" name="telefono" id="phone" size="30" placeholder="10 dígitos"
+                                            onKeyPress = "if(this.value.length>50) return false;">
                                         </div>
                                         <div class="col-md-12 text-center">
                                             <br>

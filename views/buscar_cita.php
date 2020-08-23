@@ -30,7 +30,9 @@ include_once "templates/navbar.php";
                 <div class="d-flex justify-content-center centrado-vertical fila">
                         <table class="table-sm table-striped table-hover">
                             <tbody>
-                                    <?php if(isset($cita) && $cita != null){?>
+                                    <?php 
+                                    Conexion::abrir_conexion(); 
+                                    if(isset($cita) && $cita != null){?>
                                     <tr><th colspan=2 class="text-center">DATOS DE LA CITA</th></tr>
                                     <tr>
                                         <th>Nombre del solicitante:</th>
@@ -51,10 +53,8 @@ include_once "templates/navbar.php";
                                     <tr>
                                         <th>Servicio(s):</th>
                                         <td><?php
-                                        Conexion::abrir_conexion(); 
                                         $cadena = Escritor::escribir_servicios_cita(Conexion::obtener_conexion(), $cita -> obtener_folio());
                                         echo $cadena;
-                                        Conexion::cerrar_conexion();
                                         ?></td>
                                     </tr>
                                     <tr><th colspan=2 class="text-center">DATOS DE LA MASCOTA</th></tr>
@@ -82,10 +82,9 @@ include_once "templates/navbar.php";
                                     </tr>
                                     <?php if($cita -> obtener_completada() == 'SI'){
                                 include_once 'app/Datos.inc.php';
-                                Conexion::abrir_conexion();
                                 $datos = RepositorioCita::obtener_datos_medicos(Conexion::obtener_conexion(),$cita -> obtener_id_cita());
-                                Conexion::cerrar_conexion();    
                                 if(isset($datos) && $datos != null){
+                                $receta = RepositorioCita::obtener_receta(Conexion::obtener_conexion(), $datos -> obtener_id_datos());
                             ?>
                                     <tr><th colspan=2 class="text-center">DATOS DE LA CONSULTA MÉDICA</th></tr>
                                     <tr>
@@ -124,7 +123,25 @@ include_once "templates/navbar.php";
                                         <th>Grado de deshidratación:</th>
                                         <td><?php echo $datos -> obtener_deshidratacion();?></td>
                                     </tr>
-                            <?php }}} else{ ?>
+                                    <?php }if(isset($receta) && $receta != null){?>
+                                    <tr><th colspan=2 class="text-center">RECETA MÉDICA</th></tr>
+                                    <tr>
+                                        <th>Medicamento</th>
+                                        <th>Dosis</th>
+                                        <th>Durante</th>
+                                        <th>Cada</th>
+                                    </tr>
+                                    <?php foreach ($receta as $medicamento) {?>
+                                            <tr>
+                                            <td><?php echo $medicamento -> obtener_nombre();?></td>
+                                            <td><?php echo $medicamento -> obtener_dosis();?></td>
+                                            <td><?php echo $medicamento -> obtener_dias();?> días</td>
+                                            <td><?php echo $medicamento -> obtener_horas();?> horas</td>
+                                            </tr>
+                            <?php }}}
+                            Conexion::cerrar_conexion();
+                            } 
+                            else{ ?>
                                     <tr><div class='alert alert-danger' role='alert'>No existe ninguna cita con ese folio, ingresa un folio valido</div></tr>
                             <?php } ?>
                             </tbody>

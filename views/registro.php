@@ -18,12 +18,15 @@
         $_POST['correo'], $_POST['clave_1'], $_POST['clave_2'], $_POST['nom_usuario'], $_POST['telefono']);
         //Si todos los datos son correctos, se crea un nuevo usuario con los datos validados.
         if($validador -> validar_registro()){
+            echo "Yes";
             $usuario = new Usuario('', $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
             $validador -> obtener_correo(), password_hash($validador -> obtener_clave(),PASSWORD_DEFAULT), $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), 3, '');
+            echo $usuario -> obtener_nombre_usuario();
             //Se crea un nuevo registro en la tabla usuarios de la BD con los datos del usuario creado.
             RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(), $usuario);
             //Se inicia sesión con los valores del usuario creado.
-            Sesion::iniciar_sesion($usuario -> obtener_id_usuario(), $usuario -> obtener_nombre_usuario(), $usuario);
+            $usuario = RepositorioUsuario::obtener_usuario(Conexion::obtener_conexion(), $usuario -> obtener_nombre_usuario());
+            Sesion::iniciar_sesion($usuario -> obtener_id_usuario(), $usuario -> obtener_nombre_usuario(), $usuario -> obtener_rol());
             //Se redirige al usuario al index.
 	        Redireccion::redirigir(SERVER);
         }
@@ -44,7 +47,7 @@
                     <div class="card-body fuente-R">
                         <h4 class="card-title text-center fuente-WM verde separadito">CREA UN USUARIO</h4>
                         <br>
-                        <form method="post" action="<?php echo htmlspecialchars(RUTA_REGISTRO);?>">
+                        <form method="post" action="<?php RUTA_REGISTRO?>">
                             <?php if(isset($_POST['registrar'])){
                         include_once 'templates/registro_validado.php';
                     }else{

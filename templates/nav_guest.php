@@ -1,26 +1,4 @@
-<?php
-$titulo = 'Iniciar Sesión';
-include_once 'app/config.inc.php';
-include_once 'app/Conexion.inc.php';
-include_once 'app/RepositorioUsuario.inc.php';
-include_once 'app/ValidadorLogin.inc.php';
-include_once 'app/Redireccion.inc.php';
-include_once 'app/Sesion.inc.php';
 
-if(Sesion::sesion_iniciada()){
-    Redireccion::redirigir(SERVER);
-}
-if(isset($_POST['ingresar'])){
-    Conexion::abrir_conexion();
-    $validador = new ValidadorLogin($_POST['correo'], $_POST['clave'], Conexion::obtener_conexion());
-    //Si la validación es correcta, se inicia sesión y se redirige al usuario al index.
-    if($validador -> obtener_error() == '' && !is_null($validador -> obtener_usuario())){
-        Sesion::iniciar_sesion($validador -> obtener_usuario() -> obtener_id_usuario(), $validador -> obtener_usuario() -> obtener_nombre_usuario(), $validador -> obtener_usuario() -> obtener_rol());
-        Redireccion::redirigir(SERVER);
-    } 
-    Conexion::cerrar_conexion();
-}
-?>
 <button type="button" class="btn dropdown-toggle dropdown-toggle-split boton blanco" data-toggle="dropdown"
     aria-haspopup="true" aria-expanded="false">ACCEDER </button>
 

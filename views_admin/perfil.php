@@ -1,6 +1,8 @@
 <?php
 //Así no va a ser esto, mañana lo edito, es sólo para ejemplificar.
 $titulo = "Mi Perfil";
+$clase = 'admin';
+$icono = 'iconadmin';
 include_once "app/config.inc.php";
 include_once "app/Conexion.inc.php";
 include_once "app/Usuario.inc.php";
@@ -27,7 +29,6 @@ if(isset($_POST['guardar'])){
     if($validador -> validar_edicion()){
         $id = $_SESSION['id_usuario'];
         $rol = $_SESSION['rol'];
-        echo $validador -> obtener_nombres();
         $usuario_c = new Usuario($id, $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
         $validador -> obtener_correo(),'', $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), '', '');
         //Se llama al método para editar a un usuario y se realizaron los cambios.
@@ -36,7 +37,7 @@ if(isset($_POST['guardar'])){
         Sesion::cerrar_sesion();
         Sesion::iniciar_sesion($usuario_c -> obtener_id_usuario(), $usuario_c -> obtener_nombre_usuario(), $rol);
         $cambio_listo = true;
-        Redireccion::redirigir(RUTA_PERFIL);
+        Redireccion::redirigir(RUTA_PERFIL);	
     }
 }
 //Para cambiar la contraseña ->
@@ -51,10 +52,9 @@ if(isset($_POST['guardar_clave'])){
 	    $clave_lista = true;	
     }
 }
-
-include_once "templates/declaracion.php";
-include_once "templates/navbar.php";
 Conexion::cerrar_conexion();
+include_once "templates/declaracion.php";
+include_once "templates/navbar_admin.php";
 ?>
 <body>
     <div class="container justify-content-center fila borde-redondo borde-verde">
@@ -63,7 +63,7 @@ Conexion::cerrar_conexion();
         <table class="table table-hover bg-blanco text-center fuente-R">
         <?php 
             if(!isset($_POST['editar'])&&!isset($_POST['guardar'])&&!isset($_POST['cambiar'])&&!isset($_POST['guardar_clave'])){
-                include_once 'templates/perfil_ver.php';
+                include_once 'templates/perfil_ver_admin.php';
             }
             if(isset($_POST['editar'])){
                 include_once 'templates/perfil_editar_vacio.php';
@@ -72,18 +72,18 @@ Conexion::cerrar_conexion();
                 include_once 'templates/perfil_clave_vacio.php';
             }
             if(isset($_POST['cancelar'])){
-                include_once 'templates/perfil_ver.php';
+                include_once 'templates/perfil_ver_admin.php';
             }
             if(isset($_POST['guardar'])){
                 if($cambio_listo == true){
-                    include_once 'templates/perfil_ver.php'; 
+                    include_once 'templates/perfil_ver_admin.php'; 
                 } else {
                     include_once 'templates/perfil_editar_validado.php';
                 } 
             }
             if(isset($_POST['guardar_clave'])){
                 if($clave_lista == true){
-                    include_once 'templates/perfil_ver.php';
+                    include_once 'templates/perfil_ver_admin.php';
                 } else {
                     include_once 'templates/perfil_clave_validado.php';
                 }

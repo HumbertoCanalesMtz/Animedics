@@ -12,7 +12,7 @@ class Sesion{
         $_SESSION['id_usuario'] = $id_usuario;
         $_SESSION['nombre_usuario'] = $nombre_usuario;
         Conexion::abrir_conexion();
-        $_SESSION['id_persona'] = RepositorioUsuario::obtener_id_persona(Conexion::obtener_conexion(),$id_usuario);
+        $_SESSION['id_persona'] = RepositorioUsuario::obtener_id_persona(Conexion::obtener_conexion(), $id_usuario);
         Conexion::cerrar_conexion();
         $_SESSION['rol'] = $rol;
     }
