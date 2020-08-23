@@ -8,7 +8,7 @@ include_once 'app/Conexion.inc.php';
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand text-secondary fuente-WM" href="<?php echo SERVER?>">
-            <img src="<?php echo RUTA_IMG?>/iconadmin.png" width="30" height="30" class="d-inline-block align-top"
+            <img src="<?php if (!isset($icono)||empty($icono)) {$icono = 'icon';} echo RUTA_IMG.'/'.$icono.'.png'?>" width="30" height="30" class="d-inline-block align-top"
                 alt="" loading="lazy">
             HUELLITAS
         </a>
