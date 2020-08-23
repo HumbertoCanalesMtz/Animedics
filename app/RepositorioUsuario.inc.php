@@ -113,7 +113,7 @@ class RepositorioUsuario {
                 include_once 'Usuario.inc.php';
 
                 $sql = "SELECT * FROM usuarios AS u INNER JOIN personas AS p ON p.usuario = u.id_usuario WHERE
-                u.correo = :nom_o_correo OR u.nombre_usuario = :nom_o_correo";
+                u.correo = BINARY :nom_o_correo OR u.nombre_usuario = BINARY :nom_o_correo";
                 $sentencia = $conexion -> prepare($sql);
                 $sentencia -> bindParam(':nom_o_correo', $nom_o_correo, PDO::PARAM_STR);
                 $sentencia -> execute();
@@ -199,4 +199,32 @@ class RepositorioUsuario {
         }
         return $id_persona;
      }
+
+     public static function insertar_persona_invitada($conexion, $usuario){
+        $id_persona = null;
+        if (isset($conexion)){
+            try{
+                $sql = "INSERT INTO personas(nombres, ap_paterno, ap_materno, telefono, correo_contacto)
+                VALUES(:nombres, :ap_paterno, :ap_materno, :telefono, :correo)";
+                $nombres_temp = $usuario -> obtener_nombres();
+                $ap_paterno_temp = $usuario -> obtener_ap_paterno();
+                $ap_materno_temp = $usuario -> obtener_ap_materno();
+                $telefono_temp = $usuario -> obtener_telefono();
+                $correo_temp = $usuario -> obtener_correo();
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':nombres', $nombres_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':ap_paterno', $ap_paterno_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':ap_materno', $ap_materno_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':telefono', $telefono_temp, PDO::PARAM_INT);
+                $sentencia -> bindParam(':correo', $correo_temp, PDO::PARAM_STR);
+                $sentencia -> execute();
+
+                $id_persona = $conexion -> lastInsertId();
+
+            } catch(PDOException $ex){
+            print "ERROR: ".$ex ->getMessage();
+            }
+            return $id_persona;
+        }   
+    }
 }   

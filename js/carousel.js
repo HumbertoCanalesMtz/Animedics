@@ -68,15 +68,39 @@ $.datepicker.regional['es'] = {
     isRTL: false,
     showMonthAfterYear: false,
     yearSuffix: ''
-  };
+};
 
-  $.datepicker.setDefaults($.datepicker.regional['es']);
+$.datepicker.setDefaults($.datepicker.regional['es']);
 
-  $(function(){
+$(function(){
     $("#datepicker").datepicker({
         minDate: 0,
         maxDate: "+3m",
         stepMonths: 3,
         changeMonth: true
     });
+});
+
+$('#ModalServicio').on('show.bs.modal', function(e) {
+
+    var servicio = $(e.relatedTarget).data('servicio');
+    
+    $(e.currentTarget).find('input[name="nombre_servicio"]').val(servicio);
+    $(e.currentTarget).find('input[name="servicio_hid"]').val(servicio);
+});
+
+$('#ModalEspecie').on('show.bs.modal', function(e) {
+
+    var especie = $(e.relatedTarget).data('especie');
+    
+    $(e.currentTarget).find('input[name="nombre_especie"]').val(especie);
+    $(e.currentTarget).find('input[name="especie_hid"]').val(especie);
+});
+
+$('#ModalMedicamento').on('show.bs.modal', function(e) {
+
+    var medicamento = $(e.relatedTarget).data('medicamento');
+    
+    $(e.currentTarget).find('input[name="nombre_medicamento"]').val(medicamento);
+    $(e.currentTarget).find('input[name="medicamento_hid"]').val(medicamento);
 });

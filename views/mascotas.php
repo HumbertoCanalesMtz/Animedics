@@ -66,7 +66,7 @@ include_once "templates/navbar.php"
                                             <tr>
                                                 <th><label for="petage">Edad de su mascota (Años):</label></th>
                                                 <td>
-                                                    <input class="txb" type="text" name="edad" id="petage" placeholder="Ej. 12">
+                                                    <input class="txb" type="number" name="edad" id="petage" placeholder="Ej. 12">
                                                 </td>
                                             </tr>
                                             <?php if(isset($validador)){echo $validador -> mostrar_error_edad();}?>

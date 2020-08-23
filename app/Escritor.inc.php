@@ -1,8 +1,9 @@
 <?php
 include_once 'app/RepositorioMascota.inc.php';
 include_once 'app/RepositorioCita.inc.php';
+include_once 'app/RepositorioServicio.inc.php';
 include_once 'app/Mascota.inc.php';
-include_once 'app/Especie.inc.php';
+include_once 'app/Extras.inc.php';
 include_once 'app/Cita.inc.php';
 
 class Escritor{
@@ -29,7 +30,7 @@ class Escritor{
         <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="<?php Especie::seleccionar_imagen($mascota);?>" class="card-img img-fluid" alt="Especie">
+                            <img src="<?php Extras::seleccionar_imagen($mascota);?>" class="card-img img-fluid" alt="Especie">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body d-flex justify-content-center centrado-vertical">
@@ -76,6 +77,7 @@ class Escritor{
         if(!isset($cita)){
             return;
         }
+        $veterinario = RepositorioCita::obtener_nombre_veterinario(Conexion::obtener_conexion(), $cita -> obtener_id_cita());
         ?>
         <div class="card">
             <div class="card-body mb-3">
@@ -90,11 +92,22 @@ class Escritor{
                                         <td><?php echo $cita -> obtener_hora();?></td>
                                     </tr>
                                     <tr>
-                                        <th>Veterinario:</th>
-                                        <td><?php echo $cita -> obtener_veterinario();?></td>
+                                        <th>Servicio(s):</th>
+                                        <td><?php
+                                        $cadena = Escritor::escribir_servicios_cita(Conexion::obtener_conexion(), $cita -> obtener_folio());
+                                        echo $cadena;
+                                        ?></td>
                                     </tr>
                                     <tr>
-                                        <th>Folio:</th>
+                                        <th>Veterinario:</th>
+                                        <td><?php echo $veterinario['nombre']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cédula:</th>
+                                        <td><?php echo $veterinario['cedula']?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Folio de la cita:</th>
                                         <td><?php echo $cita -> obtener_folio();?></td>
                                     </tr>
                     </tbody>
@@ -122,35 +135,108 @@ class Escritor{
         if(!isset($cita)){
             return;
         }
+        $veterinario = RepositorioCita::obtener_nombre_veterinario(Conexion::obtener_conexion(), $cita -> obtener_id_cita());
+        $datos = RepositorioCita::obtener_datos_medicos(Conexion::obtener_conexion(), $cita -> obtener_id_cita());
         ?>
         <div class="card">
                         <div class="card-body mb-3">
                             <table class="table-sm table-striped table-hover">
                                 <tbody>
                                     <tr>
-                                        <th>Diagnostico:</th>
-                                        <td>Es wapo</td>
+                                        <th>Fecha:</th>
+                                        <td><?php echo $cita -> obtener_fecha();?></td>
                                     </tr>
                                     <tr>
-                                        <th>Medicamento:</th>
-                                        <td>Descansar</td>
+                                        <th>Hora:</th>
+                                        <td><?php echo $cita -> obtener_hora();?></td>
                                     </tr>
                                     <tr>
-                                        <th>Dosis:</th>
-                                        <td>Grande</td>
+                                        <th>Servicio(s):</th>
+                                        <td><?php
+                                        $cadena = Escritor::escribir_servicios_cita(Conexion::obtener_conexion(), $cita -> obtener_folio());
+                                        echo $cadena;
+                                        ?></td>
                                     </tr>
                                     <tr>
-                                        <th>Horas:</th>
-                                        <td>.1</td>
+                                        <th>Veterinario:</th>
+                                        <td><?php echo $veterinario['nombre']?></td>
                                     </tr>
                                     <tr>
-                                        <th>Duración(Días):</th>
-                                        <td>1000000</td>
+                                        <th>Cédula:</th>
+                                        <td><?php echo $veterinario['cedula']?></td>
                                     </tr>
+                                    <tr>
+                                        <th>Folio de la cita:</th>
+                                        <td><?php echo $cita -> obtener_folio();?></td>
+                                    </tr>
+                                    <?php if(isset($datos) && $datos != null){
+                                    ?>
+                                    <tr><th colspan=2 class="text-center">DATOS DE LA CONSULTA MÉDICA</th></tr>
+                                    <tr>
+                                        <th>Síntomas:</th>
+                                        <td><?php echo $datos -> obtener_sintomas();?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Temperatura:</th>
+                                        <td><?php echo $datos -> obtener_temperatura();?> °C</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Peso:</th>
+                                        <td><?php echo $datos -> obtener_peso();?> Kg</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Diagnóstico:</th>
+                                        <td><?php echo $datos -> obtener_diagnostico();?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Examen del abdomen:</th>
+                                        <td><?php echo $datos -> obtener_abdomen();?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estado de los órganos internos:</th>
+                                        <td><?php echo $datos -> obtener_org_int();?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Estado de los órganos externos:</th>
+                                        <td><?php echo $datos -> obtener_org_ext();?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>¿Había sido operado previamente?</th>
+                                        <td><?php echo $datos -> obtener_operado();?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Grado de deshidratación:</th>
+                                        <td><?php echo $datos -> obtener_deshidratacion();?></td>
+                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>    
                         </div>
                     </div>  
         <?php
+    }
+
+    public static function escribir_servicios($conexion){
+        $servicios = RepositorioServicio::recuperar_servicios($conexion);
+        foreach ($servicios as $servicio){?>
+            <option value="<?php echo $servicio['nombre']?>"><?php echo $servicio['nombre']?></option>
+        <?php }
+    }
+    public static function escribir_servicios_cita($conexion, $folio){
+        $servicios = RepositorioServicio::recuperar_servicios_folio($conexion, $folio);
+        $cadena = "";
+        foreach ($servicios as $servicio){
+            $cadena.=$servicio;
+            if($servicio != end($servicios)){
+                $cadena.=', ';
+            }
+        }
+        return $cadena;
+    }
+    public static function escribir_mascotas_cita($conexion, $id_persona){
+        $mascotas = RepositorioMascota::recuperar_mascotas($conexion, $id_persona);
+        foreach ($mascotas as $mascota){?>
+            <option value="<?php echo $mascota['nombre']?>"><?php echo $mascota['nombre']?></option>
+        <?php }
     }
 }

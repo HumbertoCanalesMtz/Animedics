@@ -4,6 +4,7 @@
 class RepositorioCita {
 
     public static function insertar_cita($conexion, $cita){
+        $correcto = false;
         if (isset($conexion)){
             try{
                 $sql = "INSERT INTO citas(folio, veterinario, mascota, fecha, hora, completada) 
@@ -20,12 +21,15 @@ class RepositorioCita {
                 $sentencia -> bindParam(':mascota', $mascota_temp , PDO::PARAM_INT);
                 $sentencia -> bindParam(':fecha', $fecha_temp, PDO::PARAM_STR);
                 $sentencia -> bindParam(':hora', $hora_temp, PDO::PARAM_STR);
-                $sentencia -> bindParam(':completada', $completada_temp, PDO::PARAM_INT);
-                $sentencia -> execute();
+                $sentencia -> bindParam(':completada', $completada_temp, PDO::PARAM_STR);
+                $sentencia -> execute();                
+                $id_cita = $conexion -> lastInsertId();
+
 	    } catch(PDOException $ex){
 		print "ERROR: ".$ex ->getMessage();
             }
         }
+        return $id_cita;
     }
 
     public static function obtener_citas_pendientes($conexion, $id_mascota){

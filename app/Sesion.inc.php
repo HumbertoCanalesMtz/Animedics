@@ -28,6 +28,9 @@ class Sesion{
         if(isset($_SESSION['nombre_usuario'])){
             unset($_SESSION['nombre_usuario']);
         }
+        if(isset($_SESSION['id_persona'])){
+            unset($_SESSION['id_persona']);
+        }
         if(isset($_SESSION['rol'])){
             unset($_SESSION['rol']);
         }
@@ -39,7 +42,7 @@ class Sesion{
             session_cache_limiter('private, must-revalidate');
             session_start();
         }
-        if(isset($_SESSION['id_usuario']) && isset($_SESSION['nombre_usuario']) && isset($_SESSION['rol'])){
+        if(isset($_SESSION['id_usuario']) && isset($_SESSION['nombre_usuario']) && isset($_SESSION['id_persona']) && isset($_SESSION['rol'])){
             return true;
         } else{
             return false;

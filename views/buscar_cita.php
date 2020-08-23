@@ -1,7 +1,6 @@
 <?php
 $titulo = "Datos de la cita";
 include_once "app/config.inc.php";
-include_once "app/Especie.inc.php";
 include_once "app/Conexion.inc.php";
 include_once "app/Escritor.inc.php";
 include_once "app/Mascota.inc.php";
@@ -11,9 +10,11 @@ include_once "app/RepositorioMascota.inc.php";
 if(isset($_POST['buscar'])){
     Conexion::abrir_conexion();
     $cita = RepositorioCita::obtener_cita_por_folio(Conexion::obtener_conexion(), $_POST['folio']);
-    $veterinario = RepositorioCita::obtener_nombre_veterinario(Conexion::obtener_conexion(), $cita -> obtener_id_cita());
-    $mascota = RepositorioMascota::obtener_mascota_por_cita(Conexion::obtener_conexion(), $cita -> obtener_id_cita());
-    $persona = RepositorioCita::obtener_persona(Conexion::obtener_conexion(), $cita -> obtener_id_cita());
+    if(isset($cita) && $cita!= null){
+        $veterinario = RepositorioCita::obtener_nombre_veterinario(Conexion::obtener_conexion(), $cita -> obtener_id_cita());
+        $mascota = RepositorioMascota::obtener_mascota_por_cita(Conexion::obtener_conexion(), $cita -> obtener_id_cita());
+        $persona = RepositorioCita::obtener_persona(Conexion::obtener_conexion(), $cita -> obtener_id_cita());
+    }
     Conexion::cerrar_conexion();
 }
 
@@ -46,6 +47,15 @@ include_once "templates/navbar.php";
                                     <tr>
                                         <th>Hora:</th>
                                         <td><?php echo $cita -> obtener_hora();?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Servicio(s):</th>
+                                        <td><?php
+                                        Conexion::abrir_conexion(); 
+                                        $cadena = Escritor::escribir_servicios_cita(Conexion::obtener_conexion(), $cita -> obtener_folio());
+                                        echo $cadena;
+                                        Conexion::cerrar_conexion();
+                                        ?></td>
                                     </tr>
                                     <tr><th colspan=2 class="text-center">DATOS DE LA MASCOTA</th></tr>
                                     <tr>

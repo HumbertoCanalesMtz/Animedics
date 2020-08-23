@@ -50,12 +50,14 @@
             <input class="txb" type="password" name="clave_2" id="password" size="30">
         </div>
 
-        <div class="col-md-6">
-            <?php $validador -> mostrar_error_nom_usuario();?>
-        </div>
-        <div class="col-md-6">
-            <?php $validador -> mostrar_error_telefono();?>
-        </div>
+                                        <div class="col-md-6">
+                                            <label for="nom_usuario">Nombre de usuario</label><br>
+                                            <input class="txb" type="text" name="nom_usuario" id="nick" size="30" <?php $validador -> mostrar_nom_usuario();?>>
+                                        </div>                                        
+                                        <div class="col-md-6">
+                                            <label for="telefono">Telefono</label><br>
+                                            <input class="txb" type="number" name="telefono" id="phone" size="30" <?php $validador -> mostrar_telefono();?>>
+                                        </div>
 
         <div class="col-md-6">
             <label for="nom_usuario">Nombre de usuario</label><br>
