@@ -3,6 +3,7 @@ include_once 'app/Sesion.inc.php';
 include_once 'app/Redireccion.inc.php';
 include_once 'app/Cita.inc.php';
 include_once 'app/config.inc.php';
+include_once 'app/Conexion.inc.php';
 ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
