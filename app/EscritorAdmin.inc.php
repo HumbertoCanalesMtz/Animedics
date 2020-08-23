@@ -68,7 +68,7 @@ class EscritorAdmin{
                     <td><?php echo $medicamento['nom_comercial']?></td>
                     <td>
                         <button class='btn boton-verde' data-toggle='modal' data-medicamento='<?php echo $medicamento['nom_comercial']?>'
-                        data-target='#ModalMeds'>
+                        data-target='#ModalMedicamento'>
                         <span class='material-icons'>edit</span>
                         </button>
                     </td>
