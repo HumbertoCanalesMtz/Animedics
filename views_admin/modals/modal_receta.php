@@ -8,9 +8,18 @@
             <form action="" method="post">
                 <div class="modal-body admin text-center">
                     <label for="meds">Medicamento:</label>
-                    <select class="txb-gris" name="medicamento" id="meds">
-                        <option value="Medicamento">Mota</option>
-                    </select><br>
+                    <?php
+                    $conectado=new Conexion();
+                    Conexion::abrir_conexion();
+                    $contar="SELECT * from medicamento";
+                    $contado=$conectado->query(Conexion::obtener_conexion(),$contar);
+                     echo "<select class='txb-gris' name='medicamento' id='meds'>";
+                     foreach ($contado as $value)
+                    {   
+                     echo "<option value='.$value->id_medicamento.'>$value->nom_comercial</option>";
+                    }
+                     echo "</select>";
+                    ?><br>
                     <label for="dose">Tomar (cantidad)</label>
                     <input type="text" class="txb-gris" name="dosis" id="dose" placeholder="Ej. 3 (númerico)">
                     <input type="text" class="txb-gris" name="dosis" id="dose" placeholder="Ej. pastillas/ml"><br>

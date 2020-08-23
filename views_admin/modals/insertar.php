@@ -7,5 +7,4 @@
                 $cadena="INSERT INTO servicio(nombre) values ('$nombre_servicio')";
                 $conexion->ejecutarSQL($cadena);
                 Conexion::cerrar_conexion();
-                header("refresh:1; ../index.php");
                 ?>
