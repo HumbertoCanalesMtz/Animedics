@@ -89,8 +89,8 @@ include_once 'app/Conexion.inc.php';
                         Sesión
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Cerrar sesión</a>
-                        <a class="dropdown-item" href="#">Perfil</a>
+                        <a class="dropdown-item" href="<?php echo RUTA_LOGOUT?>">Cerrar sesión</a>
+                        <a class="dropdown-item" href="<?php echo RUTA_PERFIL?>">Perfil</a>
                     </div>
                 </li>
             </ul>
