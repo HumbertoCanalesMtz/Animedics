@@ -46,9 +46,6 @@ class EscritorAdmin{
                     <form method='post' action='<?php echo RUTA_ADMINISTRACION?>'>
                     <input type='hidden' name='especie' value='<?php echo $especie['nombre']?>'>
                     
-                    <td>
-                        <button class='btn boton-naranja' name='eliminar_especie'><span class='material-icons'>clear</span></button>
-                    </td>
                     </form>
                 </tr>
         <?php }
