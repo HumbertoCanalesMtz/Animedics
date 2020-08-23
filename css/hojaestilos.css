@@ -140,13 +140,33 @@ button.boton-gris:hover{
     background-color: #585858;
     color: white;
 }
-input.txb{
+.txb{
     border: #00C49E inset 3px;
 }
-input.txb:hover{
+.txb:hover{
     border: #008f72 outset 3px;
 }
-input.txb::placeholder{
+.txb::placeholder{
+    font-family: Reem;
+    color: gray;
+}
+.txb-gris{
+    border: #808080 inset 3px;
+}
+.txb-gris:hover{
+    border: #585858 outset 3px;
+}
+.txb-gris::placeholder{
+    font-family: Reem;
+    color: gray;
+}
+.txb-naranja{
+    border: #FF9700 inset 3px;
+}
+.txb-naranja:hover{
+    border: #c37500 outset 3px;
+}
+.txb-naranja::placeholder{
     font-family: Reem;
     color: gray;
 }
