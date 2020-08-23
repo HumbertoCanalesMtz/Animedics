@@ -31,10 +31,22 @@ class Conexion{
         {
             include_once 'config.inc.php';
             $this->PDOLocal=new PDO('mysql:host='.NOMBRE_SERVIDOR.'; dbname='.NOMBRE_BD.'', NOMBRE_USUARIO, PASSWORD);
-            $resultado=$this->PDOLocal->query($query);
+            $resultado=$this->PDOLocal->prepare($query);
+            $resultado->execute();
             $renglon=$resultado->fetchAll(PDO::FETCH_OBJ);
-            
             return $renglon;
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+    public function ejecutarSQL($query)
+    {
+        try
+        {
+            include_once 'config.inc.php';
+            $this->PDOLocal=new PDO('mysql:host='.NOMBRE_SERVIDOR.'; dbname='.NOMBRE_BD.'', NOMBRE_USUARIO, PASSWORD);
+            $this->PDOLocal->query($query);
         }
         catch(PDOException $e){
             echo $e->getMessage();
