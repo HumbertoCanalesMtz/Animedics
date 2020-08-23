@@ -119,7 +119,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="2"><button type="submit" class="btn boton" name="agendar">Agendar Cita</button></td>
+                <td colspan="2"><button type="submit" class="btn boton fuente-WM" name="agendar">Agendar Cita</button></td>
             </tr>
         </tfoot>
     </table>

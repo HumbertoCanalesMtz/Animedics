@@ -41,14 +41,8 @@
     </tr>
     <?php $validador -> mostrar_error_telefono();?>
     <tr>
-        <td><button class="btn boton" name="cancelar"><span class="material-icons">edit</span>Cancelar</button></td>
-        <td><button class="btn boton" name="guardar"><span class="material-icons">edit</span>Guardar cambios</button>
+        <td><button class="btn boton-naranja" name="cancelar"><span class="material-icons">backspace</span> Cancelar</button></td>
+        <td><button class="btn boton" name="guardar"><span class="material-icons">edit</span> Guardar cambios</button>
         </td>
     </tr>
 </tbody>
-<tfoot>
-    <tr>
-        <th colspan="2"><a href="<?php echo RUTA_MASCOTAS?>" class="btn boton"><span
-                    class="material-icons icono-20">pets</span> Mis mascotas</a></th>
-    </tr>
-</tfoot>

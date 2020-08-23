@@ -27,11 +27,12 @@ if(isset($_POST['registrar'])){
 include_once "templates/declaracion.php";
 include_once "templates/navbar.php"
 ?>
+<div class="fila"></div>
 <div class="container">
     <div class="row fila borde-redondo">
         <div class="col-md-12 text-center fuente-R">
         <h1 class="fuente-WM verde separadito text-center">MIS MASCOTAS</h1><br>
-            <button type="button" class="btn boton" data-toggle="modal" data-target="#modalmascotas">
+            <button type="button" class="btn boton fuente-WM" data-toggle="modal" data-target="#modalmascotas">
                 Registrar a una nueva mascota
             </button>
             <div class="modal fade" id="modalmascotas" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -82,7 +83,7 @@ include_once "templates/navbar.php"
                                         </tbody>
                                         <tfoot>
                                             <td>
-                                                <button type="button" class="btn btn-secondary" name="cancelar"
+                                                <button type="button" class="btn boton-naranja" name="cancelar"
                                                     data-dismiss="modal">Cancelar</button>
                                             </td>
                                             <td>
@@ -112,8 +113,6 @@ include_once "templates/navbar.php"
             </div>
         </div>
     </div>
-    <div class="esconde-logo"></div>
-    <div class="esconde-logo"></div>
 </div>
 <div class="esconde-logo"></div>
 <?php include_once "templates/cierre.php";

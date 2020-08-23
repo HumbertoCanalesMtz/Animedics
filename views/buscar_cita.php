@@ -22,7 +22,7 @@ include_once "templates/declaracion.php";
 include_once "templates/navbar.php";
 ?>
  
-<div class="container fila borde-redondo borde-naranja">
+<div class="container fila borde-redondo borde-verde">
     <div class="row">
         <div class="col-md-12">
                 <h1 class="fuente-WM verde separadito text-center">DATOS DE LA CITA</h1>
@@ -128,6 +128,11 @@ include_once "templates/navbar.php";
                                     <tr><div class='alert alert-danger' role='alert'>No existe ninguna cita con ese folio, ingresa un folio valido</div></tr>
                             <?php } ?>
                             </tbody>
+                            <tfoot>
+                            <tr class="text-center">
+                            <td colspan="2"><a role="button" href="<?php echo SERVER?>" class="btn boton fuente-WM">Aceptar</a></td>
+                            </tr>
+                            </tfoot>
                         </table>    
                     </div>
                 </div>

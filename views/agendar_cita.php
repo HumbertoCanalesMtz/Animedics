@@ -27,13 +27,17 @@ if(isset($_POST['agendar'])){
 include_once "templates/declaracion.php";
 include_once "templates/navbar.php";
 ?>
+<div class="fila"></div>
 <div class="container-fluid columna">
         <div class="row fila">
-            <div class="container col-md-12 borde-redondo fila">
+            <div class="container col-md-12 borde-redondo borde-verde text-center fila">
                         <?php if(isset($_POST['agendar'])){
                             if($agendada){?>
-                                <h1 class="fuente-WM verde separadito text-center">¡TU CITA HA SIDO AGENDADA!</h1><br>
-                                Tu folio de seguimiento es el siguiente: <?php echo $folio?><?php
+                                <h1 class="fuente-WM verde separadito text-center">¡TU CITA HA SIDO AGENDADA</h1><br>
+                                <div class="row sombreado-g"></div>
+                                <p class="fila fuente-R icono-20">Tu folio de seguimiento es el siguiente: <b><?php echo $folio?></p></b>
+                                <a role="button" href="<?php echo SERVER?>" class="btn boton fuente-WM">Continuar</a>
+                                <?php
                             }} else{ ?>
                         <form action="<?php echo RUTA_AGENDAR_CITA?>" method="post">
                     <table class="table table-hover table-striped text-center fuente-R icono-20">
@@ -95,7 +99,7 @@ include_once "templates/navbar.php";
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2"><button type="submit" class="btn boton" name="agendar">Agendar Cita</button></td>
+                                <td colspan="2"><button type="submit" class="btn boton fuente-WM" name="agendar">Agendar Cita</button></td>
                             </tr>
                         </tfoot>
                     </table>
