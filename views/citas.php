@@ -6,12 +6,13 @@ include_once "app/Sesion.inc.php";
 include_once "app/Escritor.inc.php";
 include_once "app/Mascota.inc.php";
 include_once "app/Datos.inc.php";
-include_once "templates/declaracion.php";
-include_once "templates/navbar.php";
 
 if(!Sesion::sesion_iniciada()){
-    //Redireccion::redirigir(SERVER);
+    Redireccion::redirigir(SERVER);
 }
+
+include_once "templates/declaracion.php";
+include_once "templates/navbar.php";
 $titulo = "Citas - ".$mascota -> obtener_nombre();
 ?>
 <body class="fuente-R">

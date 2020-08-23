@@ -250,6 +250,12 @@ class Escritor{
         }
         return $cadena;
     }
+    public static function escribir_especies($conexion){
+        $especies = Extras::recuperar_especies($conexion);
+        foreach ($especies as $especie){?>
+            <option value="<?php echo $especie['id_especie']?>"><?php echo $especie['nombre']?></option>
+        <?php }
+    }
     public static function escribir_mascotas_cita($conexion, $id_persona){
         $mascotas = RepositorioMascota::recuperar_mascotas($conexion, $id_persona);
         foreach ($mascotas as $mascota){?>

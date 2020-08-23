@@ -58,8 +58,11 @@ include_once "templates/navbar.php"
                                                 <th><label for="petspecie">Especie:</label></th>
                                                 <td>
                                                     <select name="especie" id="petspecie">
-                                                        <option value="1">Perro</option>
-                                                        <option value="2">Gato</option>
+                                                        <?php
+                                                        Conexion::abrir_conexion(); 
+                                                        Escritor::escribir_especies(Conexion::obtener_conexion());
+                                                        Conexion::cerrar_conexion(); 
+                                                        ?>
                                                     </select>
                                                 </td>
                                             </tr>

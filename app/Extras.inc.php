@@ -11,6 +11,10 @@ class Extras{
             break;
             case 2:
                 echo RUTA_IMG.'/cato.gif';
+            break;
+            default:
+                echo RUTA_IMG.'/bugs.gif';
+            break;
         }
     }
 
@@ -66,5 +70,23 @@ class Extras{
         } else{
             return;
         }
+    }
+
+    public static function recuperar_especies($conexion){
+        $especies = [];
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM especie";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+                foreach ($resultado as $especie) {
+                    $especies[] = $especie;
+                }
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $especies;
     }
 }

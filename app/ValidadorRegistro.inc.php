@@ -145,9 +145,9 @@ class ValidadorRegistro{
                 return "El numéro de teléfono debe contener 10 dígitos";
             }
         }
-        if(!RepositorioUsuario::telefono_disponible($conexion, $telefono) && $this -> telefono != ""){
+        /*if(!RepositorioUsuario::telefono_disponible($conexion, $telefono) && $this -> telefono != ""){
             return "El telefono ingresado ya está en uso.";
-        }
+        }*/
         return "";
     }
 
