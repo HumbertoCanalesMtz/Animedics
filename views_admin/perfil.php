@@ -56,12 +56,12 @@ Conexion::cerrar_conexion();
 include_once "templates/declaracion.php";
 include_once "templates/navbar_admin.php";
 ?>
-<body>
-    <div class="container justify-content-center fila borde-redondo borde-verde">
-    <h1 class="fuente-WM verde separadito text-center">MI PERFIL</h1>
+<div class="fila"></div>
+<div class="container justify-content-center fila borde-redondo">
+    <h1 class="fuente-WM gris separadito text-center">MI PERFIL</h1>
     <form method="post" action="<?php echo htmlspecialchars(RUTA_PERFIL);?>">
         <table class="table table-hover bg-blanco text-center fuente-R">
-        <?php 
+            <?php 
             if(!isset($_POST['editar'])&&!isset($_POST['guardar'])&&!isset($_POST['cambiar'])&&!isset($_POST['guardar_clave'])){
                 include_once 'templates/perfil_ver_admin.php';
             }
@@ -91,6 +91,6 @@ include_once "templates/navbar_admin.php";
         ?>
         </table>
     </form>
-    </div>
+</div>
 <div class="esconde-logo"></div>
 <?php include_once "templates/cierre.php";?>

@@ -1,4 +1,4 @@
-<thead class="verde separadito">
+<thead class="gris separadito">
     <tr>
         <th colspan="2">
             <h4><?php echo $usuario -> obtener_nombres()." ".$usuario -> obtener_ap_paterno()." ".$usuario -> obtener_ap_materno()?>
@@ -20,8 +20,8 @@
         <td><?php echo $usuario -> obtener_telefono()?></td>
     </tr>
     <tr>
-        <td><button class="btn boton" name="cambiar"><span class="material-icons">edit</span> Cambiar
+        <td><button class="btn boton-gris" name="cambiar"><span class="material-icons">edit</span> Cambiar
                 contraseña</button></td>
-        <td><button class="btn boton" name="editar"><span class="material-icons">edit</span> Editar datos</button></td>
+        <td><button class="btn boton-gris" name="editar"><span class="material-icons">edit</span> Editar datos</button></td>
     </tr>
 </tbody>
