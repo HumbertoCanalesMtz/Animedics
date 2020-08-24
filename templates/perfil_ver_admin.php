@@ -1,4 +1,4 @@
-<thead class="gris separadito">
+<thead class="<?php if ($clase == 'admin') {echo 'gris';}elseif ($clase == 'vet') {echo 'naranja';} else{echo 'verde';}?> separadito">
     <tr>
         <th colspan="2">
             <h4><?php echo $usuario -> obtener_nombres()." ".$usuario -> obtener_ap_paterno()." ".$usuario -> obtener_ap_materno()?>

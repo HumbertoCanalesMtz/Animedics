@@ -1,4 +1,4 @@
-<footer class="borde-sup borde-g borde-verde">
+<footer class="borde-sup borde-g borde<?php if ($clase == 'admin') {echo '-gris';}elseif ($clase == 'vet') {echo '-naranja';}?>">
     <div class="sombreado-g"></div>
     <div class="container-fluid text-center centrado-vertical" style="background-color: white;">
         <div class="fila">
