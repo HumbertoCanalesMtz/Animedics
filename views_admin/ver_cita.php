@@ -24,10 +24,10 @@ include_once "templates/declaracion.php";
 include_once "templates/navbar_admin.php";
 ?>
 
-<div class="container fila borde-redondo borde-naranja">
+<div class="container fila borde-redondo borde-gris">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="fuente-WM verde separadito text-center">DATOS DE LA CITA</h1>
+            <h1 class="fuente-WM gris separadito text-center">DATOS DE LA CITA</h1>
             <div class="borde-sup"></div><br>
             <div class="d-flex justify-content-center centrado-vertical fila">
                 <table class="table-sm table-striped table-hover">
@@ -39,24 +39,24 @@ include_once "templates/navbar_admin.php";
                             <th colspan="4" class="text-center">DATOS DE LA CITA</th>
                         </tr>
                         <tr>
-                            <th colspan="2">Nombre del solicitante:</th>
-                            <td colspan="2"><?php echo $persona;?></td>
+                            <th>Nombre del solicitante:</th>
+                            <td colspan="3"><?php echo $persona;?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Folio:</th>
-                            <td colspan="2"><?php echo $cita -> obtener_folio();?></td>
+                            <th>Folio:</th>
+                            <td colspan="3"><?php echo $cita -> obtener_folio();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Fecha:</th>
-                            <td colspan="2"><?php echo $cita -> obtener_fecha();?></td>
+                            <th>Fecha:</th>
+                            <td colspan="3"><?php echo $cita -> obtener_fecha();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Hora:</th>
-                            <td colspan="2"><?php echo $cita -> obtener_hora();?></td>
+                            <th>Hora:</th>
+                            <td colspan="3"><?php echo $cita -> obtener_hora();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Servicio(s):</th>
-                            <td colspan="2"><?php
+                            <th>Servicio(s):</th>
+                            <td colspan="3"><?php
                                         $cadena = Escritor::escribir_servicios_cita(Conexion::obtener_conexion(), $cita -> obtener_folio());
                                         echo $cadena;
                                         ?></td>
@@ -65,28 +65,28 @@ include_once "templates/navbar_admin.php";
                             <th colspan="4" class="text-center">DATOS DE LA MASCOTA</th>
                         </tr>
                         <tr>
-                            <th colspan="2">Nombre:</th>
-                            <td colspan="2"><?php echo $mascota -> obtener_nombre();?></td>
+                            <th>Nombre:</th>
+                            <td colspan="3"><?php echo $mascota -> obtener_nombre();?></td>
                         </tr>
 
                         <tr>
-                            <th colspan="2">Sexo:</th>
-                            <td colspan="2"><?php echo $mascota -> obtener_sexo();?></td>
+                            <th>Sexo:</th>
+                            <td colspan="3"><?php echo $mascota -> obtener_sexo();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Edad:</th>
-                            <td colspan="2"><?php echo $mascota -> obtener_edad();?> años</td>
+                            <th>Edad:</th>
+                            <td colspan="3"><?php echo $mascota -> obtener_edad();?> años</td>
                         </tr>
                         <tr>
                             <th colspan="4" class="text-center">DATOS DEL VETERINARIO</th>
                         </tr>
                         <tr>
-                            <th colspan="2">Nombre:</th>
-                            <td colspan="2"><?php echo $veterinario['nombre'];?></td>
+                            <th>Nombre:</th>
+                            <td colspan="3"><?php echo $veterinario['nombre'];?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Cédula:</th>
-                            <td colspan="2"><?php echo $veterinario['cedula'];?></td>
+                            <th>Cédula:</th>
+                            <td colspan="3"><?php echo $veterinario['cedula'];?></td>
                         </tr>
                         <?php if($cita -> obtener_completada() == 'SI'){
                                 include_once 'app/Datos.inc.php';
@@ -98,40 +98,40 @@ include_once "templates/navbar_admin.php";
                             <th colspan="4" class="text-center">DATOS DE LA CONSULTA MÉDICA</th>
                         </tr>
                         <tr>
-                            <th colspan="2">Síntomas:</th>
-                            <td colspan="2"><?php echo $datos -> obtener_sintomas();?></td>
+                            <th>Síntomas:</th>
+                            <td colspan="3"><?php echo $datos -> obtener_sintomas();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Temperatura:</th>
-                            <td colspan="2"><?php echo $datos -> obtener_temperatura();?> °C</td>
+                            <th>Temperatura:</th>
+                            <td colspan="3"><?php echo $datos -> obtener_temperatura();?> °C</td>
                         </tr>
                         <tr>
-                            <th colspan="2">Peso:</th>
-                            <td colspan="2"><?php echo $datos -> obtener_peso();?> Kg</td>
+                            <th>Peso:</th>
+                            <td colspan="3"><?php echo $datos -> obtener_peso();?> Kg</td>
                         </tr>
                         <tr>
-                            <th colspan="2">Diagnóstico:</th>
-                            <td colspan="2"><?php echo $datos -> obtener_diagnostico();?></td>
+                            <th>Diagnóstico:</th>
+                            <td colspan="3"><?php echo $datos -> obtener_diagnostico();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Examen del abdomen:</th>
-                            <td colspan="2"><?php echo $datos -> obtener_abdomen();?></td>
+                            <th>Examen del abdomen:</th>
+                            <td colspan="3"><?php echo $datos -> obtener_abdomen();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Estado de los órganos internos:</th>
-                            <td colspan="2"><?php echo $datos -> obtener_org_int();?></td>
+                            <th>Estado de los órganos internos:</th>
+                            <td colspan="3"><?php echo $datos -> obtener_org_int();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Estado de los órganos externos:</th>
-                            <td colspan="2"><?php echo $datos -> obtener_org_ext();?></td>
+                            <th>Estado de los órganos externos:</th>
+                            <td colspan="3"><?php echo $datos -> obtener_org_ext();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">¿Había sido operado previamente?</th>
-                            <td colspan="2"><?php echo $datos -> obtener_operado();?></td>
+                            <th>¿Había sido operado previamente?</th>
+                            <td colspan="3"><?php echo $datos -> obtener_operado();?></td>
                         </tr>
                         <tr>
-                            <th colspan="2">Grado de deshidratación:</th>
-                            <td colspan="2"><?php echo $datos -> obtener_deshidratacion();?></td>
+                            <th>Grado de deshidratación:</th>
+                            <td colspan="3"><?php echo $datos -> obtener_deshidratacion();?></td>
                         </tr>
                         <?php }if(isset($receta) && $receta != null){?>
                         <tr>
@@ -155,7 +155,7 @@ include_once "templates/navbar_admin.php";
                             } 
                             else{ ?>
                         <tr>
-                        <td colspan="2"><div class='alert alert-danger' role='alert'>No existe ninguna cita con ese folio, ingresa
+                        <td colspan="4"><div class='alert alert-danger' role='alert'>No existe ninguna cita con ese folio, ingresa
                                 un folio valido</div></td>
                         </tr>
                         <?php } ?>

@@ -28,8 +28,6 @@ include_once "templates/declaracion.php";
 include_once "templates/navbar.php";
 ?>
 <div class="fila"></div>
-<div class="container-fluid columna">
-        <div class="row fila">
             <div class="container col-md-12 borde-redondo borde-verde text-center fila">
                         <?php if(isset($_POST['agendar'])){
                             if($agendada){?>

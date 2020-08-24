@@ -144,73 +144,73 @@ class Escritor{
                                 <tbody>
                                     <tr>
                                         <th>Fecha:</th>
-                                        <td><?php echo $cita -> obtener_fecha();?></td>
+                                        <td colspan="3"><?php echo $cita -> obtener_fecha();?></td>
                                     </tr>
                                     <tr>
                                         <th>Hora:</th>
-                                        <td><?php echo $cita -> obtener_hora();?></td>
+                                        <td colspan="3"><?php echo $cita -> obtener_hora();?></td>
                                     </tr>
                                     <tr>
                                         <th>Servicio(s):</th>
-                                        <td><?php
+                                        <td colspan="3"><?php
                                         $cadena = Escritor::escribir_servicios_cita(Conexion::obtener_conexion(), $cita -> obtener_folio());
                                         echo $cadena;
                                         ?></td>
                                     </tr>
                                     <tr>
                                         <th>Veterinario:</th>
-                                        <td><?php echo $veterinario['nombre']?></td>
+                                        <td colspan="3"><?php echo $veterinario['nombre']?></td>
                                     </tr>
                                     <tr>
                                         <th>Cédula:</th>
-                                        <td><?php echo $veterinario['cedula']?></td>
+                                        <td colspan="3"><?php echo $veterinario['cedula']?></td>
                                     </tr>
                                     <tr>
                                         <th>Folio de la cita:</th>
-                                        <td><?php echo $cita -> obtener_folio();?></td>
+                                        <td colspan="3"><?php echo $cita -> obtener_folio();?></td>
                                     </tr>
                                     <?php if(isset($datos) && $datos != null){
                                     $receta = RepositorioCita::obtener_receta(Conexion::obtener_conexion(), $datos -> obtener_id_datos());
                                     ?>
-                                    <tr><th colspan=2 class="text-center">DATOS DE LA CONSULTA MÉDICA</th></tr>
+                                    <tr><th colspan="4" class="text-center">DATOS DE LA CONSULTA MÉDICA</th></tr>
                                     <tr>
                                         <th>Síntomas:</th>
-                                        <td><?php echo $datos -> obtener_sintomas();?></td>
+                                        <td colspan="3"><?php echo $datos -> obtener_sintomas();?></td>
                                     </tr>
                                     <tr>
                                         <th>Temperatura:</th>
-                                        <td><?php echo $datos -> obtener_temperatura();?> °C</td>
+                                        <td colspan="3"><?php echo $datos -> obtener_temperatura();?> °C</td>
                                     </tr>
                                     <tr>
                                         <th>Peso:</th>
-                                        <td><?php echo $datos -> obtener_peso();?> Kg</td>
+                                        <td colspan="3"><?php echo $datos -> obtener_peso();?> Kg</td>
                                     </tr>
                                     <tr>
                                         <th>Diagnóstico:</th>
-                                        <td><?php echo $datos -> obtener_diagnostico();?></td>
+                                        <td colspan="3"><?php echo $datos -> obtener_diagnostico();?></td>
                                     </tr>
                                     <tr>
                                         <th>Examen del abdomen:</th>
-                                        <td><?php echo $datos -> obtener_abdomen();?></td>
+                                        <td colspan="3"><?php echo $datos -> obtener_abdomen();?></td>
                                     </tr>
                                     <tr>
                                         <th>Estado de los órganos internos:</th>
-                                        <td><?php echo $datos -> obtener_org_int();?></td>
+                                        <td colspan="3"><?php echo $datos -> obtener_org_int();?></td>
                                     </tr>
                                     <tr>
                                         <th>Estado de los órganos externos:</th>
-                                        <td><?php echo $datos -> obtener_org_ext();?></td>
+                                        <td colspan="3"><?php echo $datos -> obtener_org_ext();?></td>
                                     </tr>
                                     <tr>
                                         <th>¿Había sido operado previamente?</th>
-                                        <td><?php echo $datos -> obtener_operado();?></td>
+                                        <td colspan="3"><?php echo $datos -> obtener_operado();?></td>
                                     </tr>
                                     <tr>
                                         <th>Grado de deshidratación:</th>
-                                        <td><?php echo $datos -> obtener_deshidratacion();?></td>
+                                        <td colspan="3"><?php echo $datos -> obtener_deshidratacion();?></td>
                                     </tr>
                                     <?php } if(isset($receta) && $receta != null){?>
-                                    <tr><th colspan=2 class="text-center">RECETA MÉDICA</th></tr>
+                                    <tr><th colspan="4" class="text-center">RECETA MÉDICA</th></tr>
                                     <tr>
                                         <th>Medicamento</th>
                                         <th>Dosis</th>
