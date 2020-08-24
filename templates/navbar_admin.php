@@ -24,7 +24,49 @@ include_once 'app/Conexion.inc.php';
                         Veterinaria
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="<?php echo RUTA_VERUSUARIOS?>">Usuarios</a>
+                        <a class="dropdown-item" href="<?php echo RUTA_VERUSUARIOS?>">
+                        <ul class="list-group">
+                            <?php
+                             $conectado=new Conexion();
+                             Conexion::abrir_conexion();
+                             $contar="SELECT count(cedula) as n from veterinarios";
+                             $contado=$conectado->query(Conexion::obtener_conexion(),$contar);
+                               echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
+                                    Veterinarios";
+                                foreach ($contado as $xd)
+                                {
+                                    echo "<span class='badge badge-success badge-pill'>$xd->n</span>";
+                                }
+                                    echo "</li>";
+                            ?>
+                            <?php
+                             $conectado=new Conexion();
+                             Conexion::abrir_conexion();
+                             $contar="SELECT count(rol) as n from usuarios_sistema where rol = 'Administrador'";
+                             $contado=$conectado->query(Conexion::obtener_conexion(),$contar);
+                               echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
+                                    Administradores";
+                                foreach ($contado as $xd)
+                                {
+                                    echo "<span class='badge badge-success badge-pill'>$xd->n</span>";
+                                }
+                                    echo "</li>";
+                            ?>
+                            <?php
+                             $conectado=new Conexion();
+                             Conexion::abrir_conexion();
+                             $contar="SELECT count(rol) as n from usuarios_sistema where rol = 'Cliente'";
+                             $contado=$conectado->query(Conexion::obtener_conexion(),$contar);
+                               echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
+                                    Clientes";
+                                foreach ($contado as $xd)
+                                {
+                                    echo "<span class='badge badge-success badge-pill'>$xd->n</span>";
+                                }
+                                    echo "</li>";
+                            ?>
+                            </ul>
+                        </a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -44,7 +86,7 @@ include_once 'app/Conexion.inc.php';
                                     Servicios";
                                 foreach ($contado as $xd)
                                 {
-                                    echo "<span class='badge badge-primary badge-pill'>$xd->n</span>";
+                                    echo "<span class='badge badge-success badge-pill'>$xd->n</span>";
                                 }
                                     echo "</li>";
                             ?>
@@ -57,7 +99,7 @@ include_once 'app/Conexion.inc.php';
                                     Especies";
                                 foreach ($contado as $xd)
                                 {
-                                    echo "<span class='badge badge-primary badge-pill'>$xd->n</span>";
+                                    echo "<span class='badge badge-success badge-pill'>$xd->n</span>";
                                 }
                                     echo "</li>";
                             ?>
@@ -70,7 +112,7 @@ include_once 'app/Conexion.inc.php';
                                     Medicamentos";
                                 foreach ($contado as $xd)
                                 {
-                                    echo "<span class='badge badge-primary badge-pill'>$xd->n</span>";
+                                    echo "<span class='badge badge-success badge-pill'>$xd->n</span>";
                                 }
                                     echo "</li>";
                             ?>

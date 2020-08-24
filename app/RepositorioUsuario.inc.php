@@ -37,6 +37,20 @@ class RepositorioUsuario {
                 $sentencia_2 -> bindParam(':correo', $resultadito['correo'], PDO::PARAM_STR);
                 $sentencia_2 -> bindParam(':id_usuario', $resultadito['id_usuario'], PDO::PARAM_INT);
                 $sentencia_2 -> execute();
+                if ($rol_temp == 2) {
+                    $select_vet = "SELECT * FROM personas WHERE nombres = :nombres_vet";
+                    $sentencia_select_vet = $conexion -> prepare($select_vet);
+                    $nombres_vet = $usuario -> obtener_nombres();
+                    $sentencia_select_vet -> bindParam(':nombres_vet', $nombres_vet , PDO::PARAM_STR);
+                    $sentencia_select_vet -> execute();
+                    $resultadito_vet = $sentencia_select_vet -> fetch();    
+                    $sql_vet = "INSERT INTO veterinarios(cedula, persona) VALUES(:cedula, :persona)";
+                    $cedula_temp = $usuario->obtener_cedula();
+                    $sentencia_vet = $conexion -> prepare($sql_vet);
+                    $sentencia_vet -> bindParam(':cedula', $cedula_temp, PDO::PARAM_STR);
+                    $sentencia_vet -> bindParam(':persona', $resultadito_vet['id_persona'], PDO::PARAM_INT);
+                    $sentencia_vet -> execute();
+                }
 	    } catch(PDOException $ex){
 		print "ERROR: ".$ex ->getMessage();
             }

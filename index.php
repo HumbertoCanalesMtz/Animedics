@@ -29,7 +29,7 @@ if($partes_ruta[0] == 'Animedics'){
                     $ruta_elegida = "views_admin/usuarios.php";
                     break;
                 case 'registrar':
-                    $ruta_elegida = "views_admin/registro.php";
+                    $ruta_elegida = "views_admin/registrar.php";
                     break;    
                 case 'perfil':
                     $ruta_elegida = "views_admin/perfil.php";
