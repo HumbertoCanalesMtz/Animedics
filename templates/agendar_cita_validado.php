@@ -1,5 +1,5 @@
 <form action="<?php echo RUTA_AGENDAR_CITA?>" method="post">
-    <table class="table table-hover table-striped text-center fuente-R icono-20">
+    <table class="table table-hover table-striped fuente-R icono-15">
         <thead class="fuente-WM verde">
             <tr>
                 <th colspan="2">Introduzca los datos solicitados</th>
@@ -79,7 +79,7 @@
             <tr>
                 <td>Nombre(s)</td>
                 <td>
-                    <input class="txb" type="text" name="nombres" id="names" size="60"
+                    <input class="txb" type="text" name="nombres" id="names" size="30"
                         <?php $validador -> mostrar_nombres();?>>
                 </td>
             </tr>
@@ -103,7 +103,7 @@
             <tr>
                 <td>Correo de contacto</td>
                 <td>
-                    <input class="txb" type="text" name="correo" id="email" size="60"
+                    <input class="txb" type="text" name="correo" id="email" size="30"
                         <?php $validador -> mostrar_correo();?>>
                 </td>
             </tr>
@@ -118,7 +118,7 @@
             <?php echo $validador -> mostrar_error_telefono();?>
         </tbody>
         <tfoot>
-            <tr>
+            <tr class="text-center">
                 <td colspan="2"><button type="submit" class="btn boton fuente-WM" name="agendar">Agendar Cita</button></td>
             </tr>
         </tfoot>

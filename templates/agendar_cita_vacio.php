@@ -1,7 +1,7 @@
 <form action="<?php echo RUTA_AGENDAR_CITA?>" method="post">
-    <table class="table table-hover table-striped text-center fuente-R icono-20">
+    <table class="table table-hover table-striped fuente-R icono-15">
         <thead class="fuente-WM verde">
-            <tr>
+            <tr class="text-center">
                 <th colspan="2">Introduzca los datos solicitados</th>
             </tr>
         </thead>
@@ -59,7 +59,6 @@
                         <option value="18:00:00">6:00 p.m.</option>
                         <option value="19:00:00">7:00 p.m.</option>
                         <option value="20:00:00">8:00 p.m.</option>
-
                     </select>
                 </td>
             </tr>
@@ -77,7 +76,7 @@
             <tr>
                 <td>Nombre(s)</td>
                 <td>
-                    <input class="txb" type="text" name="nombres" id="names" size="60" placeholder="Ej. Gustavo Adolfo">
+                    <input class="txb" type="text" name="nombres" id="names" size="30" placeholder="Ej. Gustavo Adolfo">
                 </td>
             </tr>
             <tr>
@@ -96,7 +95,7 @@
             <tr>
                 <td>Correo de contacto</td>
                 <td>
-                    <input class="txb" type="text" name="correo" id="email" size="60" placeholder="ejemplo@equisde.com">
+                    <input class="txb" type="text" name="correo" id="email" size="30" placeholder="ejemplo@equisde.com">
                 </td>
             </tr>
             <tr>
@@ -107,7 +106,7 @@
             </tr>
         </tbody>
         <tfoot>
-            <tr>
+            <tr class="text-center">
                 <td colspan="2"><button type="submit" class="btn boton fuente-WM" name="agendar">Agendar Cita</button></td>
             </tr>
         </tfoot>

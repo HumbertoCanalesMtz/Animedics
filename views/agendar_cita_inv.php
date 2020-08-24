@@ -41,7 +41,7 @@ include_once "templates/navbar.php";
 ?>
 <div class="container-fluid columna">
         <div class="row fila">
-            <div class="container col-md-12 borde-redondo borde-verde text-center fila">
+            <div class="container col-md-12 borde-redondo borde-verde d-flex justify-content-center fila">
                         <?php if(isset($_POST['agendar'])){
                             if($agendada){?>
                                 <h1 class="fuente-WM verde separadito text-center">¡TU CITA HA SIDO AGENDADA</h1><br>
