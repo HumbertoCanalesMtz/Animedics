@@ -17,6 +17,7 @@ define("RUTA_LOGOUT", SERVER."/logout");
 define("RUTA_ADMINISTRACION", SERVER."/administracion");
 define("RUTA_VERUSUARIOS", SERVER."/verusuarios");
 define("RUTA_VER_CITA", SERVER."/ver-cita");
+define("RUTA_REGISTRAR", SERVER."/registrar");
 
 //Rutas para veterinarios
 define("RUTA_CONSULTAS", SERVER."/consultas");

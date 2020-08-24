@@ -40,8 +40,8 @@ if($partes_ruta[0] == 'Animedics'){
                 case 'ver-cita':
                     $ruta_elegida = "views_admin/ver_cita.php";
                     break;
-                case 'registro':
-                    $ruta_elegida = "views_admin/registro.php";
+                case 'registrar':
+                    $ruta_elegida = "views_admin/registrar.php";
                     break;
                 case 'agendar-cita':
                     $ruta_elegida = "views_admin/agendar_cita_admin.php";
