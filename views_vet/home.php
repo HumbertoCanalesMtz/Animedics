@@ -55,7 +55,6 @@
                     </tr>
                     <tr>
                         <th>Folio</th>
-                        <th>Veterinario</th>
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Mascota</th>

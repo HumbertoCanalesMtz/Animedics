@@ -48,7 +48,6 @@ class EscritorVet{
     public static function escribir_cita($cita, $conexion){ ?>
             <tr>
                 <td> <?php echo $cita['Folio']?></td>
-                <td> <?php echo $cita['Veterinario']?></td>
                 <td> 
                 <?php 
                 $fecha = date("d-m-Y",strtotime($cita['Fecha']));
