@@ -1,67 +1,87 @@
 <?php
-    $titulo = 'Administrador Huellitas';
+    $titulo = 'Administrador - Huellitas';
     $clase = 'admin';
     $icono = 'iconadmin';
+
     include_once 'app/config.inc.php';
     include_once 'app/Conexion.inc.php';
+    include_once 'app/Datos.inc.php';
+    include_once 'app/Medicamento.inc.php';
+    include_once 'app/RepositorioCita.inc.php';
+    include_once 'app/EscritorAdmin.inc.php';
+    include_once 'app/Extras.inc.php';
+    
+    
+    if(isset($_POST['guardar_consulta'])){
+        Conexion::abrir_conexion();
+        $datos = new Datos('',$_POST['sintomas'],$_POST['temperatura'],$_POST['peso'],$_POST['diagnostico'],$_POST['abdomen'],
+        $_POST['org_int'],$_POST['org_ext'],$_POST['operado'],$_POST['deshidratacion']);
+        RepositorioCita::agregar_datos_medicos(Conexion::obtener_conexion(), $_POST['folio_hid'], $datos);
+        Conexion::cerrar_conexion();
+    }
+    if(isset($_POST['guardar_med'])){
+        Conexion::abrir_conexion();
+        $medicamento = new Medicamento($_POST['medicamento'],$_POST['dosis'],$_POST['dias'],$_POST['horas']);
+        RepositorioCita::agregar_med_receta(Conexion::obtener_conexion(), $_POST['folio_hid'], $medicamento);
+        Conexion::cerrar_conexion();
+    }
+    if(isset($_POST['completar'])){
+        Conexion::abrir_conexion();
+        RepositorioCita::completar(Conexion::obtener_conexion(), $_POST['folio_com']);
+        Conexion::cerrar_conexion();
+    }
     include_once 'templates/declaracion.php';
     include_once 'templates/navbar_admin.php';
+    include_once 'modals/modal_receta.php';
+    include_once 'modals/modal_consulta.php';
 ?>
 <div class="container-fluid fila fuente-R d-flex justify-content-center">
     <div>
-        <?php
-        $conectado=new Conexion();
-        Conexion::abrir_conexion();
-        $consulta="SELECT * FROM animedics.total_citas";
-        $tabla=$conectado->query(Conexion::obtener_conexion(),$consulta);
-        echo "<table class='table table-light table-striped table-hover text-center'>
+        <table class='table table-light table-striped table-hover text-center'>
                 <thead class='thead-dark'>
                     <tr>
+                        <td>Filtrar las citas por:</td>
+                        <form method='post' action='<?php echo RUTA_CITAS?>'>
+                        <td><button class="btn boton-gris" name="todas">Todas</button></td>
+                        <td><button class="btn boton-gris" name="pendientes">Pendientes</button></td>
+                        <td><button class="btn boton-gris" name="completadas">Completadas</button></td>
+                        <td><button class="btn boton-gris" name="invitados">Usuarios</button></td>
+                        <td><button class="btn boton-gris" name="usuarios">Invitados</button></td>
+                        </form>
+                        <form method='post' action='<?php echo RUTA_AGENDAR_CITA?>'>
+                        <td colspan="3"><button class="btn boton">Agregar una nueva cita</button></td>
+                        </form>
+                    </tr>
+                    <tr>
                         <th>Folio</th>
+                        <th>Veterinario</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
                         <th>Mascota</th>
                         <th>Especie</th>
                         <th>Dueño</th>
-                        <th>Telefono</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Veterinario</th>
-                        <th colspan='2'>Llenar datos</th>
+                        <th>Teléfono</th>
+                        <th colspan="3">Administrar</th>
                     </tr>
                 </thead>
-                <tbody>";
-                foreach ($tabla as $fila)
-                {
-                    echo "<tr>";
-                    echo "<td> $fila->Folio </td>";
-                    echo "<td> $fila->Mascota </td>";
-                    echo "<td> $fila->Especie </td>";
-                    echo "<td> $fila->Dueño </td>";
-                    echo "<td> $fila->Telefono </td>";
-                    echo "<td> $fila->Fecha </td>";
-                    echo "<td> $fila->Hora </td>";
-                    echo "<td> $fila->Veterinario </td>";  
-                    echo "<td>
-                    <button data-toggle='modal' data-target='#ModalConsulta' class='btn boton-gris'>
-                    <span class='material-icons'>create</span>
-                    </button>
-                    </td>";
-                    echo "<td>
-                    <button data-toggle='modal' data-target='#ModalReceta' class='btn boton'>
-                    <span class='material-icons'>add</span>
-                    </button>
-                    </td>";
-                    echo "</tr>";
-                }
-                    echo "</tbody>";
-                    include_once 'modals/modal_receta.php';
-                    include_once 'modals/modal_consulta.php';
+                <tbody>
+        <?php
+        Conexion::abrir_conexion();
+        if(isset($_POST['completadas'])){
+            EscritorAdmin::escribir_citas_completadas(Conexion::obtener_conexion());
+        } else if(isset($_POST['pendientes'])){
+            EscritorAdmin::escribir_citas_pendientes(Conexion::obtener_conexion());
+        } else if(isset($_POST['todas'])){
+            EscritorAdmin::escribir_citas(Conexion::obtener_conexion());
+        } else if(isset($_POST['usuarios'])){
+            EscritorAdmin::escribir_citas_usuarios(Conexion::obtener_conexion());
+        } else if(isset($_POST['invitados'])){
+            EscritorAdmin::escribir_citas_invitados(Conexion::obtener_conexion());
+        } else{
+            EscritorAdmin::escribir_citas(Conexion::obtener_conexion());
+        }
         Conexion::cerrar_conexion();
-    ?>
-        <tfoot class="text-center fuente-WM">
-            <tr>
-                <td colspan="10"><button class="btn boton">Agregar</button></td>
-            </tr>
-        </tfoot>
+        ?>
         </table>
     </div>
 </div>

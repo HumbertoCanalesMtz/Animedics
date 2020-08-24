@@ -7,31 +7,27 @@
             </div>
             <form action="" method="post">
                 <div class="modal-body admin text-center">
+                    <input type='hidden' name='folio_hid'>
                     <label for="meds">Medicamento:</label>
+                    <select class='txb-gris' name='medicamento' id='meds'>
                     <?php
-                    $conectado=new Conexion();
                     Conexion::abrir_conexion();
-                    $contar="SELECT * from medicamento";
-                    $contado=$conectado->query(Conexion::obtener_conexion(),$contar);
-                     echo "<select class='txb-gris' name='medicamento' id='meds'>";
-                     foreach ($contado as $value)
-                    {   
-                     echo "<option value='.$value->id_medicamento.'>$value->nom_comercial</option>";
-                    }
-                     echo "</select>";
-                    ?><br>
+                    EscritorAdmin::escribir_medicamentos(Conexion::obtener_conexion());
+                    Conexion::cerrar_conexion();
+                    ?>
+                    </select>
+                    <br>
                     <label for="dose">Tomar (cantidad)</label>
-                    <input type="text" class="txb-gris" name="dosis" id="dose" placeholder="Ej. 3 (númerico)">
-                    <input type="text" class="txb-gris" name="dosis" id="dose" placeholder="Ej. pastillas/ml"><br>
+                    <input type="text" class="txb-gris" name="dosis" id="dose" placeholder="Ej. 3 pastillas/ 100 ml"><br>
                     <label for="hrs">Cada (horas)</label>
-                    <input type="text" class="txb-gris" name="horas" id="hrs" placeholder="Ej. 8"><br>
+                    <input type="number" class="txb-gris" name="horas" id="hrs" placeholder="Ej. 8"><br>
                     <label for="days">Durante (dias)</label>
-                    <input type="text" class="txb-gris" name="dias" id="days" placeholder="Ej. 3">
+                    <input type="number" class="txb-gris" name="dias" id="days" placeholder="Ej. 3">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn boton-naranja" data-dismiss="modal"><span
                             class="material-icons">clear</span></button>
-                    <button type="submit" class="btn boton"><span class="material-icons">save</span></button>
+                    <button type="submit" name = "guardar_med" class="btn boton"><span class="material-icons">save</span></button>
                 </div>
             </form>
         </div>

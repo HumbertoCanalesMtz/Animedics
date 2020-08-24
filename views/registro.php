@@ -18,7 +18,6 @@
         $_POST['correo'], $_POST['clave_1'], $_POST['clave_2'], $_POST['nom_usuario'], $_POST['telefono']);
         //Si todos los datos son correctos, se crea un nuevo usuario con los datos validados.
         if($validador -> validar_registro()){
-            echo "Yes";
             $usuario = new Usuario('', $validador -> obtener_nombres(), $validador -> obtener_ap_paterno(), $validador -> obtener_ap_materno(),
             $validador -> obtener_correo(), password_hash($validador -> obtener_clave(),PASSWORD_DEFAULT), $validador -> obtener_nom_usuario(), $validador -> obtener_telefono(), 3, '');
             echo $usuario -> obtener_nombre_usuario();

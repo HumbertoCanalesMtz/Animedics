@@ -30,6 +30,18 @@ if($partes_ruta[0] == 'Animedics'){
                     break;
                 case 'perfil':
                     $ruta_elegida = "views_admin/perfil.php";
+                    break;
+                case 'citas':
+                    $ruta_elegida = "views_admin/home.php";
+                    break;
+                case 'ver-cita':
+                    $ruta_elegida = "views_admin/ver_cita.php";
+                    break;
+                case 'registro':
+                    $ruta_elegida = "views_admin/registro.php";
+                    break;
+                case 'agendar-cita':
+                    $ruta_elegida = "views_admin/agendar_cita_admin.php";
                     break;    
             }
         }
@@ -45,12 +57,18 @@ if($partes_ruta[0] == 'Animedics'){
                 case 'logout':
                     $ruta_elegida = "views/logout.php";
                     break;
-                case 'consultas':
-                    $ruta_elegida = "views_vet/consultas.php";
+                case 'citas':
+                    $ruta_elegida = "views_vet/home.php";
                     break;
                 case 'perfil':
                     $ruta_elegida = "views_vet/perfil.php";
-                    break;    
+                    break;
+                case 'ver-cita':
+                    $ruta_elegida = "views_vet/ver_cita.php";
+                    break;
+                case 'agendar-cita':
+                    $ruta_elegida = "views_vet/agendar_cita_vet.php";
+                    break;     
             }
         }
     //Rutas de los clientes

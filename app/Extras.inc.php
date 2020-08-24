@@ -89,4 +89,19 @@ class Extras{
         }
         return $especies;
     }
+    public static function recuperar_medicamentos($conexion){
+        $medicamentos = [];
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM medicamento";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> execute();
+                $medicamentos = $sentencia -> fetchAll();
+
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $medicamentos;
+    }
 }
