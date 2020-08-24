@@ -41,11 +41,11 @@ include_once "templates/navbar.php";
 ?>
 <div class="container-fluid columna">
         <div class="row fila">
-            <div class="container col-md-12 borde-redondo fila">
+            <div class="container col-md-12 borde-redondo borde-verde d-flex justify-content-center fila">
                         <?php if(isset($_POST['agendar'])){
                             if($agendada){?>
-                                <h1 class="fuente-WM verde separadito text-center">¡TU CITA HA SIDO AGENDADA!</h1><br>
-                                Tu folio de seguimiento es el siguiente: <?php echo $folio?><?php
+                                <h1 class="fuente-WM verde separadito text-center">¡TU CITA HA SIDO AGENDADA</h1><br>
+                                <p class="fuente-R icono-20">Tu folio de seguimiento es el siguiente: <?php echo $folio?></p><?php
                             } else{
                                 include_once 'templates/agendar_cita_validado.php';
                             }

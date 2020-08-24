@@ -20,9 +20,10 @@
         <td><?php echo $usuario -> obtener_telefono()?></td>
     </tr>
     <tr>
-        <td><button class="btn boton" name="cambiar"><span class="material-icons">edit</span> Cambiar
+        <td><button class="btn boton-gris" name="cambiar"><span class="material-icons">edit</span> Cambiar
                 contraseña</button></td>
-        <td><button class="btn boton" name="editar"><span class="material-icons">edit</span> Editar datos</button></td>
+        <td><button class="btn boton-gris" name="editar"><span class="material-icons">edit</span> Editar datos</button>
+        </td>
     </tr>
 </tbody>
 <tfoot>

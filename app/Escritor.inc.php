@@ -53,7 +53,7 @@ class Escritor{
                             </div>
                         </div>
                         <div class="card-footer flex-fill text-center"><a href="
-                        <?php echo RUTA_CITAS.'/'.str_replace(' ','-',$mascota -> obtener_nombre());?>" class="btn boton">Ver citas</a></div>
+                        <?php echo RUTA_CITAS.'/'.str_replace(' ','-',$mascota -> obtener_nombre());?>" class="btn boton fuente-R">Ver citas</a></div>
                     </div>
                 </div>
         <?php
