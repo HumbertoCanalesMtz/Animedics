@@ -36,17 +36,21 @@
     include_once 'modals/modal_consulta.php';
 ?>
 <div class="container-fluid fila fuente-R d-flex justify-content-center">
+<div class="fila columna borde-redondo">
     <div>
         <table class='table table-light table-striped table-hover text-center'>
                 <thead class='thead-dark'>
+                    <tr>
+                    <h1 class="fuente-WM gris separadito text-center">Citas</h1>
+                    </tr>
                     <tr>
                         <td>Filtrar las citas por:</td>
                         <form method='post' action='<?php echo RUTA_CITAS?>'>
                         <td><button class="btn boton-gris" name="todas">Todas</button></td>
                         <td><button class="btn boton-gris" name="pendientes">Pendientes</button></td>
                         <td><button class="btn boton-gris" name="completadas">Completadas</button></td>
-                        <td><button class="btn boton-gris" name="invitados">Usuarios</button></td>
-                        <td><button class="btn boton-gris" name="usuarios">Invitados</button></td>
+                        <td><button class="btn boton-gris" name="usuarios">Usuarios</button></td>
+                        <td><button class="btn boton-gris" name="invitados">Invitados</button></td>
                         </form>
                         <form method='post' action='<?php echo RUTA_AGENDAR_CITA?>'>
                         <td colspan="3"><button class="btn boton">Agregar una nueva cita</button></td>
@@ -83,6 +87,7 @@
         Conexion::cerrar_conexion();
         ?>
         </table>
+    </div>
     </div>
 </div>
 <div class="esconde-logo"></div>

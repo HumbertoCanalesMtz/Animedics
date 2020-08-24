@@ -239,6 +239,20 @@ class RepositorioAdmin{
         }
         return $citas;
     }
+    public static function ver_usuarios_rol($conexion, $rol){
+        $usuarios = [];
+        try{
+            $sql = "CALL buscar_usuarios_rol(:rol)";
+            $sentencia = $conexion -> prepare($sql);
+            $sentencia -> bindParam(':rol', $rol, PDO::PARAM_STR);
+            $sentencia -> execute();
+            $usuarios = $sentencia -> fetchAll();
+
+        } catch(PDOException $ex){
+            print "ERROR: ". $ex -> getMessage();
+        }
+        return $usuarios;
+    }
     public static function ver_citas_invitados($conexion){
         $citas = [];
         try{

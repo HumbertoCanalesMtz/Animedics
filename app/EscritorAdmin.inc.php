@@ -212,6 +212,25 @@ class EscritorAdmin{
                     <?php }?>
             </tr>
         <?php }
+    public static function escribir_usuarios($conexion, $rol){
+        $usuarios = RepositorioAdmin::ver_usuarios_rol($conexion, $rol);
+        if(count($usuarios)){
+            foreach ($usuarios as $usuario) {?>
+            <tr>
+                            <td><?php echo $usuario['Nombre_usuario']?></td>
+                            <td><?php echo $usuario['Nombre']?></td>
+                            <td><?php echo $usuario['Correo']?></td>
+                            <td><?php echo $usuario['Telefono']?></td>
+            </tr>
+        <?php
+        }} else{
+            ?>
+            <tr>
+                <th colspan="9">Aún no hay usuarios de este tipo agregados</th>
+            </tr>
+            <?php
+        }
+    }
     public static function escribir_medicamentos($conexion){
         $medicamentos = Extras::recuperar_medicamentos($conexion);
         foreach ($medicamentos as $medicamento){?>
