@@ -203,4 +203,132 @@ class RepositorioCita {
         }
         return $receta;
     }
+    public static function agregar_datos_medicos($conexion, $folio, $datos){
+        if(isset($conexion)){
+            try{
+                include_once 'app/Datos.inc.php';
+                $select = "SELECT id_cita FROM citas WHERE folio = :folio";
+                $sentencia_s = $conexion -> prepare($select);
+                $sentencia_s -> bindParam(':folio', $folio, PDO::PARAM_STR);
+                $sentencia_s -> execute();
+                $resultado = $sentencia_s -> fetch();
+
+                $sql = "INSERT INTO datos_medicos VALUES('',:sintomas,:temp,:peso,:diagnostico,:cita,:abdomen,
+                :org_int,:org_ext,:operado,:desh)";
+                $sintomas_temp = $datos-> obtener_sintomas();
+                $temp_temp = $datos -> obtener_temperatura();
+                $peso_temp = $datos -> obtener_peso();
+                $diagnostico_temp = $datos -> obtener_diagnostico();
+                $abdomen_temp = $datos -> obtener_abdomen();
+                $org_int_temp = $datos -> obtener_org_int();
+                $org_ext_temp = $datos -> obtener_org_ext();
+                $operado_temp = $datos -> obtener_operado();
+                $desh_temp = $datos -> obtener_deshidratacion();
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':sintomas', $sintomas_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':temp', $temp_temp, PDO::PARAM_INT);
+                $sentencia -> bindParam(':peso', $peso_temp , PDO::PARAM_INT);
+                $sentencia -> bindParam(':diagnostico', $diagnostico_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':cita', $resultado['id_cita'], PDO::PARAM_STR);
+                $sentencia -> bindParam(':abdomen', $abdomen_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':org_int', $org_int_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':org_ext', $org_ext_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':operado', $operado_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':desh', $desh_temp, PDO::PARAM_STR);
+                $sentencia -> execute();
+                
+                $id_datos = $conexion -> lastInsertId();
+                $sql_2 = "INSERT into recetas VALUES('', :datos)";
+                $sentencia_2 = $conexion -> prepare($sql_2);
+                $sentencia_2 -> bindParam(':datos', $id_datos , PDO::PARAM_INT);
+                $sentencia_2 -> execute();
+
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+    }
+    public static function agregar_med_receta($conexion, $folio, $medicamento){
+        if(isset($conexion)){
+            try{
+                include_once 'app/Medicamento.inc.php';
+                $select = "SELECT r.id_receta FROM citas AS c INNER JOIN datos_medicos AS dm ON dm.cita = c.id_cita
+                INNER JOIN recetas AS r ON r.datos = dm.id_datos WHERE c.folio = :folio";
+                $sentencia_s = $conexion -> prepare($select);
+                $sentencia_s -> bindParam(':folio', $folio, PDO::PARAM_STR);
+                $sentencia_s -> execute();
+                $resultado = $sentencia_s -> fetch();
+
+                $sql = "INSERT INTO receta_medicamento VALUES(:receta,:medicamento,:dosis,:horas,:dias)";
+                $med_temp = $medicamento -> obtener_nombre();
+                $dosis_temp = $medicamento -> obtener_dosis();
+                $horas_temp = $medicamento -> obtener_horas();
+                $dias_temp = $medicamento -> obtener_dias();
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':receta', $resultado['id_receta'], PDO::PARAM_INT);
+                $sentencia -> bindParam(':medicamento', $med_temp, PDO::PARAM_INT);
+                $sentencia -> bindParam(':dosis', $dosis_temp , PDO::PARAM_STR);
+                $sentencia -> bindParam(':horas', $horas_temp, PDO::PARAM_STR);
+                $sentencia -> bindParam(':dias', $dias_temp, PDO::PARAM_STR);
+                $sentencia -> execute();
+
+            } catch(PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+    }
+    public static function revisar_datos_med($conexion, $folio){
+        $existen_datos = false;
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM datos_medicos AS dm INNER JOIN citas AS c ON dm.cita = c.id_cita
+                WHERE c.folio = :folio";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':folio', $folio, PDO::PARAM_STR);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+                if(count($resultado)){
+                    $existen_datos = false;
+                } else{
+                    $existen_datos = true;
+                }
+            } catch (PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $existen_datos;
+    }
+    public static function completada($conexion, $folio){
+        $completada = false;
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM citas WHERE folio = :folio";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':folio', $folio, PDO::PARAM_STR);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetch();
+                if($resultado['completada'] == 'NO'){
+                    $completada = false;
+                } else if($resultado['completada'] == 'SI'){
+                    $completada = true;
+                }
+            } catch (PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $completada;
+    }
+    public static function completar($conexion, $folio){
+        if(isset($conexion)){
+            try{
+                $sql = "UPDATE citas SET completada = 'SI' WHERE folio = :folio";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':folio', $folio, PDO::PARAM_STR);
+                $sentencia -> execute();
+
+            } catch (PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+    }
 }   

@@ -104,3 +104,17 @@ $('#ModalMedicamento').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="nombre_medicamento"]').val(medicamento);
     $(e.currentTarget).find('input[name="medicamento_hid"]').val(medicamento);
 });
+
+$('#ModalConsulta').on('show.bs.modal', function(e) {
+
+    var folio = $(e.relatedTarget).data('folio');
+    
+    $(e.currentTarget).find('input[name="folio_hid"]').val(folio);
+});
+
+$('#ModalReceta').on('show.bs.modal', function(e) {
+
+    var folio = $(e.relatedTarget).data('folio');
+    
+    $(e.currentTarget).find('input[name="folio_hid"]').val(folio);
+});

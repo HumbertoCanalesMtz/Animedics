@@ -18,6 +18,10 @@
     include_once 'modals/modal_especie.php';
     include_once 'modals/modal_meds.php';
 
+    $error_serv = null;
+    $error_esp = null;
+    $error_med = null;
+
     if(isset($_POST['eliminar_servicio'])){
         Conexion::abrir_conexion();
         RepositorioAdmin::eliminar_servicio(Conexion::obtener_conexion(), $_POST['servicio']);
@@ -30,7 +34,11 @@
     }
     if(isset($_POST['agregar_servicio'])){
         Conexion::abrir_conexion();
-        RepositorioAdmin::agregar_servicio(Conexion::obtener_conexion(), $_POST['nuevo_servicio']);
+        if(!RepositorioAdmin::comprobar_servicio(Conexion::obtener_conexion(), $_POST['nuevo_servicio'])){
+            RepositorioAdmin::agregar_servicio(Conexion::obtener_conexion(), $_POST['nuevo_servicio']);
+        } else{
+            $error_serv = "El servicio que intentaste agregar ya existe";
+        }
         Conexion::cerrar_conexion();
     }
     if(isset($_POST['eliminar_especie'])){
@@ -45,7 +53,11 @@
     }
     if(isset($_POST['agregar_especie'])){
         Conexion::abrir_conexion();
-        RepositorioAdmin::agregar_especie(Conexion::obtener_conexion(), $_POST['nueva_especie']);
+        if(!RepositorioAdmin::comprobar_especie(Conexion::obtener_conexion(), $_POST['nueva_especie'])){
+            RepositorioAdmin::agregar_especie(Conexion::obtener_conexion(), $_POST['nueva_especie']);
+        } else{
+            $error_esp = "La especie que intentaste agregar ya existe";
+        }
         Conexion::cerrar_conexion();
     }
     if(isset($_POST['eliminar_medicamento'])){
@@ -60,13 +72,20 @@
     }
     if(isset($_POST['agregar_medicamento'])){
         Conexion::abrir_conexion();
-        RepositorioAdmin::agregar_medicamento(Conexion::obtener_conexion(), $_POST['nuevo_medicamento']);
+        if(!RepositorioAdmin::comprobar_medicamento(Conexion::obtener_conexion(), $_POST['nuevo_medicamento'])){
+            RepositorioAdmin::agregar_medicamento(Conexion::obtener_conexion(), $_POST['nuevo_medicamento']);
+        } else{
+            $error_med = "El medicamento que intentaste agregar ya existe";
+        }
         Conexion::cerrar_conexion();
     }
 ?>
 <div class="container-fluid columna fila fuente-R icono-20">
     <div class="row text-center">
         <div class="col-md-4">
+        <?php if(isset($error_serv)&&$error_serv!=null){?>
+        <div class='alert alert-danger text-center' role='alert'><?php echo $error_serv?></div>
+        <?php } ?>
             <table class="table table-light table-hover table-striped">
                 <thead class="thead-dark">
                     <tr>
@@ -91,6 +110,9 @@
             </table>
         </div>
         <div class="col-md-4">
+        <?php if(isset($error_esp)&&$error_esp!=null){?>
+        <div class='alert alert-danger text-center' role='alert'><?php echo $error_esp?></div>
+        <?php } ?>
             <table class="table table-light table-hover table-striped">
                 <thead class="thead-dark">
                     <tr>
@@ -115,6 +137,9 @@
             </table>
         </div>
         <div class="col-md-4">
+        <?php if(isset($error_med)&&$error_med!=null){?>
+        <div class='alert alert-danger text-center' role='alert'><?php echo $error_med?></div>
+        <?php } ?>
             <table class="table table-light table-hover table-striped">
                 <thead class="thead-dark">
                     <tr>

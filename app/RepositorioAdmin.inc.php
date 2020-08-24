@@ -1,5 +1,4 @@
 <?php
-//Esta clase sera para trabajar con los 
 
 class RepositorioAdmin{
     public static function obtener_servicios($conexion){
@@ -186,6 +185,132 @@ class RepositorioAdmin{
         } catch(PDOException $ex){
             print "ERROR: ". $ex -> getMessage();
         }
+    }
+
+    public static function ver_todas_citas($conexion){
+        $citas = [];
+        try{
+            $sql = "SELECT * FROM total_citas ORDER BY Fecha DESC, Hora ASC";
+            $sentencia = $conexion -> prepare($sql);
+            $sentencia -> execute();
+            $citas = $sentencia -> fetchAll();
+
+        } catch(PDOException $ex){
+            print "ERROR: ". $ex -> getMessage();
+        }
+        return $citas;
+    }
+    public static function ver_citas_completadas($conexion){
+        $citas = [];
+        try{
+            $sql = "SELECT * FROM citas_completadas ORDER BY Fecha DESC, Hora ASC";
+            $sentencia = $conexion -> prepare($sql);
+            $sentencia -> execute();
+            $citas = $sentencia -> fetchAll();
+
+        } catch(PDOException $ex){
+            print "ERROR: ". $ex -> getMessage();
+        }
+        return $citas;
+    }
+    public static function ver_citas_pendientes($conexion){
+        $citas = [];
+        try{
+            $sql = "SELECT * FROM citas_no_completadas ORDER BY Fecha DESC, Hora ASC";
+            $sentencia = $conexion -> prepare($sql);
+            $sentencia -> execute();
+            $citas = $sentencia -> fetchAll();
+
+        } catch(PDOException $ex){
+            print "ERROR: ". $ex -> getMessage();
+        }
+        return $citas;
+    }
+    public static function ver_citas_usuarios($conexion){
+        $citas = [];
+        try{
+            $sql = "SELECT * FROM citas_registrados ORDER BY Fecha DESC, Hora ASC";
+            $sentencia = $conexion -> prepare($sql);
+            $sentencia -> execute();
+            $citas = $sentencia -> fetchAll();
+
+        } catch(PDOException $ex){
+            print "ERROR: ". $ex -> getMessage();
+        }
+        return $citas;
+    }
+    public static function ver_citas_invitados($conexion){
+        $citas = [];
+        try{
+            $sql = "SELECT * FROM citas_invitados ORDER BY Fecha DESC, Hora ASC";
+            $sentencia = $conexion -> prepare($sql);
+            $sentencia -> execute();
+            $citas = $sentencia -> fetchAll();
+
+        } catch(PDOException $ex){
+            print "ERROR: ". $ex -> getMessage();
+        }
+        return $citas;
+    }
+    public static function comprobar_servicio($conexion, $nombre){
+        $existe = false;
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM servicio WHERE nombre = :nombre";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+                if(count($resultado)){
+                    $existe = true;
+                } else{
+                    $existe = false;
+                }
+            } catch (PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $existe;
+    }
+    public static function comprobar_especie($conexion, $nombre){
+        $existe = false;
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM especie WHERE nombre = :nombre";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+                if(count($resultado)){
+                    $existe = true;
+                } else{
+                    $existe = false;
+                }
+            } catch (PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $existe;
+    }
+    public static function comprobar_medicamento($conexion, $nombre){
+        $existe = false;
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM medicamento WHERE nom_comercial = :nombre";
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+                if(count($resultado)){
+                    $existe = true;
+                } else{
+                    $existe = false;
+                }
+            } catch (PDOException $ex){
+                print "ERROR: ". $ex -> getMessage();
+            }
+        }
+        return $existe;
     }
 }
 ?>
