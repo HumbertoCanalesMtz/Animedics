@@ -12,6 +12,7 @@ if($partes_ruta[0] == 'Animedics'){
     //Rutas de los administradores
     if(Sesion::sesion_iniciada()){
     if($_SESSION['rol'] == '1'){
+        $ruta_elegida = "views_admin/404_admin.php";
         if(count($partes_ruta) == 1){
             $ruta_elegida = "views_admin/home.php";
         } else if(count($partes_ruta) == 2){
@@ -50,6 +51,7 @@ if($partes_ruta[0] == 'Animedics'){
         }
     //Rutas de los veterinarios
     } else if ($_SESSION['rol'] == '2'){
+        $ruta_elegida = "views_vet/404_vet.php";
         if(count($partes_ruta) == 1){
             $ruta_elegida = "views_vet/home.php";
         } else if(count($partes_ruta) == 2){
